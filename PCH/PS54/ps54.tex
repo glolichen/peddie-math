@@ -1,0 +1,185 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\renewcommand\qedsymbol{\Smiley[1.5]}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\brac}[1]{\left[#1\right]}
+\newcommand{\problem}[1]{\section*{Problem #1}}
+\DeclareMathOperator{\DNE}{DNE}
+
+% \allowdisplaybreaks
+
+%opening
+\title{Problem Set \#54}
+\author{Jayden Li}
+\date{March 19, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{4}
+\begin{itemize}
+	\item[(c)]
+	\begin{equation*}
+		\lim_{x\to0^-}\left({\frac{1}{x}-\frac{1}{|x|}}\right)
+		=\lim_{x\to0^-}\left(\frac{1}{x}-\frac{1}{-x}\right)
+		=\lim_{x\to0^-}\left(\frac{1}{x}+\frac{1}{x}\right)
+		=\lim_{x\to0^-}\left(\frac{2}{x}\right)
+		=\boxed{-\infty}
+	\end{equation*}
+\end{itemize}
+
+\problem{5}
+\begin{itemize}
+	\item[(a)]
+	\begin{gather*}
+		\lim_{x\to1^+}F(x)=\lim_{x\to1^+}\frac{x^2-1}{|x-1|}
+		=\lim_{x\to1^+}\frac{(x+1)\cancel{(x-1)}}{\cancel{x-1}}
+		=\lim_{x\to1^+}(x+1)=\boxed{2} \\
+		\lim_{x\to1^-}F(x)=\lim_{x\to1^-}\frac{x^2-1}{|x-1|}
+		=\lim_{x\to1^-}\frac{(x+1)\cancel{(x-1)}}{-\cancel{(x-1)}}
+		=\lim_{x\to1^-}\frac{x+1}{-1}
+		=-\lim_{x\to1^-}(x+1)
+		=\boxed{-2}
+	\end{gather*}
+
+	\item[(b)]
+	No because \(\displaystyle \lim_{x\to1^+}F(x)\neq\lim_{x\to1^-}F(x)\).
+
+	\item[(c)]
+	\begin{equation*}
+		F(x)=\frac{x^2-1}{|x-1|}
+		=\begin{cases}
+			\dfrac{(x+1)(x-1)}{x-1} & x-1>0 \\
+			\dfrac{(x+1)(x-1)}{-(x-1)} & x-1<0
+		\end{cases}
+		=\begin{cases}
+			x+1 & x>1 \\
+			-x-1 & x<1
+		\end{cases}
+	\end{equation*}
+	
+	\begin{center}
+		\centering
+		\includegraphics*[width=0.65\linewidth]{q5c.png}
+	\end{center}
+\end{itemize}
+
+\problem{6}
+\begin{alignat*}{2}
+	\lim_{x\to3+}\floor{x}=3 &\quad& \text{($x$ is greater than $3$ but less than $4$ since $x$ approaches $3$ from the right.)} \\
+	\lim_{x\to3-}\floor{x}=2 && \text{($x$ is less than $3$ but greater than $2$ since $x$ approaches $3$ from the left.)}
+\end{alignat*}
+$\displaystyle \lim_{x\to3^+}\floor{x}\neq\lim_{x\to3^-}\floor{x}$ so the limit does not exist. \qed
+
+\problem{7}
+\begin{itemize}
+	\item[(a)]
+	\begin{gather*}
+		\lim_{x\to-2^+}\floor{x}=\boxed{-2} \\
+		\lim_{x\to-2^-}\floor{x}=-3\implies\lim_{x\to-2^-}\floor{x}\neq\lim_{x\to-2^+}\floor{x}\implies\boxed{\lim_{x\to-2}\floor{x}\DNE} \\
+		\lim_{x\to-2.4^+}\floor{x}=\lim_{x\to-2.4^-}\floor{x}=-3\implies\lim_{x\to-2.4}\floor{x}=\boxed{-3}
+	\end{gather*}
+
+	\item[(b)]
+	\begin{gather*}
+		\lim_{x\to n^-}\floor{x}=\boxed{n-1} \\
+		\lim_{x\to n^+}\floor{x}=\boxed{n}
+	\end{gather*}
+\end{itemize}
+
+\problem{8}
+\begin{equation*}
+	f(x)=\floor{x}+\floor{-x}
+\end{equation*}
+\begin{gather*}
+	f(2)=\floor{2}+\floor{-2}=2+(-2)=0 \\
+	\lim_{x\to2^+}f(x)=\lim_{x\to2^+}\floor{x}+\lim_{x\to2^+}\floor{-x}=\lim_{x\to2^+}\floor{x}+\lim_{x\to-2^-}\floor{x}=2+(-3)=-1 \\
+	\lim_{x\to2^-}f(x)=\lim_{x\to2^-}\floor{x}+\lim_{x\to2^-}\floor{-x}=\lim_{x\to2^-}\floor{x}+\lim_{x\to-2^+}\floor{x}=2+(-3)=-1 \\
+	\lim_{x\to2^+}f(x)=\lim_{x\to2^-}f(x)=-1\implies\lim_{x\to2}f(x)=-1
+\end{gather*}
+The limit exists and equals $-1$, which is not equal to $f(x)=0$. \qed
+
+\problem{9}
+$p$ is a polynomial and therefore continuous on $\mathbb{R}$. Therefore $\displaystyle \lim_{x\to a}p(x)=p(a)$ on the interval of continuity (all $a\in\mathbb{R}$) (definition of continuous). \qed
+
+\problem{10}
+If $\displaystyle \lim_{x\to1}\frac{f(x)-8}{x-1}=10$, then $f(x)-8$ must be divisible by $x-1$ and the quotient is $10$ when $x=1$. It follows that when $x=1$, $10(x-1)=f(x)-8\iff f(x)=10x-2$. By direct substitution, $\displaystyle\lim_{x\to1}f(x)=\lim_{x\to1}(10x-2)=10(1)-2=\boxed{8}$.
+
+\problem{11}
+Let $f(x)=\dfrac{|x|}{x}$, $g(x)=-\dfrac{|x|}{x}=-f(x)$ and $a=0$.
+\begin{gather*}
+	\lim_{x\to0^+}f(x)=\lim_{x\to0^+}\frac{x}{x}=1\neq-1=\lim_{x\to0^-}\frac{-x}{x}=\lim_{x\to0^-}f(x) \\
+	\lim_{x\to0^+}g(x)=-\lim_{x\to0^+}\frac{x}{x}=-1\neq1=-\lim_{x\to0^-}\frac{-x}{x}=\lim_{x\to0^-}g(x)
+\end{gather*}
+The one-sided limits of $f$ and $g$ are not equal so $\displaystyle\lim_{x\to0}f(x)$ and $\displaystyle\lim_{x\to0}g(x)$ DNE.
+
+However, $\displaystyle\lim_{x\to0}f(x)g(x)$ exists.
+\begin{equation*}{2}
+	\lim_{x\to0}f(x)g(x)=\lim_{x\to0}\paren{-\frac{|x|\cdot|x|}{x\cdot x}}=-\lim_{x\to0}\frac{|x^2|}{x^2}=-\lim_{x\to0}\frac{x^2}{x^2}=-1
+\end{equation*}
+\qed
+
+\vspace*{-10pt}
+\problem{12}
+\begin{equation*}
+	\lim_{x\to-2}\frac{3x^2+ax+a+3}{x^2+x-2}
+	=\lim_{x\to-2}\frac{3x^2+ax+a+3}{(x+2)(x-1)}
+\end{equation*}
+$x+2$ must be a factor of the numerator $3x^2+ax+a+3$ for the discontinuity at $x=-2$ to be removable. By the factor theorem the numerator must equal $0$ when $x=-2$.
+\begin{align*}
+	3x^2+ax+a+3&=0 \\
+	3(-2)^2+a(-2)+a+3&=0 \\
+	12-2a+a+3&=0 \\
+	-a&=-15 \\
+	\Aboxed{a&=15}
+\end{align*}
+\begin{equation*}
+	\lim_{x\to-2}\frac{3x^2+15x+15+3}{(x+2)(x-1)}
+	=\lim_{x\to-2}\frac{3x^2+9x+6x+18}{(x+2)(x-1)}
+	=\lim_{x\to-2}\frac{3\cancel{(x+2)}(x+3)}{\cancel{(x+2)}(x-1)}
+	=\frac{3(-2+3)}{-2-1}=\boxed{-1}
+\end{equation*}
+
+\end{document}

@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{caption}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\renewcommand{\Re}{{\mathrm{Re}}}
+\renewcommand{\Im}{{\mathrm{Im}}}
+
+% \allowdisplaybreaks
+
+%opening
+\title{The Butterfly Project}
+\author{Jayden Li}
+\date{February 22, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{11pt}{11pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\begin{align*}
+	x(t)&=\sin(t)\left(e^{\cos t}-2\cos4t-\sin^5\frac{t}{12}\right) \\
+	y(t)&=\cos(t)\left(e^{\cos t}-2\cos4t-\sin^5\frac{t}{12}\right)
+\end{align*}
+\begin{itemize}
+\item[(a)]
+	$\begin{aligned}[t]
+		\sin t&:2\pi \\
+		\cos t&:2\pi \\
+		e^{\cos t}&:2\pi \\
+		e^{\sin t}&:2\pi \\
+		\cos4t&:\frac{\pi}{2} \\
+		\sin\frac{t}{12}&:24\pi \\
+	\end{aligned}$
+
+	LCM of everything above is $24\pi$.
+
+	\boxed{\text{Period}:24\pi}
+
+\item[(b)]
+	I counted the number of times it passes through the origin. The answer is \boxed{74}
+
+\item[(c)]
+	\begin{align*}
+		\diff{y}{x}&=\frac{\diff{}{t}\left[\cos(t)\left(e^{\cos t}-2\cos4t-\sin^5\frac{t}{12}\right)\right]}{\diff{}{t}\left[\sin(t)\left(e^{\cos t}-2\cos4t-\sin^5\frac{t}{12}\right)\right]} \\
+		&=\frac{-\sin(t)\left(e^{\cos t}-2\cos4t-\sin^5\frac{t}{12}\right)+\cos(t)\left(e^{\cos t}(-\sin t)-8(-\sin4t)-5\left(\sin\frac{t}{12}\right)^4\cdot\frac{1}{12}\right)}{\cos(t)\left(e^{\cos t}-2\cos4t-\sin^5\frac{t}{12}\right)+\sin(t)\left(e^{\cos t}(-\sin t)-8(-\sin4t)-5\left(\sin\frac{t}{12}\right)^4\cdot\frac{1}{12}\right)}
+		\intertext{Slope of tangent line:}
+		&\hspace*{-70pt}=\frac{-\sin(135\pi)\left(e^{\cos135\pi}-2\cos4(135\pi)-\sin^5\frac{135\pi}{12}\right)+\cos(135\pi)\left(e^{\cos135\pi}(-\sin135\pi)-8(-\sin4(135\pi))-5\left(\sin\frac{135\pi}{12}\right)^4\cdot\frac{1}{12}\right)}{\cos(135\pi)\left(e^{\cos135\pi}-2\cos4(135\pi)-\sin^5\frac{135\pi}{12}\right)+\sin(135\pi)\left(e^{\cos135\pi}(-\sin135\pi)-8(-\sin4(135\pi))-5\left(\sin\frac{135\pi}{12}\right)^4\cdot\frac{1}{12}\right)} \\
+		&=\frac{\cancel{-\sin(\pi)\left(e^{\cos\pi}-2\cos540\pi-\sin^5\frac{45\pi}{4}\right)}+\cancel{\cos(\pi)}\left(\cancel{e^{\cos\pi}(-\sin\pi)}-\cancel{8(-\sin540\pi)}-5\left(\sin\frac{45\pi}{4}\right)^4\cdot\frac{1}{12}\right)}{\cancel{\cos(\pi)}\left(e^{\cos\pi}-2\cos540\pi-\sin^5\frac{45\pi}{4}\right)+\cancel{\sin(\pi)\left(e^{\cos\pi}(-\sin\pi)-8(-\sin540\pi)-5\left(\sin\frac{45\pi}{4}\right)^4\cdot\frac{1}{12}\right)}} \\
+		&=-\frac{5\left(\sin\frac{5\pi}{4}\right)^4}{12}/\left(e^{-1}-2-\left(\sin\frac{5\pi}{4}\right)^5\right) \\
+		&=-\frac{5\left(-\frac{\sqrt{2}}{2}\right)^4}{12}/\left(e^{-1}-2-\left(-\frac{\sqrt{2}}{2}\right)^5\right) \\
+		&=-\frac{5\left(\frac{1}{4}\right)}{12}/\left(e^{-1}-2-\left(-\frac{4\sqrt{2}}{32}\right)\right) \\
+		&=-\frac{5}{48}\cdot\frac{1}{e^{-1}-2+\frac{\sqrt{2}}{8}} \\
+		&=-\frac{5}{48e^{-1}-96+6\sqrt{2}}
+	\end{align*}
+	\begin{align*}
+		x(135\pi)&=\sin(135\pi)\left(e^{\cos135\pi}-2\cos4(135\pi)-\sin^5\frac{135\pi}{12}\right) \\
+		&=\sin(\pi)\left(e^{\cos\pi}-2\cos540\pi-\left(\sin\frac{45\pi}{4}\right)^5\right) \\
+		&=0 \\
+		y(135\pi)&=\cos(135\pi)\left(e^{\cos135\pi}-2\cos4(135\pi)-\sin^5\frac{135\pi}{12}\right) \\
+		&=-\left(e^{\cos\pi}-2\cos540\pi-\left(\sin\frac{5\pi}{4}\right)^5\right) \\
+		&=-\left(e^{-1}-2+\frac{\sqrt{2}}{8}\right)
+	\end{align*}
+	\begin{equation*}
+		\boxed{y+\frac{1}{e}-2+\frac{\sqrt{2}}{8}=-\frac{5x}{\frac{48}{e}-96+6\sqrt{2}}}
+	\end{equation*}
+
+	copy to desmos: \verb|y+\frac{1}{e}-2+\frac{\sqrt{2}}{8}=-\frac{5x}{\frac{48}{e}-96+6\sqrt{2}}|
+
+\item[(d)]
+	\begin{itemize}
+	\item The changing the power of $\cos4t$ changes the size of the curve. Increasing it will enlarge the ``head'' and ``abdomen'' of the butterfly.
+	
+	\begin{center}
+		\centering
+		\includegraphics*[width=0.45\linewidth]{fig1.png}
+		\captionof{figure}{Curve created by $x(t)=\sin(t)\left(e^{\cos t}-10\cos4t-\left(\sin\frac{t}{12}\right)^{5}\right)$, $y(t)=\cos(t)\left(e^{\cos t}-10\cos4t-\left(\sin\frac{t}{12}\right)^{5}\right)$}
+	\end{center}
+
+	\item Changing the coefficient of $\sin\frac{t}{12}$ changes the curve significantly, as the inner lines ``expand'' outside and become larger.
+	
+	\begin{center}
+		\centering
+		\includegraphics*[width=0.45\linewidth]{fig2.png}
+		\captionof{figure}{Curve created by $x(t)=\sin(t)\left(e^{\cos t}-2\cos4t-15\left(\sin\frac{t}{12}\right)^{5}\right)$, $y(t)=\cos(t)\left(e^{\cos t}-2\cos4t-15\left(\sin\frac{t}{12}\right)^{5}\right)$}
+	\end{center}
+
+	\item Changing the exponent of $\sin\frac{t}{12}$ does not change the curve much. Increasing it makes the ``inner lines'' of the wings and other body parts closer to its edge.
+
+	\begin{center}
+		\centering
+		\includegraphics*[width=0.45\linewidth]{fig31.png}
+		\includegraphics*[width=0.45\linewidth]{fig32.png}
+		\captionof{figure}{Curves created by $x(t)=\sin(t)\left(e^{\cos t}-2\cos4t-\left(\sin\frac{t}{12}\right)^{a}\right)$, $y(t)=\cos(t)\left(e^{\cos t}-2\cos4t-\left(\sin\frac{t}{12}\right)^{a}\right)$. Left image shows the curve with $a=20$, right image has $a=2$.}
+	\end{center}
+
+	\item When any of these are negative, weird stuff happens.
+	\end{itemize}
+
+	\begin{center}
+		\centering
+		\includegraphics*[width=0.49\linewidth]{art.png}
+		\includegraphics*[width=0.49\linewidth]{art2.png}
+		\captionof{figure}{Art.}
+
+		\fontsize{12pt}{12pt}\selectfont
+		\begin{align*}
+			x(t)&=\sin(t)\left(e^{\cos t}-1.4\cos4t-1.1\left(\sin\left(\frac{t}{12}\right)\right)^{3.4}\right) \\
+			y(t)&=\cos(t)\left(e^{\cos t}-1.4\cos4t-1.1\left(\sin\left(\frac{t}{12}\right)\right)^{3.4}\right)
+		\end{align*}
+	\end{center}
+
+	
+\end{itemize}
+
+\end{document}

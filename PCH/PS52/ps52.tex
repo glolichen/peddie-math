@@ -1,0 +1,198 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\renewcommand{\Re}{{\mathrm{Re}}}
+\renewcommand{\Im}{{\mathrm{Im}}}
+
+% \allowdisplaybreaks
+
+%opening
+\title{Problem Set \#52}
+\author{Jayden Li}
+\date{February 15, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\section*{Problem 5}
+
+\begin{alignat*}{2}
+	z_1&=0 &\qquad |z_1|&=0 \\
+	z_2&=0^2+i=i & |z_2|&=1 \\
+	z_3&=(-i)^2+i=-1+i & |z_3|&=\sqrt{2} \\
+	z_4&=(-1+i)^2+i=-i & |z_4|&=1 \\
+	z_5&=(-i)^2+i=-1+i & |z_5|&=\sqrt{2} \\
+	z_6&=(-i+1)^2+i=-i & |z_6|&=1
+\end{alignat*}
+
+I claim that:
+\begin{equation*}
+	z_n=\begin{cases}
+		0\quad n=1 \\
+		1\quad\text{$n$ even} \\
+		\sqrt{2}\quad\text{else}
+	\end{cases}
+\end{equation*}
+
+Therefore \boxed{z_{111}=\sqrt{2}}
+
+\section*{Problem 6}
+Let $F=a+bi$ where $a,b\in\mathbb{R}$, $a>1$ and $0<b<1$.
+\begin{align*}
+	\frac{1}{F}&=\frac{1}{a+bi}\cdot\frac{a-bi}{a-bi} \\
+	&=\frac{a-bi}{a+b} \\
+	&=\frac{a}{a+b}+\left(-\frac{b}{a+b}\right)i
+\end{align*}
+Because $a,b<a+b$ and $a,b,(a+b)\in\mathbb{R}^+$, $0<\dfrac{a}{a+b}<1$ and $-1<-\dfrac{b}{a+b}<0$. \boxed{C} is the reciprocal of $F$.
+
+\section*{Problem 7}
+\begin{itemize}
+\item[(a)]
+	\begin{proof}	
+		Let $z=a+bi$.
+		\begin{align*}
+			z\overline{z}&=(a+bi)(a-bi) \\
+			&=a^2+b^2 \\
+			&=\left(\sqrt{a^2+b^2}\right) \\
+			&=|z|^2
+		\end{align*}
+	\end{proof}
+
+\item[(b)]
+	Let $z=a+bi$ and $w=c+di$.
+
+	\centering
+	\begin{minipage}[t]{0.4\linewidth}
+		\begin{align*}
+			|z|&=|w|=3 \\
+			\sqrt{a^2+b^2}&=\sqrt{c^2+d^2}=3 \\
+			a^2+b^2&=c^2+d^2=9 \\
+			\\
+			|z-w|&=|a+bi-c-di| \\
+			&=\sqrt{(a-c)^2+(b-d)^2} \\
+			&=\sqrt{a^2-2ac+c^2+b^2-2bd+d^2} \\
+			&=\sqrt{9+9+14} \\
+			&=\sqrt{32} \\
+			&=\boxed{4\sqrt{2}}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\linewidth}
+		\begin{align*}
+			|z+w|&=2 \\
+			|a+bi+c+di|&=2 \\
+			\sqrt{(a+c)^2+(b+d)^2}&=2 \\
+			(a+c)^2+(b+d)^2&=4 \\
+			a^2+2ac+c^2+b^2+2bd+d^2&=4 \\
+			9+2ac+9+2bd&=4 \\
+			2ac+2bd&=-14 \\
+			-2ac-2bd&=14
+		\end{align*}
+	\end{minipage}
+
+	\justifying
+
+\end{itemize}
+
+\section*{Problem 8}
+Let $z=a+bi$.
+\begin{itemize}
+\item[(a)]
+	\begin{align*}
+		|z-3|&=|z+2i| \\
+		|(a-3)+bi|&=|a+(b+2)i| \\
+		\sqrt{(a-3)^2+b^2}&=\sqrt{a^2+(b+2)^2} \\
+		\cancel{a^2}-6a+9+\cancel{b^2}&=\cancel{a^2}+\cancel{b^2}+4b+4 \\
+		6a+4b&=5 \\
+		b&=\frac{5-6a}{4}
+	\end{align*}
+
+\item[(b)]
+	\begin{align*}
+		z+|z|&=2+8i \\
+		a+bi+\sqrt{a^2+b^2}&=2+8i \\
+		\left(a+\sqrt{a^2+b^2}\right)+bi&=2+8i
+	\end{align*}
+	\begin{minipage}[t]{0.5\linewidth}
+		\begin{align*}
+			\Re\left(\left(a+\sqrt{a^2+b^2}\right)+bi\right)&=\Re(2+8i) \\
+			a+\sqrt{a^2+8^2}&=2 \\
+			(a-2)^2&=a^2+64 \\
+			\cancel{a^2}-4a+4&=\cancel{a^2}+64 \\
+			4a&=-60 \\
+			a&=-15
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		\begin{align*}
+			\Im\left(\left(a+\sqrt{a^2+b^2}\right)+bi\right)&=\Im(2+8i) \\
+			b&=8
+		\end{align*}
+		\begin{align*}
+			|z|&=|-15+8i| \\
+			|z|&=\sqrt{225+64} \\
+			|z|&=\sqrt{289} \\
+			\Aboxed{|z|&=17}
+		\end{align*}
+	\end{minipage}
+
+	\centering
+	\includegraphics*[width=0.8\linewidth]{q8b.png}
+
+	\justifying
+
+\end{itemize}
+
+\section*{Problem 9}
+Let $z=a+bi$.
+\begin{align*}
+	|z-4+5i|&=2\sqrt{3} \\
+	|(a-4)+(b+5)i|&=2\sqrt{3} \\
+	(a-4)^2+(b+5)^2&=\left(2\sqrt{3}\right)^2
+	\intertext{Turn this from the complex plane to the real Cartesian plane by applying $a=x,b=y$.}
+	(x-4)^2+(y+5)^2&=\left(2\sqrt{3}\right)^2
+\end{align*}
+This is the equation of a circle with radius $2\sqrt{3}$. The radius of this circle is:
+\begin{equation*}
+	\pi\left(2\sqrt{3}\right)^2=\boxed{12\pi}
+\end{equation*}
+
+\end{document}

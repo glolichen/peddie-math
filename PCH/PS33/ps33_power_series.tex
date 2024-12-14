@@ -1,0 +1,55 @@
+\documentclass{article}
+% \documentclass{article}
+
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{esdiff}
+\usepackage{titlesec}
+\usepackage{multicol}
+
+%opening
+\title{Problem Set \#33}
+\author{Jayden Li}
+
+\begin{document}
+
+\maketitle
+
+\fontsize{12pt}{12pt}\selectfont
+
+\section*{Problem 5}
+
+\begin{itemize}
+
+\item[(k)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{1-\cos4x}{x^2} \\
+	=&\lim\limits_{x\to0}\left(\frac{1}{x^2}\cdot\left(1-\left(
+		1
+		-\frac{\left(4x\right)^2}{2!}
+		+\frac{\left(4x\right)^4}{4!}
+		-\frac{\left(4x\right)^6}{6!}
+		+...
+	\right)\right)\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{1}{x^2}\cdot\left(
+		\frac{16x^2}{2!}
+		-\frac{256x^4}{4!}
+		+\frac{4096x^6}{6!}
+		-...
+	\right)\right) \\
+	=&\lim\limits_{x\to0}\left(
+		\frac{16}{2!}
+		-\frac{256x^2}{4!}
+		+\frac{4096x^4}{6!}
+		-...
+	\right) \\
+	=&\frac{16}{2!} \\
+	=&\boxed{8}
+\end{aligned}$
+
+\end{itemize}
+\end{document}

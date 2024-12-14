@@ -1,0 +1,339 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.8in, right=0.8in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{empheq}
+\usepackage{cancel}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+%opening
+\title{Problem Set \#43}
+\author{Jayden Li}
+\date{January 19, 2024}
+
+\DeclareMathOperator{\Midterm}{Midterm}
+
+\begin{document}
+
+\newgeometry{top=0.4in, left=0.6in, right=0.6in, bottom=1in}
+
+\fontsize{12pt}{12pt}\selectfont
+
+\maketitle
+
+\section*{Problem 2}
+\begin{align*}
+	(x+y)^5+(x-y)^5&=\sum_{k=0}^{5}\binom{5}{k}x^{5-k}y^k+
+		\sum_{k=0}^{5}\binom{5}{k}x^{5-k}(-y)^k \\
+	&=\sum_{k=0}^{5}\left(\binom{5}{k}x^{5-k}y^k+
+		\binom{5}{k}x^{5-k}(-1)^ky^k\right) \\
+	&=\sum_{k=0}^{5}\binom{5}{k}x^{5-k}y^k\left(1+(-1)^k\right) \\
+	&=\sum_{1\leq k\leq5,k\text{ odd}}\binom{5}{k}x^{5-k}y^k\left(
+		1+(-1)^k\right)+\sum_{0\leq k\leq4,k\text{ even}}
+		\binom{5}{k}x^{5-k}y^k\left(1+(-1)^k\right) \\
+	&=\sum_{1\leq k\leq5,k\text{ odd}}\binom{5}{k}x^{5-k}y^k(0)+
+		\sum_{0\leq k\leq4,k\text{ even}}\binom{5}{k}x^{5-k}y^k(2) \\
+	&=2\sum_{0\leq k\leq4,k\text{ even}}\binom{5}{k}x^{5-k}y^k \\
+	&=2\left(\binom{5}{0}x^{5-0}y^0+\binom{5}{2}x^{5-2}y^2+
+		\binom{5}{4}x^{5-4}y^4\right) \\
+	&=2\left(x^5+10x^3y^2+5xy^4\right) \\
+	&=2x^5+20x^3y^2+10xy^4 \\
+	\\
+	\bigl(\sqrt{2}+1\bigr)^5+\bigl(\sqrt{2}-1\bigr)^5
+	&=2\bigl(\sqrt{2}\bigr)^5+20\bigl(\sqrt{2}\bigr)^3(1)^2+
+		10\bigl(\sqrt{2}\bigr)(1)^4 \\
+	&=2\bigl(\sqrt{2}\bigr)^4\sqrt{2}+20\bigl(\sqrt{2}\bigr)^2
+		\sqrt{2}+10\sqrt{2} \\
+	&=8\sqrt{2}+40\sqrt{2}+10\sqrt{2} \\
+	&=\boxed{58\sqrt{2}}
+\end{align*}
+
+\section*{Problem 3}
+Let $a=\sqrt{x+1},b=\sqrt{x-1}$.
+\begin{align*}
+	&\bigl(\sqrt{x+1}+\sqrt{x-1}\bigr)^6+
+		\bigl(\sqrt{x+1}-\sqrt{x-1}\bigr)^6,\,x\geq1 \\
+	=\,&(a+b)^6+(a-b)^6 \\
+	=\,&\sum_{k=0}^{6}\left(\binom{6}{k}a^{6-k}b^k+
+		\binom{6}{k}a^{6-k}(-1)^kb^k\right) \\
+	=\,&\sum_{k=0}^{6}\binom{6}{k}a^{6-k}b^k\left(1+(-1)^k\right) \\
+	=\,&\sum_{1\leq k\leq5,k\text{ odd}}\binom{6}{k}a^{6-k}b^k\left(
+		1+(-1)^k\right)+\sum_{0\leq k\leq6,k\text{ even}}
+		\binom{6}{k}a^{6-k}b^k\left(1+(-1)^k\right) \\
+		=\,&\sum_{1\leq k\leq5,k\text{ odd}}\binom{6}{k}a^{6-k}b^k(0)+
+		\sum_{0\leq k\leq6,k\text{ even}}\binom{6}{k}a^{6-k}b^k(2) \\
+	=\,&2\sum_{0\leq k\leq6,k\text{ even}}\binom{6}{k}a^{6-k}b^k \\
+	=\,&2\left(\binom{6}{0}a^{6-0}b^0+\binom{6}{2}a^{6-2}b^2+
+		\binom{6}{4}a^{6-4}b^4+\binom{6}{6}a^{6-6}b^6\right) \\
+	=\,&2\left(a^6+15a^4b^2+15a^2b^4+b^6\right) \\
+	=\,&2a^6+30a^4b^2+30a^2b^4+2b^6 \\
+	=\,&2\bigl(\sqrt{x+1}\bigr)^6+30\bigl(\sqrt{x+1}\bigr)^4
+		\bigl(\sqrt{x-1}\bigr)^2+30\bigl(\sqrt{x+1}\bigr)^2
+		\bigl(\sqrt{x-1}\bigr)^4+2\bigl(\sqrt{x-1}\bigr)^6 \\
+	=\,&2(x+1)^3+30(x+1)^2(x-1)+30(x+1)(x-1)^2+2(x-1)^3 \\
+	=\,&2(x+1)^3+30(x+1)(x+1)(x-1)+30(x+1)(x-1)(x-1)+2(x-1)^3 \\
+	=\,&2\left((x+1)^3+(x-1)^3\right)+30(x+1)(x-1)((x+1)+(x-1)) \\
+	=\,&2\left(x^3+3x^2+3x+1+x^3-3x^2+3x-1\right)+30(x^2-1)(2x) \\
+	=\,&2\left(2x^3+6x\right)+60x(x^2-1) \\
+	=\,&4x^3+12x+60x^3-60x \\
+	=\,&\boxed{64x^3-48x,\,x\geq1}
+\end{align*}
+
+\pagebreak
+\section*{Problem 5}
+\begin{itemize}
+\item[(a)]
+\begin{align*}
+	\left(ax^2+\frac{1}{bx}\right)^{11}
+	&=\left(ax^2+\frac{1}{b}x^{-1}\right)^{11} \\
+	&=\sum_{k=0}^{11}\binom{11}{k}\left(ax^2\right)^{11-k}
+		\left(\frac{1}{b}x^{-1}\right)^k
+\end{align*}
+Let $\deg(P)$ be the degree of a polynomial $P$. We will find $k$
+s.t. $\deg\left(\binom{11}{k}\left(ax^2\right)^{11-k}\left(
+\frac{1}{b}x^{-1}\right)^k\right)=7$.
+\begin{align*}
+	\deg\left(\binom{11}{k}\left(ax^2\right)^{11-k}
+		\left(\frac{1}{b}x^{-1}\right)^k\right)&=7 \\
+	\deg\left(\left(x^2\right)^{11-k}\left(x^{-1}\right)^k\right)
+	&=7 \\
+	\deg\left(x^{22-2k}\cdot x^{-k}\right)&=7 \\
+	\deg\left(x^{22-2k+(-k)}\right)&=7 \\
+	22-3k&=7 \\
+	3k&=15 \\
+	k&=5
+\end{align*}
+The term with $k=5$ is given by:
+\begin{align*}
+	\binom{11}{5}a^{11-5}\left(\frac{1}{b}\right)^5
+	&=\frac{11!}{5!\cdot6!}\cdot a^6\cdot\frac{1}{b^5} \\
+	&=\frac{11\cdot\bcancel{10}\cdot\cancelto{3}{9}\cdot
+		\cancelto{2}{8}\cdot7}{\bcancel{5}\cdot\cancel{4}\cdot
+		\cancel{3}\cdot\bcancel{2}}\cdot\frac{a^6}{b^5} \\
+	&=11\cdot3\cdot2\cdot7\cdot\frac{a^6}{b^5} \\
+	&=\boxed{\frac{462a^6}{b^5}}
+\end{align*}
+
+\pagebreak
+\item[(b)]
+Let $\Midterm(P)$ be the middle term of the polynomial $P$,
+and let $P=(a+b)^n$ where $n\in\mathbb{Z}^+$. By the binomial
+theorem, we have that:
+\setlength{\abovedisplayskip}{0pt}
+\begin{equation*}
+	(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k
+\end{equation*}
+For even $n$, the middle term of the above sum is $\dfrac{n}{2}$.
+For odd $n$, there are 2 middle terms: $\dfrac{n-1}{2}$ and
+$\dfrac{n+1}{2}$. Thus $\Midterm\left((a+b)^n\right)$ is
+multi-valued for odd $n$ and single-valued for even $n$.
+
+For even $n$:
+\begin{align*}
+	\Midterm\left((a+b)^n\right)&=\binom{n}{\frac{n}{2}}
+		a^{n-\frac{n}{2}}b^{\frac{n}{2}} \\
+	&=\frac{n!}{\left(\frac{n}{2}\right)!\left(n-\frac{n}{2}\right)!}
+		\cdot a^{\frac{n}{2}}b^{\frac{n}{2}} \\
+	&=\frac{n!(ab)^{\frac{n}{2}}}
+		{\left(\left(\frac{n}{2}\right)!\right)^2}
+\end{align*}
+
+For odd $n$:
+\begin{align*}
+	\Midterm\left((a+b)^n\right)&=\left\lbrace
+		\frac{n!}{\left(\frac{n-1}{2}\right)!\left(n-\frac{n-1}{2}
+		\right)!}\cdot a^{n-\frac{n-1}{2}}b^{\frac{n-1}{2}},\,
+		\frac{n!}{\left(\frac{n+1}{2}\right)!\left(n-\frac{n+1}{2}
+		\right)!}\cdot a^{n-\frac{n+1}{2}}b^{\frac{n+1}{2}}
+		\right\rbrace \\
+	&=\left\lbrace
+		\frac{n!}{\left(\frac{n-1}{2}\right)!\left(\frac{n+1}{2}
+		\right)!}\cdot a^{\frac{n+1}{2}}b^{\frac{n-1}{2}},\,
+		\frac{n!}{\left(\frac{n+1}{2}\right)!\left(\frac{n-1}{2}
+		\right)!}\cdot a^{\frac{n-1}{2}}b^{\frac{n+1}{2}}
+		\right\rbrace \\
+\end{align*}
+
+\centering
+------------------------------------------------------------------------------------------------------------------------------
+\flushleft
+
+\begin{itemize}
+	\item[i.]
+	\begin{align*}
+		\Midterm\left(\left(1-\frac{x^2}{2}\right)^{14}\right)
+		&=\frac{14!\left(1\left(-\frac{x^2}{2}\right)\right)^
+			{\frac{14}{2}}}{\left(\left(\frac{14}{2}\right)!
+			\right)^2} \\
+		&=\frac{14!\left(-\frac{x^2}{2}\right)^7}{(7!)^2} \\
+		&=-\frac{\cancelto{\bcancel{2}}{14}\cdot13\cdot
+			\cancelto{\bcancel{2}}{12}\cdot11\cdot
+			\cancelto{\bcancel{2}}{10}\cdot\cancelto{3}{9}
+			\cdot\cancelto{\bcancel{2}}{8}}{\cancel{7}\cdot
+			\cancel{6}\cdot\cancel{5}\cdot\cancel{4}\cdot
+			\cancel{3}\cdot\bcancel{2}\cdot1}\cdot\frac{x^{14}}
+			{\bcancel{2}\cdot\bcancel{2}\cdot\bcancel{2}\cdot2^4} \\
+		&=-\frac{13\cdot11\cdot3\cdot x^{14}}{16} \\
+		&=\boxed{-\frac{429x^{14}}{16}}
+	\end{align*}
+	\item[ii.]
+	\begin{align*}
+		\Midterm\left(3a-\frac{a^3}{6}\right)^9
+		&=\left\lbrace
+			\frac{9!}{\left(\frac{9-1}{2}\right)!\left(
+			\frac{9+1}{2}\right)!}\cdot(3a)^{\frac{9+1}{2}}
+			\left(-\frac{a^3}{6}\right)^{\frac{9-1}{2}},\,
+			\frac{9!}{\left(\frac{9+1}{2}\right)!\left(
+			\frac{9-1}{2}\right)!}\cdot(3a)^{\frac{9-1}{2}}
+			\left(-\frac{a^3}{6}\right)^{\frac{9+1}{2}}
+			\right\rbrace \\
+		&=\left\lbrace
+			\frac{9!}{4!\cdot5!}\cdot(3a)^5
+			\left(-\frac{a^3}{6}\right)^4,\,
+			\frac{9!}{5!\cdot4!}\cdot(3a)^4
+			\left(-\frac{a^3}{6}\right)^5
+			\right\rbrace \\
+		&=\left\lbrace
+			9\cdot7\cdot2\cdot(3a)^5\left(\frac{a^{12}}{6^4}\right),\,
+			9\cdot7\cdot2\cdot(3a)^4\left(-\frac{a^{15}}{6^5}\right)
+			\right\rbrace \\
+		&=\left\lbrace
+			9\cdot7\cdot2\cdot\cancel{3}\cdot\cancel{3}\cdot
+			\cancel{3}\cdot\cancel{3}\cdot3\cdot\frac{a^{17}}
+			{\cancelto{2}{3}\cdot\cancelto{2}{3}\cdot
+			\cancelto{2}{3}\cdot\cancelto{2}{3}}\;\,,\,
+			-9\cdot7\cdot2\cdot\cancel{3}\cdot\cancel{3}\cdot
+			\cancel{3}\cdot\cancel{3}\cdot\frac{a^{19}}
+			{\cancelto{2}{3}\cdot\cancelto{2}{3}\cdot
+			\cancelto{2}{3}\cdot\cancelto{2}{3}\cdot6}
+			\right\rbrace \\
+		&=\left\lbrace
+			63\cdot3\cdot2\cdot\frac{a^{17}}{2\cdot8},\,
+			-63\cdot2\cdot\frac{a^{19}}{2\cdot48}
+			\right\rbrace \\
+		&=\left\lbrace
+			\frac{189a^{17}}{8},\,
+			-\frac{63a^{19}}{48}
+			\right\rbrace \\
+		&=\boxed{\left\lbrace
+			\frac{189a^{17}}{8},\,
+			-\frac{21a^{19}}{16}
+			\right\rbrace}
+	\end{align*}
+\end{itemize}
+\end{itemize}
+
+\section*{Problem 6}
+\begin{alignat*}{3}
+	\binom{n}{1}x^{n-1}a^1&=240 \implies&
+		\frac{n\cancel{(n-1)!}}{1!\cancel{(n-1)!}}
+		\cdot x^{n-1}a&=240 \implies&
+		nx^{n-1}a&=240 \\
+	\binom{n}{2}x^{n-2}a^2&=720 \implies&
+		\frac{n(n-1)\cancel{(n-2)!}}{2!\cancel{(n-2)!}}
+		\cdot x^{n-2}a^2&=720 \implies&
+		n(n-1)x^{n-2}a^2&=1440 \\
+	\binom{n}{3}x^{n-3}a^3&=1080 \implies&
+		\frac{n(n-1)(n-2)\cancel{(n-3)!}}{3!\cancel{(n-3)!}}
+		\cdot x^{n-3}a^3&=1080 \implies&
+		n(n-1)(n-2)x^{n-3}a^3&=6480 
+\end{alignat*}
+
+\begin{minipage}[t]{0.33\linewidth}
+\begin{align*}
+	\frac{\cancel{n}(n-1)x^{n-2}a^{\cancel{2}}}
+		{\cancel{n}x^{n-1}\cancel{a}}&=\frac{1440}{240} \\
+	\frac{a(n-1)\cancel{x^{n-2}}}{x\cancel{x^{n-2}}}&=6 \\
+	\frac{a(n-1)}{x}&=6 \\
+	\frac{a(n-1)}{6}&=x
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.33\linewidth}
+\begin{align*}
+	\frac{\cancel{n(n-1)}(n-2)x^{n-3}a^{\cancel{3}}}
+		{\cancel{n(n-1)}x^{n-2}\cancel{a^2}}&=\frac{6480}{1440} \\
+	\frac{(n-2)\cancel{x^{n-3}}a}{x\cancel{x^{n-3}}}&=\frac{9}{2} \\
+	\frac{(n-2)a}{x}&=\frac{9}{2} \\
+	\frac{2a(n-2)}{9}&=x \\
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.33\linewidth}
+\begin{align*}
+	\frac{(n-1)a}{6}&=\frac{2a(n-2)}{9} \\
+	9\cancel{a}(n-1)&=12\cancel{a}(n-2) \\
+	9n-9&=12n-24 \\
+	-3n&=-15 \\
+	\Aboxed{n&=5}
+\end{align*}
+\end{minipage}
+\begin{alignat*}{4}
+	nx^{n-1}a&=240 \implies& 5x^4a&=240 \implies& 25x^8a^2&=57600 \\
+	n(n-1)x^{n-2}a^2&=1440 \implies& 20x^3a^2&=1440 \\
+	n(n-1)(n-2)x^{n-3}a^3&=6480 \implies& 60x^2a^3&=6480
+\end{alignat*}
+\centering
+\begin{minipage}[t]{0.2\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+$\begin{aligned}[t]
+	\frac{25x^{\cancelto{5}{8}}\cancel{a^2}}
+		{20\cancel{x^3}\cancel{a^2}}&=\frac{57600}{1440} \\
+	\frac{5}{4}x^5&=40 \\
+	x^5&=32 \\
+	\Aboxed{x&=2} \\
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.2\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+$\begin{aligned}[t]
+	5(2)^4a&=240 \\
+	80a&=240 \\
+	\Aboxed{a&=3}
+\end{aligned}$
+\end{minipage}
+\flushleft
+
+\section*{Problem 8}
+\begin{align*}
+	\bigl(\sqrt{2}+1\bigr)^6&=\bigl(1+\sqrt{2}\bigr)^6 \\
+	&=\sum_{k=0}^{6}\binom{6}{k}1^{6-k}\bigl(\sqrt{2}\bigr)^k \\
+	&=\sum_{k=0}^{6}\binom{6}{k}\bigl(\sqrt{2}\bigr)^k \\
+	&=\sum_{0\leq k\leq6,k\text{ even}}\binom{6}{k}
+		\bigl(\sqrt{2}\bigr)^k+\sum_{1\leq k\leq5,k\text{ odd}}
+		\binom{6}{k}\bigl(\sqrt{2}\bigr)^k \\
+	&=\sum_{i=0}^{3}\binom{6}{2i}\bigl(\sqrt{2}\bigr)^{2i}+
+		\sum_{i=0}^{2}\binom{6}{2i+1}\bigl(\sqrt{2}\bigr)^{2i+1} \\
+	&=\sum_{i=0}^{3}\binom{6}{2i}2^i+
+		\sum_{i=0}^{2}\binom{6}{2i+1}2^i\sqrt{2} \\
+	&=\binom{6}{0}+\binom{6}{2}2+\binom{6}{4}4+\binom{6}{6}8+
+		\binom{6}{1}\sqrt{2}+\binom{6}{3}2\sqrt{2}+
+		\binom{6}{5}4\sqrt{2} \\
+	&=1+15\cdot2+15\cdot4+8+6\sqrt{2}+20\cdot2\sqrt{2}+
+		6\cdot4\sqrt{2} \\
+	&=99+70\sqrt{2} \\
+	&=99+\sqrt{9800} \\
+\end{align*}
+$\left\lfloor\sqrt{9800}\right\rfloor$ is the square root of the
+smallest perfect square under 9800. $99^2=9801$ and $98^2=9154$.
+Thus $\left\lfloor9800\right\rfloor=98$, so $\left\lfloor99+
+\sqrt{9800}\right\rfloor=99+98=\boxed{197}$.
+
+\end{document}

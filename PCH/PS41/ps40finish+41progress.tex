@@ -1,0 +1,223 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.8in, right=0.8in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{titling}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage{vwcol}
+\usepackage{empheq}
+\usepackage{cancel}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+%opening
+\title{Finish Problem Set \#40}
+\author{Jayden Li}
+\date{January 11, 2024}
+
+\begin{document}
+
+\newgeometry{top=0.4in, left=0.8in, right=0.8in, bottom=1in}
+
+\fontsize{12pt}{12pt}\selectfont
+
+\maketitle
+
+\section*{Problem 4}
+\centering
+\begin{minipage}[t]{0.45\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	\sum_{n=0}^{\infty}\sum_{m=0}^{n}\frac{1}{2^{m+n}}&=
+		\sum_{n=0}^{\infty}\left(\sum_{m=0}^{n}\frac{1}{2^m}
+		\frac{1}{2^n}\right) \\
+	&=\sum_{n=0}^{\infty}\frac{1}{2^n}\sum_{m=0}^{n}\frac{1}{2^m} \\
+	&=\sum_{n=0}^{\infty}\frac{1}{2^n}\left(\frac{1}{2^0}\left(
+		\frac{1-\left(\frac{1}{2}\right)^{n+1}}{1-\frac{1}{2}}
+		\right)\right) \\
+	&=\sum_{n=0}^{\infty}\frac{2}{2^n}\left(
+		1-\frac{1}{2^{n+1}}\right) \\
+	&=\sum_{n=0}^{\infty}\left(\frac{2}{2^n}-\frac{2}{2^n2^{n+1}}
+		\right) \\
+	&=2\sum_{n=0}^{\infty}\left(\frac{1}{2}\right)^n-
+		2\sum_{n=0}^{\infty}\frac{1}{2^{2n+1}}
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.45\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	&=2\left(\frac{1}{1-\frac{1}{2}}\right)-2\sum_{n=0}^{\infty}
+		\left(\left(\frac{1}{2}\right)^2\right)^{n+\frac{1}{2}} \\
+	&=4-2\sum_{n=0}^{\infty}\left(\frac{1}{4}\right)^{n+\frac{1}{2}} \\
+	&=4-2\left(\frac{\left(\frac{1}{4}\right)^{\frac{1}{2}}}
+		{1-\frac{1}{4}}\right) \\
+	&=4-2\left(\frac{1}{2}\cdot\frac{4}{3}\right) \\
+	&=\frac{12}{3}-\frac{4}{3} \\
+	&=\boxed{\frac{8}{3}}
+\end{align*}
+\end{minipage}
+\flushleft
+
+\section*{Problem 5}
+\begin{minipage}[t]{0.45\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	4\sum_{k=2}^{\infty}(1+n)^{-k}&=27n
+	\intertext{
+		\setlength{\abovedisplayskip}{0pt}\begin{align*}
+		&\implies-1<1+n<1 \\
+		&\implies-2<n<0
+	\end{align*}}
+	4\sum_{k=2}^{\infty}\left(\frac{1}{1+n}\right)^{k}&=27n \\
+	4\left(\frac{\left(\frac{1}{1+n}\right)^{2}}{1-\frac{1}{1+n}}
+		\right)&=27n
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.45\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	4\left(\frac{\frac{1}{(1+n)^2}}{\frac{(1+n)^2}{(1+n)^2}-
+		\frac{1+n}{(1+n)^2}}\right)&=27n \\
+	4\left(\frac{1}{(1+n)^2-1-n}\right)&=27n \\
+	\frac{4}{1+2n+n^2-1-n}&=27n \\
+	\frac{4}{n^2+n}&=27n \\
+	27n^3+27n^2-4&=0 \\
+\end{align*}
+\end{minipage}
+\pagebreak
+
+Rational roots: $\pm1,2,4,\dfrac{1}{3},\dfrac{2}{3},\dfrac{4}{3},
+\dfrac{1}{9},\dfrac{2}{9},\dfrac{4}{9},\dfrac{1}{27},\dfrac{2}{27},
+\dfrac{4}{27}$
+\begin{align*}
+	27\left(\frac{1}{3}\right)^3+27\left(\frac{1}{3}\right)^2-4&=0 \\
+	27\left(-\frac{2}{3}\right)^3+27\left(-\frac{2}{3}\right)^2-4&=0
+\end{align*}
+The restriction on $n$ so that the geometric series converges is
+$-2<n<0$. $\dfrac{1}{3}\geq0$, so the only solution is
+$n=-\dfrac{2}{3}$.
+\qed
+
+\title{Progress on Problem Set \#41}
+\maketitle
+
+\section*{Problem 1}
+\begin{align*}
+	\frac{12x+11}{(x-2)(2x+3)}&=\frac{A}{x-2}+\frac{B}{2x+3} \\
+	\frac{12x+11}{(x-2)(2x+3)}&=\frac{A(2x+3)+B(x-2)}{(x-2)(2x+3)} \\
+	\frac{12x+11}{(x-2)(2x+3)}&=\frac{2Ax+Bx+3A-2B}{(x-2)(2x+3)} \\
+	12x+11&=(2A+B)x+(3A-2B) \\
+\end{align*}
+\centering
+\begin{minipage}{0.3\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{empheq}[left=\empheqlbrace]{align*}
+	\displaystyle &12=2A+B \\
+	\displaystyle &11=3A-2B
+\end{empheq}
+\begin{empheq}[left=\empheqlbrace]{align}
+	\displaystyle &24=4A+2B \\
+	\displaystyle &11=3A-2B
+\end{empheq}
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	24+11&=4A+2B+3A-2B \\
+	7A&=35 \\
+	A&=5
+\end{align*}
+\begin{align*}
+	11&=3(5)-2B \\
+	2B&=4 \\
+	B&=2
+\end{align*}
+\end{minipage}
+\flushleft
+\begin{equation*}
+	\boxed{A=5,B=2}
+\end{equation*}
+
+\section*{Problem 2}
+\begin{itemize}
+\centering
+\begin{minipage}[t]{0.55\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\item[(a)]
+$\begin{aligned}[t]
+	&\left(1-\frac{1}{3}\right)\left(1-\frac{1}{4}\right)\left(
+		1-\frac{1}{5}\right)\cdots\left(1-\frac{1}{n}\right) \\
+	=\,&\left(\frac{2}{\cancel{3}}\right)
+		\left(\frac{\cancel{3}}{\cancel{4}}\right)
+		\left(\frac{\cancel{4}}{\cancel{5}}\right)
+		\cdots\left(\frac{\cancel{n-1}}{n}\right) \\
+	=\,&\boxed{\frac{2}{n}}
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\item[(b)]
+$\begin{aligned}[t]
+	&\sum_{n=1}^{99}\left(\frac{1}{n}-\frac{1}{n+1}\right) \\
+	=&\,\frac{1}{1}-\cancel{\frac{1}{2}+\frac{1}{2}}\cancel{
+		-\frac{1}{3}+\cdots+\frac{1}{99}}-\frac{1}{100} \\
+	=&\,\frac{100}{100}-\frac{1}{100} \\
+	=&\,\boxed{\frac{99}{100}}
+\end{aligned}$
+\end{minipage}
+\flushleft
+
+\item[(c)]
+\centering
+\begin{minipage}[t]{0.5\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+$\begin{aligned}[t]
+	&\frac{1}{1\cdot2}+\frac{1}{2\cdot3}+\cdots+\frac{1}{99\cdot100} \\
+	=&\,\sum_{n=1}^{99}\frac{1}{n(n+1)} \\
+	=&\,\sum_{n=1}^{99}\left(\frac{A}{n}-\frac{B}{n+1}\right) \\
+\end{aligned}$
+\begin{align*}
+	\intertext{	\setlength{\abovedisplayskip}{0pt}\begin{align*}
+		A(n+1)-Bn&=1 \\
+		\intertext{There are infinitely many solutions for $A$ and
+		$B$. To ensure telescoping works, add another condition:}
+		A&=B \\
+		An+A-An&=1 \\
+		A,B&=1
+	\end{align*}}
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	\qquad
+	=&\,\sum_{n=1}^{99}\left(\frac{1}{n}-\frac{1}{n+1}\right) \\
+	=&\,\frac{1}{1}-\frac{1}{2}+\frac{1}{2}-\frac{1}{3}+\cdots+
+		\frac{1}{99}-\frac{1}{100} \\
+	=&\,\frac{100}{100}-\frac{1}{100} \\
+	=&\,\boxed{\frac{99}{100}}
+\end{align*}
+\end{minipage}
+\flushleft
+
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,191 @@
+\documentclass{article}
+
+\usepackage[letterpaper,top=0.6in, left=0.8in, right=0.8in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{siunitx}
+\usepackage{esdiff}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{vwcol}
+\usepackage{interval}
+\usepackage{afterpage}
+\usepackage{tikz}
+\usepackage{mdframed}
+\usepackage{cancel}
+
+\intervalconfig {
+	soft open fences
+}
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\fontsize{12pt}{12pt}\selectfont
+
+\title{Problem Set \#37}
+\author{Jayden Li}
+\date{January 4, 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+\begin{multicols}{2}
+\begin{itemize}
+\item[(b)]
+$\begin{aligned}[t]
+	a_n&=(-1)^n\cdot\frac{n+1}{3^n} \\
+	\lim_{n\to\infty}a_n&=\lim_{n\to\infty}
+		\left((-1)^n\cdot\frac{n+1}{3^n}\right) \\
+	&=\lim_{n\to\infty}(-1)^n\cdot
+		\lim_{n\to\infty}\frac{n+1}{3^n} \\
+	&=\lim_{n\to\infty}(-1)^n\cdot\lim_{n\to\infty}
+		\left(\frac{n}{3^n}+\frac{1}{3^n}\right) \\
+	&=\lim_{n\to\infty}(-1)^n\cdot\lim_{n\to\infty}
+		\left(\frac{3^{\log_3{n}}}{3^n}\right) \\
+	&=\lim_{n\to\infty}(-1)^n\cdot\lim_{n\to\infty}
+		3^{\log_3\left(n\right)-n} \\
+	\alignedintertext{$\log_3{n}$ is always less than $n$ for
+	positive numbers, hence $\log_3{n}-n\to-\infty$ as $n\to\infty$.}
+	&=\lim_{n\to\infty}(-1)^n\cdot\lim_{n\to\infty}3^{-n} \\
+	&=\lim_{n\to\infty}(-1)^n\cdot0 \\
+	\alignedintertext{$(-1)^n$ oscillates between -1 and 1. Any real
+	number multiplied by $0$ equals $0$.}
+	&=\boxed{0}
+\end{aligned}$
+
+\item[(f)]
+	$\begin{aligned}[t]
+		a_n&=(n+2)! \\
+		\lim_{n\to\infty}a_n&=\lim_{n\to\infty}(n+2)! \\
+		&=\boxed{\infty}
+	\end{aligned}$
+
+\item[(a)]
+	$\begin{aligned}[t]
+		a_n&=\frac{n}{n+1} \\
+		\lim_{n\to\infty}a_n&=\lim_{n\to\infty}\frac{n}{n+1} \\
+		&=\lim_{n\to\infty}\frac{n}{n\left(1+\frac{1}{n}\right)} \\
+		&=\lim_{n\to\infty}\frac{1}{1+\frac{1}{n}} \\
+		&=\frac{1}{1+0} \\
+		&=\boxed{1}
+	\end{aligned}$
+
+\item[(c)]
+	$\begin{aligned}[t]
+		a_n&=\sqrt{n-1} \\
+		\lim_{n\to\infty}a_n&=\lim_{n\to\infty}\sqrt{n-1} \\
+		&=\boxed{\infty}
+	\end{aligned}$
+
+\item[(d)]
+	$\begin{aligned}[t]
+		a_n&=\frac{\sqrt{n}}{2} \\
+		\lim_{n\to\infty}a_n&=\lim_{n\to\infty}\frac{\sqrt{n}}{2} \\
+		&=\boxed{\infty}
+	\end{aligned}$
+
+\item[(e)]
+	$\begin{aligned}[t]
+		a_n&=-7n+9 \\
+		\lim_{n\to\infty}a_n&=\lim_{n\to\infty}(-7n+9) \\
+		&=\boxed{-\infty}
+	\end{aligned}$
+
+\end{itemize}
+\end{multicols}
+
+\section*{Problem 4}
+\begin{align*}
+	S_n-2S_{n+1}+S_{n+2}&=S_n-2(S_n+u_{n+1})+S_n+u_{n+1}+u_{n+2} \\
+	&=S_n-2S_n-2u_{n+1}+S_n+u_{n+1}+u_{n+1}+d \\
+	&=-2u_{n+1}+u_{n+1}+u_{n+1}+d \\
+	&=\boxed{d}
+\end{align*}
+
+\section*{Problem 7}
+\begin{minipage}[t]{0.4\linewidth}
+$\begin{aligned}
+	S_n&=\frac{(2a+d(n-1))n}{2}=\frac{2an+dn^2-dn}{2}=m \\
+	S_m&=\frac{(2a+d(m-1))m}{2}=\frac{2am+dm^2-dm}{2}=n \\
+	\\
+	\frac{m}{n}&=\frac{2an+dn^2-dn}{2n} \\
+	&=\frac{2a+dn-d}{2} \\
+	\frac{n}{m}&=\frac{2am+dm^2-dm}{2m} \\
+	&=\frac{2a+dm-d}{2} \\
+	\\
+	\frac{m}{n}-\frac{n}{m}&=\frac{dn-dm}{2} \\
+	\frac{m^2-n^2}{mn}&=\frac{d(n-m)}{2} \\
+	\frac{(m+n)\cancel{(m-n)}}{mn}&=\frac{-d\cancel{(m-n)}}{2} \\
+	\frac{m+n}{mn}&=-\frac{d}{2} \\
+	d&=-2\left(\frac{m+n}{mn}\right) \\
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+$\begin{aligned}
+	\\ \\ \\
+	S_{m+n}&=\frac{(2a+d(m+n-1))(m+n)}{2} \\
+	&=\frac{2am+2an+dm(m+n-1)+dn(m+n-17)}{2} \\
+	&=\frac{2am+2an+dm^2+dmn-dm+dmn+dn^2-dn}{2} \\
+	&=\frac{\stackrel{\displaystyle{=2S_m=2n}}{\boxed{2am+dm^2-dm}}+
+		\stackrel{\displaystyle{=2S_n=2m}}{\boxed{2an+dn^2-dn}}+
+		2dmn}{2} \\
+	&=\frac{2n+2m+2dmn}{2} \\
+	&=n+m+dmn \\
+	&=n+m-2\left(\frac{m+n}{mn}\right)mn \\
+	&=n+m-2n-2m \\
+	&=-m-n
+\end{aligned}$
+\qed
+\end{minipage}
+
+\section*{Problem 8}
+\begin{align*}
+	f(x)&=\log_2{x}-\log_x{2},\,0<x<1 \\
+	f(2^{u_n})&=2n \\
+	\log_2{2^{u_n}}-\log_{2^{u_n}}{2}&=2n \\
+	u_n-\frac{1}{u_n}\log_{2}{2}&=2n \\
+	u_n^2-1&=2nu_n^2 \\
+	u_n^2-2nu_n-1&=0 \\
+	u_n&=\frac{2n\pm\sqrt{4n^2+4}}{2} \\
+	u_n&=n\pm\sqrt{n^2+1}
+\end{align*}
+\centering
+\begin{minipage}[t]{.4\textwidth}
+	\centering{\textbf{C1: }$+$}
+	\begin{align*}		
+		u_n&=n+\sqrt{n^2+1} \\
+		2^{u_n}&=2^{n+\sqrt{n^2+1}}
+	\end{align*}
+	\flushleft
+	Range of $n+\sqrt{n^2+1}$ for $n\in\mathbb{N}$ is $\interval
+	[open right]{1+\sqrt{2}}{\infty}$. Therefore $2^{n+\sqrt{n^2+1}}$
+	is outside the domain of $f$.
+\end{minipage}
+\hspace{0.5in}
+\begin{minipage}[t]{.4\textwidth}
+	\centering{\textbf{C2: }$-$}
+	\begin{align*}		
+		u_n&=n-\sqrt{n^2+1} \\
+		2^{u_n}&=2^{n+\sqrt{n^2-1}}
+	\end{align*}
+	\flushleft
+	Range of $n-\sqrt{n^2+1}$ for $n\in\mathbb{N}$ is $\interval
+	[open left]{0}{1-\sqrt{2}}$. Therefore $2^{n-\sqrt{n^2+1}}$
+	is within the domain of $f$.
+\end{minipage}
+\begin{equation*}
+	\boxed{u_n=n-\sqrt{n^2+1}}
+\end{equation*}
+
+\end{document}

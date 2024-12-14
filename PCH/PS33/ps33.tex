@@ -1,0 +1,238 @@
+\documentclass{article}
+% \documentclass{article}
+
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{esdiff}
+\usepackage{titlesec}
+\usepackage{multicol}
+
+%opening
+\title{Problem Set \#33}
+\author{Jayden Li}
+
+\begin{document}
+
+\maketitle
+
+\fontsize{12pt}{12pt}\selectfont
+
+\section*{Problem 5}
+
+\begin{multicols}{2}
+\begin{itemize}
+
+\item[(a)]
+$\begin{aligned}[t]
+	&\lim\limits_{\theta\to0}\frac{1-\cos\theta}{\theta} \\
+	=&\lim\limits_{\theta\to0}-\frac{-\left(1-\cos\theta\right)}{\theta} \\
+	=&\lim\limits_{\theta\to0}-\frac{\cos\theta-1}{\theta} \\
+	=&\lim\limits_{\theta\to0}-1\cdot\lim\limits_{\theta\to0}\frac{\cos\theta-1}{\theta} \\
+	=&-1\cdot1 \\
+	=&\boxed{-1}
+\end{aligned}$
+
+\item[(b)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to1}\sin\left(\frac{x^2-1}{x-1}\right) \\
+	=&\lim\limits_{x\to1}\sin\frac{\left(x+1\right)\left(x-1\right)}{x-1} \\
+	=&\lim\limits_{x\to1}\sin\frac{x+1}{1} \\
+	=&\sin\frac{1+1}{1} \\
+	=&\boxed{\sin2} \\
+\end{aligned}$
+
+\item[(c)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\tan x}{4x} \\
+	=&\lim\limits_{x\to0}\frac{\sin x}{4x\cos x} \\
+	=&\lim\limits_{x\to0}\left(\frac{\sin x}{4x}\cdot\frac{1}{\cos x}\right) \\
+	=&\lim\limits_{x\to0}\frac{\sin x}{4x}\cdot\lim\limits_{x\to0}\frac{1}{\cos x} \\
+	=&\frac{1}{4}\cdot\frac{1}{\cos0} \\
+	=&\boxed{\frac{1}{4}}
+\end{aligned}$
+
+\item[(d)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to\pi}\frac{\sin\left(\pi-x\right)}{\pi\left(\pi-x\right)} \\
+	&\text{Let $y=\pi-x$} \\
+	=&\lim\limits_{y\to0}\frac{\sin y}{\pi\cdot y} 
+	&& \text{as $x\to\pi$, $\pi-x\to0$} \\
+	=&\lim\limits_{y\to0}\frac{\sin y}{y}\cdot\lim\limits_{y\to0}\frac{1}{\pi} \\
+	=&\boxed{\frac{1}{\pi}}
+\end{aligned}$
+
+\item[(e)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\cos x}{\pi-x} \\
+	=&\frac{\cos0}{\pi-0} \\
+	=&\boxed{\frac{1}{\pi}}
+\end{aligned}$
+
+\item[(f)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\cos2x-1}{\cos x-1} \\
+	=&\lim\limits_{x\to0}\frac{2\cos^2x-1-1}{\cos x-1} \\
+	=&2\lim\limits_{x\to0}\frac{\left(\cos x-1\right)\left(\cos x+1\right)}{\cos x-1} \\
+	=&2\lim\limits_{x\to0}\frac{\cos x+1}{1} \\
+	=&2\cdot\left(\cos0+1\right) \\
+	=&\boxed{4}
+\end{aligned}$
+
+\item[(h)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}x\sec x \\
+	=&\lim\limits_{x\to0}\left(\frac{x}{\cos x}\right) \\
+	=&\frac{0}{\cos0} \\
+	=&\boxed{0}
+\end{aligned}$
+
+\item[(i)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\left(\csc x-\cot x\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{1}{\sin x}-\frac{\cos x}{\sin x}\right) \\
+	=&\lim\limits_{x\to0}\frac{1-\cos x}{\sin x} \\
+	=&\lim\limits_{x\to0}\left(\frac{1-\cos x}{\sin x}\cdot\frac{1+\cos x}{1+\cos x}\right) \\
+	=&\lim\limits_{x\to0}\frac{1-\cos^2x}{\sin\left(x\right)\left(1+\cos x\right)} \\
+	=&\lim\limits_{x\to0}\frac{\sin^2x}{\sin\left(x\right)\left(1+\cos x\right)} \\
+	=&\lim\limits_{x\to0}\frac{\sin x}{1+\cos x} \\
+	=&\frac{\sin0}{1+\cos0} \\
+	=&\boxed{0}
+\end{aligned}$
+
+\item[(j)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\sin ax+bx}{ax+\sin bx} \\
+	=&\lim\limits_{x\to0}\frac{\sin ax+bx}{ax+\sin bx} \\
+	=&\lim\limits_{x\to0}\left(\frac{\sin ax}{ax+\sin bx}+\frac{bx}{ax+\sin bx}\right) \\
+	=&\lim\limits_{x\to0}\left(\left(\frac{ax+\sin bx}{\sin ax}\right)^{-1}+
+			\left(\frac{ax+\sin bx}{bx}\right)^{-1}\right)\\
+	=&\lim\limits_{x\to0}\left(\left(\frac{ax}{\sin ax}+\frac{\sin bx}{\sin ax}\right)^{-1}+
+			\left(\frac{ax}{bx}+\frac{\sin bx}{bx}\right)^{-1}\right)\\
+			=&\lim\limits_{x\to0}\left(\left(1+\frac{b}{a}\right)^{-1}+\left(\frac{a}{b}+1\right)^{-1}\right)\\
+			=&\lim\limits_{x\to0}\left(\left(\frac{a+b}{a}\right)^{-1}+\left(\frac{a+b}{b}\right)^{-1}\right)\\
+			=&\lim\limits_{x\to0}\left(\frac{a}{a+b}+\frac{b}{a+b}\right) \\
+			=&\lim\limits_{x\to0}\frac{a+b}{a+b} \\
+			=&\boxed{1}
+\end{aligned}$
+
+\item[(k)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{1-\cos4x}{x^2} \\
+	=&\lim\limits_{x\to0}\frac{1-\left(2\cos^22x-1\right)}{x^2} \\
+	=&\lim\limits_{x\to0}\frac{1-\left(2\left(2\cos^2x-1\right)^2-1\right)}{x^2} \\
+	=&\lim\limits_{x\to0}\frac{1-\left(2\left(4\cos^4x-4\cos^2x+1\right)-1\right)}{x^2} \\
+	=&\lim\limits_{x\to0}\frac{1-\left(8\cos^4x-8\cos^2x+2-1\right)}{x^2} \\
+	=&\lim\limits_{x\to0}\frac{1-8\cos^4x+8\cos^2x-1}{x^2} \\
+	=&8\lim\limits_{x\to0}\frac{\cos^2x-\cos^4x}{x^2} \\
+	=&8\lim\limits_{x\to0}\frac{\cos^2\left(x\right)\left(1-\cos^2x\right)}{x^2} \\
+	=&8\cos^20\cdot\lim\limits_{x\to0}\frac{\sin^2x}{x^2} \\
+	=&8\cdot\left(\lim\limits_{x\to0}\frac{\sin x}{x}\right)^2 \\
+	=&\boxed{8}
+\end{aligned}$
+
+\item[(l)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to\pi}\frac{\sin3x-3\sin x}{\left(\pi-x\right)^3} \\
+	&\text{Let }y=\pi-x \\
+	&\therefore x=\pi-y \\
+	=&\lim\limits_{y\to0}\frac{\sin3\left(\pi-y\right)-3\sin\left(\pi-y\right)}{y^3} \\
+	=&\lim\limits_{y\to0}\frac{\sin\left(2y+y\right)-3\sin y}{y^3} \\
+	=&\lim\limits_{y\to0}\frac{\sin2y\cos y+\cos2y\sin y-3\sin y}{y^3} \\
+	=&\lim\limits_{y\to0}\frac{2\sin y\cos y\cos y+\left(2\cos^2y-1\right)\sin y-3\sin y}{y^3} \\
+	=&\lim\limits_{y\to0}\frac{2\sin y\cos^2y+2\sin y\cos^2y-\sin y-3\sin y}{y^3} \\
+	=&\lim\limits_{y\to0}\frac{4\sin y\cos^2y-4\sin y}{y^3} \\
+	=&\lim\limits_{y\to0}\frac{4\sin\left(y\right)\left(\cos^2y-1\right)}{y^3} \\
+	=&4\lim\limits_{y\to0}\left(\frac{\sin y}{y}\cdot\frac{-\sin^2y}{y^2}\right) \\
+	=&4\cdot1\cdot\left(-1\right)^2 \\
+	=&\boxed{4}
+\end{aligned}$
+
+\item[(m)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\tan2x-x}{2x-\sin x} \\
+	=&\lim\limits_{x\to0}\left(\frac{\tan2x}{2x-\sin x}-\frac{x}{2x-\sin x}\right) \\
+	=&\lim\limits_{x\to0}\left(\left(\frac{2x-\sin x}{\tan2x}\right)^{-1}-\left(\frac{2x-\sin x}{x}\right)^{-1}\right) \\
+	=&\lim\limits_{x\to0}\left(\left(\frac{2x}{\tan2x}-\frac{\sin x}{\tan2x}\right)^{-1}-\left(\frac{2x}{x}-\frac{\sin x}{x}\right)^{-1}\right) \\
+	=&\lim\limits_{x\to0}\left(\left(\left(\frac{\tan2x}{2x}\right)^{-1}-\sin\left(x\right)\cdot\frac{\cos2x}{\sin2x}\right)^{-1}-\left(2-1\right)^{-1}\right) \\
+	=&\lim\limits_{x\to0}\left(\left(1-\frac{\sin x\cos2x}{2\sin x\cos x}\right)^{-1}-1\right) \\
+	=&\lim\limits_{x\to0}\left(\left(1-\frac{\cos2x}{2\cos x}\right)^{-1}-1\right) \\
+\end{aligned}$
+\item[(m) (cont.)] 
+$\begin{aligned}[t]
+	=&\left(1-\frac{\cos0}{2\cos0}\right)^{-1}-1 \\
+	=&\left(\frac{1}{2}\right)^{-1}-1 \\
+	=&\boxed{1}
+\end{aligned}$
+
+\item[(n)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to\frac{\pi}{4}}\frac{\sin x-\cos x}{x-\frac{\pi}{4}} \\
+	&\text{Let }y=x-\frac{\pi}{4} \\
+	&\therefore x=y+\frac{\pi}{4} \\
+	=&\lim\limits_{y\to0}\frac{\sin\left(y+\frac{\pi}{4}\right)-\cos\left(x+\frac{\pi}{4}\right)}{y} \\
+	=&\begin{aligned}
+		\lim\limits_{y\to0}\frac{1}{y}\left(\sin y\cdot\frac{\sqrt{2}}{2}+\cos y\cdot\frac{\sqrt{2}}{2}\right. \\
+		\left.-\cos y\cdot\frac{\sqrt{2}}{2}+\sin y\cdot\frac{\sqrt{2}}{2}\right) \\
+	\end{aligned} \\
+	=&\frac{\sqrt{2}}{2}\cdot\lim\limits_{y\to0}\frac{2\sin y}{y} \\
+	=&\sqrt{2}\cdot\lim\limits_{y\to0}\frac{\sin y}{y} \\
+	=&\boxed{\sqrt{2}} \\
+\end{aligned}$
+
+\item[(o)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\sin3x-\tan4x}{x^2} \\
+	=&\lim\limits_{x\to0}\left(\frac{1}{x}\cdot\frac{\sin3x-\tan4x}{x}\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{1}{x}\cdot\left(\frac{\sin3x}{x}-\frac{\tan4x}{x}\right)\right) \\
+	=&\lim\limits_{x\to0}\frac{1}{x}\cdot\left(3-4\right) \\
+	\rightarrow&\lim\limits_{x\to0^+}\frac{1}{x}=+\infty, \lim\limits_{x\to0^-}\frac{1}{x}=-\infty \\
+	&\boxed{\text{DNE}}
+\end{aligned}$
+
+\item[(p)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\tan2x-\sin2x}{x^3} \\
+	=&\lim\limits_{x\to0}\left(\frac{1}{x^3}\cdot\left(\frac{\sin2x}{\cos2x}-\frac{\sin2x\cos2x}{\cos2x}\right)\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{1}{\cos2x}\cdot\left(\frac{\sin\left(2x\right)\left(1-\cos2x\right)}{x^3}\right)\right) \\
+	=&\frac{1}{\cos0}\cdot\lim\limits_{x\to0}\frac{\sin\left(2x\right)\left(1-\cos2x\right)}{x^3} \\
+	=&\lim\limits_{x\to0}\frac{\sin2x}{x}\cdot\lim\limits_{x\to0}\frac{1-\cos2x}{x^2} \\
+	=&2\cdot\lim\limits_{x\to0}\frac{1-2\cos^2x+1}{x^2} \\
+	=&2\cdot\lim\limits_{x\to0}\frac{2\sin^2x}{x^2} \\
+	=&4\cdot\lim\limits_{x\to0}\left(\frac{\sin x}{x}\right)^2 \\
+	=&4\cdot\left(1\right)^2 \\
+	=&\boxed{4}
+\end{aligned}$
+
+\item[(q)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{1-\cos2x+\tan^2x}{x\sin x} \\
+	=&\lim\limits_{x\to0}\left(\frac{1-2\cos^2x+1}{x\sin x}+\frac{\tan^2x}{x\sin x}\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{2-2\cos^2x}{x\sin x}+\frac{\sin^2x}{\cos^2x\cdot x\sin x}\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{2\sin^2x}{x\sin x}+\frac{\sin x}{x\cos^2x}\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{2\sin x}{x}+\frac{\sin x}{x}\cdot\frac{1}{\cos^2x}\right) \\
+	=&\lim\limits_{x\to0}\frac{2\sin x}{x}+\lim\limits_{x\to0}\frac{\sin x}{x}\cdot\lim\limits_{x\to0}\frac{1}{\cos^2x} \\
+	=&2+1\cdot\frac{1}{\cos^20} \\
+	=&\boxed{3} \\
+\end{aligned}$
+
+\item[(r)] 
+$\begin{aligned}[t]
+	&\lim\limits_{x\to0}\frac{\sqrt{7}-\sqrt{6+\cos x}}{x\sin x} \\
+	=&\lim\limits_{x\to0}\left(\frac{\sqrt{7}-\sqrt{6+\cos x}}{x\sin x}\cdot\frac{\sqrt{7}+\sqrt{6+\cos x}}{\sqrt{7}+\sqrt{6+\cos x}}\right) \\
+	=&\lim\limits_{x\to0}\left(\frac{7-6-\cos x}{x\sin x}\cdot\frac{1}{\sqrt{7}+\sqrt{6+\cos x}}\right) \\
+	=&\lim\limits_{x\to0}\frac{1-\cos x}{x\sin x}\cdot\lim\limits_{x\to0}\frac{1}{\sqrt{7}+\sqrt{6+\cos x}} \\
+	=&\lim\limits_{x\to0}\left(\frac{1-\cos x}{x\sin x}\cdot\frac{1+\cos x}{1+\cos x}\right)\cdot\frac{1}{\sqrt{7}+\sqrt{6+\cos0}} \\
+	=&\lim\limits_{x\to0}\frac{1-\cos^2x}{x\sin\left(x\right)\left(1+\cos x\right)}\cdot\frac{1}{2\sqrt{7}} \\
+	=&\lim\limits_{x\to0}\left(\frac{\sin x}{x}\cdot\frac{1}{1+\cos x}\right)\cdot\frac{1}{2\sqrt{7}} \\
+	=&\lim\limits_{x\to0}\frac{\sin x}{x}\cdot\frac{1}{1+\cos0}\cdot\frac{1}{2\sqrt{7}} \\
+	=&1\cdot\frac{1}{2}\cdot\frac{1}{2\sqrt{7}} \\
+	=&\boxed{\frac{1}{4\sqrt{7}}} \\
+\end{aligned}$
+
+\end{itemize}
+\end{multicols}
+\end{document}

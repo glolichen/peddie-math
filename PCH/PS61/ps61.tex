@@ -1,0 +1,312 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\paren}[1]{\ensuremath\left(#1\right)}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\limit}[2][x]{\ensuremath{\displaystyle\lim_{#1\to#2}}}
+\newcommand*{\Limit}[3][x]{\ensuremath{\displaystyle\lim_{#1\to#2}\left[#3\right]}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\Deriv}[2][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}\left[#2\right]}}
+\newcommand*{\iinteg}[2][x]{\ensuremath{\displaystyle\int #2\;\mathrm{d}#1}}
+\newcommand*{\dinteg}[4][x]{\ensuremath{\displaystyle\int_{#2}^{#3}#4\;\mathrm{d}#1}}
+\newcommand*{\abs}[1]{\ensuremath{\left|#1\right|}}
+\newcommand*{\eps}{\varepsilon}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+
+\DeclareMathOperator{\DNE}{DNE}
+
+%opening
+\title{Problem Set \#61}
+\author{Jayden Li}
+\date{April 7, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{5}
+We begin by proving two lemmas (lemmata?) which will simply this answer.
+
+\begin{lemma}
+	If $n\in\mathbb{N}_0$, $\limit[h]{0}h^{n}\sin\paren{\frac{1}{h}}$ exists if and only if $n\geq1$. Additionally, the limit equals $0$.
+\end{lemma}
+\begin{proof}
+	First, suppose that $n=0$, then $\limit[h]{0}h^0\sin\paren{\frac{1}{h}}=\limit[h]{0}\sin\paren{\frac{1}{h}}$ which does not exist.
+
+	We then prove that the limit does exist for $n\geq2$.
+	\begin{gather*}
+		-1\leq\sin\paren{\frac{1}{h}}\leq1 \\
+		-h^{n}\leq h^{n}\sin\paren{\frac{1}{h}}\leq h^{n} \\
+		\Limit[h]{0}{-h^{n}}\leq\limit[h]{0}h^{n}\sin\paren{\frac{1}{h}}\leq\limit[h]{0}h^{n}
+	\end{gather*}
+
+	Since $n-1\geq1$:
+	\begin{equation*}
+		0\leq\limit[h]{0}h^{n}\sin\paren{\frac{1}{h}}\leq0
+	\end{equation*}
+
+	By the squeeze theorem, $\limit[h]{0}h^{n}\sin\paren{\frac{1}{h}}=0$.
+\end{proof}
+
+\begin{lemma}
+	If $n\in\mathbb{N}_0$, $\limit[h]{0}h^{n}\cos\paren{\frac{1}{h}}$ exists if and only if $n\geq1$. Additionally, the limit equals $0$.
+\end{lemma}
+\begin{proof}
+	First, suppose that $n=1$, then $\limit[h]{0}h^0\cos\paren{\frac{1}{h}}=\limit[h]{0}\cos\paren{\frac{1}{h}}$ which does not exist.
+
+	We then prove that the limit does exist for $n\geq2$.
+	\begin{gather*}
+		-1\leq\cos\paren{\frac{1}{h}}\leq1 \\
+		-h^{n}\leq h^{n}\cos\paren{\frac{1}{h}}\leq h^{n} \\
+		\Limit[h]{0}{-h^{n}}\leq\limit[h]{0}h^{n}\cos\paren{\frac{1}{h}}\leq\limit[h]{0}h^{n}
+	\end{gather*}
+
+	Since $n-1\geq1$:
+	\begin{equation*}
+		0\leq\limit[h]{0}h^{n}\cos\paren{\frac{1}{h}}\leq0
+	\end{equation*}
+
+	By the squeeze theorem, $\limit[h]{0}h^{n}\cos\paren{\frac{1}{h}}=0$.
+\end{proof}
+
+\begin{center}
+	--------------------------------------------------------------------------------------------------------------------------------------
+\end{center}
+
+For some $n\in\mathbb{N}_1$, we define the function $f:\mathbb{R}\to\mathbb{R}$:
+\begin{equation*}
+	f(x)=\begin{cases}
+		x^n\sin\paren{\dfrac{1}{x}} & x\neq0 \\
+		0 & x=0
+	\end{cases}
+\end{equation*}
+
+Then we calculate the derivative $f'$. We will first calculate $f'(0)$:
+\begin{align*}
+	f'(0)&=\limit[h]{0}\frac{f(0+h)-f(0)}{h} \\
+	&=\limit[h]{0}\frac{h^n\sin\paren{\frac{1}{h}}}{h} \\
+	&=\limit[h]{0}h^{n-1}\sin\paren{\frac{1}{h}}
+\end{align*}
+
+By Lemma 1, $n\geq2$ and the above limit evaluates to $0$. Thus, $f'(0)=0$. Next, we will find $f'(x)$ for $x\neq0$.
+\begin{align*}
+	f'(x)&=nx^{n-1}\sin\paren{\frac{1}{x}}+x^n\cos\paren{\frac{1}{x}}\cdot\paren{-\frac{1}{x^2}} \\
+	&=nx^{n-1}\sin\paren{\frac{1}{x}}-x^{n-2}\cos\paren{\frac{1}{x}}
+	\intertext{\indent Incorporating our result for $f'(0)$, we have:}
+	f'(x)&=\begin{cases}
+		\displaystyle nx^{n-1}\sin\paren{\frac{1}{x}}-x^{n-2}\cos\paren{\frac{1}{x}} & x\neq0 \\
+		0 & x=0
+	\end{cases}
+\end{align*}
+
+Now we can calculate $f''(0)$.
+\begin{align*}
+	f''(0)&=\limit[h]{0}\frac{f'(0+h)-f'(0)}{h} \\
+	&=\limit[h]{0}\frac{nh^{n-1}\sin\paren{\frac{1}{h}}-h^{n-2}\cos\paren{\frac{1}{h}}-0}{h} \\
+	&=\Limit[h]{0}{nh^{n-2}\sin\paren{\frac{1}{h}}-h^{n-3}\cos\paren{\frac{1}{h}}} \\
+	&=n\limit[h]{0}h^{n-2}\sin\paren{\frac{1}{h}}-\limit[h]{0}h^{n-3}\cos\paren{\frac{1}{h}}
+\end{align*}
+By Lemma 1, the first limit exists if and only if $n-2\geq1\iff n\geq3$. By Lemma 2, the second limit exists if and only if $n-3\geq1\iff n\geq4$. Therefore, the second derivative $f''$ exists at $x=0$ if and only if $n\geq4$.
+
+We can also calculate $f''(x)$ for $x\neq0$.
+\begin{align*}
+	f''(x)&=\deriv f'(x) \\
+	&=\Deriv{nx^{n-1}\sin\paren{\frac{1}{x}}}-\Deriv{x^{n-2}\cos\paren{\frac{1}{x}}} \\
+	&=n(n-1)x^{n-2}\sin\paren{\frac{1}{x}}+nx^{n-1}\cos\paren{\frac{1}{x}}\paren{-\frac{1}{x^2}}-(n-2)x^{n-3}\cos\paren{\frac{1}{x}}+x^{n-2}\sin\paren{\frac{1}{x}}\paren{-\frac{1}{x^2}} \\
+	&=n(n-1)x^{n-2}\sin\paren{\frac{1}{x}}-nx^{n-3}\cos\paren{\frac{1}{x}}-(n-2)x^{n-3}\cos\paren{\frac{1}{x}}-x^{n-4}\sin\paren{\frac{1}{x}} \\
+	\limit{0}f''(x)&=\Limit{0}{n(n-1)x^{n-2}\sin\paren{\frac{1}{x}}-nx^{n-3}\cos\paren{\frac{1}{x}}-(n-2)x^{n-3}\cos\paren{\frac{1}{x}}-x^{n-4}\sin\paren{\frac{1}{x}}} \\
+	&=n(n-1)\limit{0}x^{n-2}\sin\paren{\frac{1}{x}}-n\limit{0}x^{n-3}\cos\paren{\frac{1}{x}}-(n-2)\limit{0}x^{n-3}\cos\paren{\frac{1}{x}}-\limit{0}x^{n-4}\sin\paren{\frac{1}{x}}
+\end{align*}
+By Lemma 1 and 2, all limits evaluate to $0$ if $n-2\geq1$, $n-3\geq1$ and $n-4\geq1$. If $n\geq5$, $\limit{0}f''(x)=0=f(0)$, and $f''$ is continuous at $x=0$. If $n\not\geq5$, then $\limit{0}f''(x)$ DNE and $f''$ is not continuous at $x=0$.
+
+Therefore, the second derivative of $f$ at $0$ exists iff $x\geq4$, and is continuous at $x=0$ iff $x\geq5$.
+
+\problem{6}
+\begin{minipage}[t]{0.53\linewidth}
+	\begin{align*}
+		f'(0)&=\limit[h]{0}\frac{f'(0+h)-f'(0)}{h} \\
+		&=\limit[h]{0}\frac{g(h)\sin\paren{\frac{1}{h}}-0}{h} \\
+		&=\Limit[h]{0}{\frac{g(h)}{h}}\Limit[h]{0}{\sin\paren{\frac{1}{h}}} \\
+		&=\Limit[h]{0}{\frac{g(0+h)-g(0)}{h}}\Limit[h]{0}{\sin\paren{\frac{1}{h}}} \\
+		&=g'(0)\cdot\Limit[h]{0}{\sin\paren{\frac{1}{h}}} \\
+		&=0\cdot\Limit[h]{0}{\sin\paren{\frac{1}{h}}} \\
+		&=\Limit[h]{0}{0\cdot\sin\paren{\frac{1}{h}}} \\
+		&=\boxed{0}
+	\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.47\linewidth}
+	\begin{gather*}
+		-1\leq\sin\paren{\frac{1}{h}}\leq1 \\
+		0\cdot-1\leq0\cdot\sin\paren{\frac{1}{h}}\leq0\cdot1 \\
+		\limit[h]{0}0\leq\Limit[h]{0}{0\cdot\sin\paren{\frac{1}{h}}}\leq\limit[h]{0}0
+	\end{gather*}
+	By the squeeze theorem, $\Limit[h]{0}{0\cdot\sin\paren{\frac{1}{h}}}=0$.
+\end{minipage}
+
+\problem{7}
+\begin{align*}
+	f'(0)&=\limit[h]{0}\frac{f(0+h)-f(0)}{h} \\
+	&=\limit[h]{0}\frac{hg(h)}{h} \\
+	&=\limit[h]{0}g(h) \\
+	&=g(0)
+\end{align*}
+Because the difference quotient limit exists, $f$ must be differentiable at $x=0$.
+
+\problem{8}
+Let $g(x)=f(x)/x$.
+\begin{align*}
+	\limit{0}g(x)&=\limit{0}\frac{f(x)}{x} \\
+	\intertext{It is known that $f(0)=0$.}
+	g(0)&=\limit{0}\frac{f(x)-f(0)}{x-0} \\
+	g(0)&=f'(0)
+\end{align*}
+By taking $g(x)=f(x)/x$, we show that $f$ is differentiable at $0$. Thus, multiplying both sides by $x$ gives $f(x)=xg(x)$. \qed
+
+\problem{9}
+\begin{itemize}
+	\item[(a)]
+	\begin{align*}
+		g(x)&=\frac{a_n}{n+1}x^{n+1}+\frac{a_{n-1}}{n}x^n+\frac{a_{n-2}}{n-1}x^{n-1}+\ldots+a_0x+C \\
+		&=\sum_{k=0}^{n}\frac{a_k}{k+1}x^{k+1}+C
+	\end{align*}
+	Where $C$ is a constant.
+
+	\item[(b)]
+	\begin{align*}
+		g(x)&=-\frac{b_2}{x}-\frac{b_3}{2x^2}-\frac{b_4}{3x^3}-\ldots-\frac{b_m}{(m-1)x^{m-1}}+C \\
+		&=-\sum_{k=2}^{m}\frac{b_k}{(k-1)x^{k-1}}+C
+	\end{align*}
+	Where $C$ is a constant.
+	
+	\item[(c)]
+	No. We know that $f(x)=\ln|x|$ and logarithms cannot be expressed as a rational function.
+\end{itemize}
+
+\problem{10}
+\begin{itemize}
+	\item[(a)]
+	\begin{proof}
+		\textbf{If part.} NTS that if $a$ is a double root of $f$, then $a$ is a root of $f$ and $f'$. If $a$ is a double root, then $f(x)=(x-a)^2g(x)$ where $g$ is a polynomial.
+		\begin{align*}
+			f'(x)&=2(x-a)g(x)+(x-a)^2g'(x) \\
+			&=(x-a)(2g(x)+(x-a)g'(x))
+		\end{align*}
+		$g$ is a polynomial and $g'$ is a polynomial. The product of two polynomials is a polynomial. The sum of two polynomials is a polynomial. Thus, $f'$ is a polynomial with $x-a$ as a factor, so $a$ is a root of $f'$.
+
+		\textbf{Only if part.} NTS that if $a$ is not a double root of $f$, then it is not a root of either $f$ or $f'$.
+
+		There are three cases, that $a$ is not a root of $f$ (case 1), that $a$ is a single root of $f$ (but not a double root) (case 2), or $f$ is a triple or higher root (case 3).
+
+		In case 1, if $a$ is not a root of $f$, then $a$ is not a root of $f$ (proof is left as exercise to the grader).
+
+		In case 2, $a$ is a root of $f$, but only a single root. In that case, $f(x)=(x-a)h(x)$ where $h$ is a polynomial that is not divisible by $(x-a)$.
+		\begin{align*}
+			f(x)&=(x-a)h(x) \\
+			f'(x)&=(x-a)h'(x)+h(x) \\
+			&=(x-a)\paren{h'(x)+\frac{h(x)}{x-a}}
+		\end{align*}
+		$h$ is not divisible by $x-a$, therefore the quotient of $f'$ and $x-a$ is not a polynomial, and $a$ is not a root of $f'$.
+
+		In case 3, if $a$ is a triple or higher root of $f$, then $f(x)=(x-a)^nk(x)$ where $n\in\mathbb{N}$ and $n\geq3$, and $a$ is not a root of $k$.
+		\begin{align*}
+			f(x)&=(x-a)^nk(x) \\
+			f'(x)&=n(x-a)^{n-1}k(x)+(x-a)^nk(x) \\
+			&=(x-a)^2\paren{n(x-a)^{n-1-2}k(x)+(x-a)^{n-2}k(x)} \\
+			&=(x-a)^2\paren{n(x-a)^{n-3}k(x)+(x-a)^{n-2}k(x)}
+		\end{align*}
+		Because $n\geq3$, $n-3\geq0$ so the above must be a polynomial. Therefore, in this case $a$ must be a double root.
+
+		We have shown that if $a$ is a double root of $f$, then $a$ is a root of $f$ and $f'$. In addition, if $a$ is not a double root of $f$, then it is not true that $a$ is a root of both $f$ and $f'$. Therefore, $a$ is a double root of $f$ if and only if $a$ is a double root of $f$ and $f'$.
+	\end{proof}
+
+	\item[(b)]
+	Let $n$ be a double root of $f$. Then, by the conclusion reached in (a):
+	\begin{align*}
+		f(n)=an^2+bn+c&=0 \tag{1} \\
+		f'(n)=2an+b&=0 \tag{2}
+		\intertext{By the quadratic formula, from (1), we have:}
+		n&=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+		\intertext{After manipulations on (2) and substituting into the above:}
+		\frac{-b}{2a}&=\frac{-b\pm\sqrt{b^2-4ac}}{2a} \\
+		-b&=-b\pm\sqrt{b^2-4ac} \\
+		b^2-4ac&=0
+	\end{align*}
+	Therefore, double roots occur at the vertex of a function (because $n=\dfrac{-b}{2a}$ which is the $x$-coordinate of the vertex). Geometrically, this means that the graph does not cross to the other side of the $x$ axis at a double root.
+\end{itemize}
+
+\problem{11}
+\begin{multicols}{2}
+	\allowdisplaybreaks[0]
+	\begin{itemize}
+		\item[(i)]
+		\begin{align*}
+			\diff{z}{x}&=\cos(y)\cdot\Deriv{x+x^2} \\
+			&=\boxed{(1+2x)\cos(x+x^2)}
+		\end{align*}
+
+		\item[(ii)]
+		\begin{align*}
+			\diff{z}{x}&=\cos(y)\cdot\deriv\cos(x) \\
+			&=\cos(\cos x)(-\sin x) \\
+			&=\boxed{-\sin(x)\cos(\cos(x))}
+		\end{align*}
+
+		\item[(iii)]
+		\begin{align*}
+			\diff{z}{x}&=\cos(u)\cdot\deriv\sin x \\
+			&=\boxed{\cos(\sin(x))\sin(x)}
+		\end{align*}
+
+		\item[(iv)]
+		\begin{align*}
+			\diff{z}{x}&=\cos(v)(-\sin(u))(\cos(x)) \\
+			&=-\cos(\cos(u))\sin(\sin(x))\cos(x) \\
+			&=\boxed{-\cos(\cos(\sin(x)))\sin(\sin(x))\cos(x)}
+		\end{align*}
+	\end{itemize}
+\end{multicols}
+
+\end{document}

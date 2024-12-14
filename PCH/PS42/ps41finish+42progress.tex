@@ -1,0 +1,468 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.8in, right=0.8in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{empheq}
+\usepackage{cancel}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\allowdisplaybreaks
+
+%opening
+\title{Finish Problem Set \#41}
+\author{Jayden Li}
+\date{January 13, 2024}
+
+\begin{document}
+
+\newgeometry{top=0.4in, left=0.6in, right=0.6in, bottom=1in}
+
+\fontsize{12pt}{12pt}\selectfont
+
+\maketitle
+
+\section*{Problem 3}
+\begin{itemize}
+\item[(d)]
+\begin{minipage}[t]{0.5\linewidth}
+$\begin{aligned}[t]
+	&\sum_{k=1}^{7}\frac{1}{\sqrt[3]{k^2}+\sqrt[3]{k(k+1)}
+		+\sqrt[3]{(k+1)^2}} \\
+	=\,&\sum_{k=1}^{7}\frac{1}{\big(\sqrt[3]{k}\big)^2+
+		\sqrt[3]{k}\sqrt[3]{k+1}+\left(\sqrt[3]{k+1}\right)^2} \\
+	\alignedintertext{Let $a=\sqrt[3]{k}$, $b=\sqrt[3]{k+1}$}
+	=\,&\left(\sum_{k=1}^{7}\frac{1}{a^2+ab+b^2}\cdot\frac
+		{a-b}{a-b}\right) \\
+	=\,&\sum_{k=1}^{7}\frac{a-b}{a^3-b^3} \\
+	=\,&\sum_{k=1}^{7}\frac{\sqrt[3]{k}}{\big(\sqrt[3]{k}\big)^3-
+		\left(\sqrt[3]{k+1}\right)^3}-\sum_{k=1}^{7}
+		\frac{\sqrt[3]{k+1}}{\big(\sqrt[3]{k}\big)^3-
+		\left(\sqrt[3]{k+1}\right)^3}
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.49\linewidth}
+$\begin{aligned}[t]
+	=\,&\sum_{k=1}^{7}\frac{\sqrt[3]{k}}{k-k-1}-\sum_{k=1}^{7}
+		\frac{\sqrt[3]{k+1}}{k-k-1} \\
+	=\,&-\sum_{k=1}^{7}\sqrt[3]{k}-\left(-\sum_{k=1}^{7}
+		\sqrt[3]{k+1}\right) \\
+	=\,&\sum_{k=1}^{7}\sqrt[3]{k+1}-\sum_{k=1}^{7}\sqrt[3]{k} \\
+	=\,&\cancel{\sqrt[3]{2}+\cdots+\sqrt[3]{7}}+\sqrt[3]{8}-
+		\sqrt[3]{1}-\cancel{\sqrt[3]{2}-\cdots-\sqrt[3]{7}} \\
+	=\,&\sqrt[3]{8}-\sqrt[3]{1} \\
+	=\,&\boxed{1}
+\end{aligned}$
+\end{minipage}
+
+\end{itemize}
+
+\section*{Problem 4}
+\centering
+\begin{minipage}[t]{0.55\linewidth}
+	\textbf{Case 1.} $n$ is even
+
+	$\begin{aligned}[t]
+		&\sum_{k=1}^{n}(-1)^{k+1}k \\
+		=\,&1-2+3-4+\cdots-(n-2)+(n-1)-n \\
+		=\,&1-(2-3)-\cdots-((n-2)-(n-1))-n \\
+		=\,&1\underbrace{-(-1)-(-1)-\cdots-(-1)}_
+			{\frac{n}{2}-1\text{ terms}}-n \\
+		=\,&1+\frac{n}{2}-1-n \\
+		=\,&\frac{n}{2}-\frac{2n}{2} \\
+		=\,&-\frac{n}{2} \\
+	\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+	\textbf{Case 2.} $n$ is odd
+
+	$\begin{aligned}[t]
+		&\sum_{k=1}^{n}(-1)^{k+1}k \\
+		=\,&1-2+3-4+\cdots-(n-1)+n \\
+		=\,&1-(2-3)-\cdots-((n-1)-n) \\
+		=\,&1\underbrace{-(-1)-(-1)-\cdots-(-1)}_
+			{\frac{n+1}{2}\text{ terms}} \\
+		=\,&1+\frac{n+1}{2}-1 \\
+		=\,&\frac{n+1}{2} \\
+	\end{aligned}$
+\end{minipage}
+
+\begin{itemize}
+\centering
+\begin{minipage}[t]{0.49\linewidth}
+\item[(a)]
+	\begin{equation*}
+		\sum_{k=1}^{200}(-1)^{k+1}k=-\frac{200}{2}=\boxed{-100}
+	\end{equation*}
+\end{minipage}
+\begin{minipage}[t]{0.49\linewidth}
+\item[(b)]
+	\begin{equation*}
+		\sum_{k=1}^{403}(-1)^{k+1}k=\frac{403+1}{2}=\boxed{202}
+	\end{equation*}
+\end{minipage}
+\flushleft
+\end{itemize}
+\flushleft
+
+\section*{Problem 5}
+\begin{itemize}
+\begin{minipage}[t]{0.38\linewidth}
+\item[(a)]
+$\begin{aligned}[t]
+	&\sum_{n=1}^{100}\frac{1}{n(n+2)} \\
+	=\,&\sum_{n=1}^{100}\left(\frac{A}{n}+\frac{B}{n+2}\right) \\
+	\alignedintertext{
+		$\begin{aligned}[t]
+			A(n+2)+Bn&=1 \\
+			n(A+B)+2A&=1 
+		\end{aligned}$
+		\flushleft
+		\begin{minipage}[t]{0.1\linewidth}
+			\setlength{\abovedisplayskip}{0pt}
+			\begin{align*}
+				2A&=1 \\
+				A&=\frac{1}{2}
+			\end{align*}
+		\end{minipage}
+		\begin{minipage}[t]{0.1\linewidth}
+			\setlength{\abovedisplayskip}{0pt}
+			\begin{align*}
+				A+B&=0 \\
+				B&=-\frac{1}{2}
+			\end{align*}
+		\end{minipage}
+	}
+	=\,&\sum_{n=1}^{100}\left(\frac{1}{2n}-\frac{1}{2n+4}\right) \\
+	=\,&\frac{1}{2}\sum_{n=1}^{100}\left(\frac{1}{n}-\frac{1}{n+2}\right) \\
+	=\,&\frac{1}{2}\left(\sum_{n=1}^{100}\frac{1}{n}-
+		\sum_{n=1}^{100}\frac{1}{n+2}\right) \\
+	=\,&\frac{1}{2}\left(\left(\frac{1}{1}+\frac{1}{2}+\frac{1}{3}+
+		\cdots+\frac{1}{99}+\frac{1}{100}\right)-\left(\frac{1}{3}+
+		\frac{1}{4}+\frac{1}{5}+\cdots+\frac{1}{101}+\frac{1}{102}
+		\right)\right) \\
+	=\,&\frac{1}{2}\left(\frac{1}{1}+\frac{1}{2}+\xcancel{\frac{1}{3}+
+		\cdots+\frac{1}{99}+\frac{1}{100}-\frac{1}{3}-\frac{1}{4}-
+		\frac{1}{5}-\cdots-\frac{1}{100}}-\frac{1}{101}-
+		\frac{1}{102}\right) \\
+	=\,&\frac{1}{2}\left(\frac{3}{2}-\frac{1}{101}-\frac{1}{102}\right) \\
+	=\,&\frac{1}{2}\left(\frac{15453}{10302}-\frac{102}{10302}
+		-\frac{101}{10302}\right) \\
+	=\,&\frac{15453-102-101}{20604} \\
+	=\,&\frac{15250}{20604} \\
+	=\,&\boxed{\frac{7625}{10302}}
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.6\linewidth}
+\item[(b)]
+$\begin{aligned}[t]
+	&\sum_{n=1}^{\infty}\frac{1}{n(n+2)} \\
+	=\,&\frac{1}{2}\left(\sum_{n=1}^{\infty}\frac{1}{n}-
+		\sum_{n=1}^{\infty}\frac{1}{n+2}\right) \\
+	=\,&\frac{1}{2}\left(\left(\frac{1}{1}+\frac{1}{2}+\frac{1}{3}+
+		\frac{1}{4}+\cdots\right)-\left(\frac{1}{3}+\frac{1}{4}+
+		\frac{1}{5}+\frac{1}{6}+\cdots\right)\right) \\
+	=\,&\frac{1}{2}\left(\frac{1}{1}+\frac{1}{2}+\xcancel{
+		\frac{1}{3}+\frac{1}{4}+\cdots-\frac{1}{3}-\frac{1}{4}-
+		\frac{1}{5}-\frac{1}{6}-\cdots}\right) \\
+	=\,&\boxed{\frac{3}{4}}
+\end{aligned} \\$
+
+Because this is an infinite series, when we break the sum into two
+sums they will cancel each other out, except for the first two terms.
+\end{minipage}
+\end{itemize}
+
+\pagebreak
+\section*{Problem 6}
+\begin{itemize}
+\item[(a)]
+\begin{align*}
+	F_{n+2}&=F_{n+2} \\
+	F_{n+2}&=F_{n+1}+F_{n+2}-F_{n+1} \\
+	1&=\frac{F_{n+1}+F_{n+2}-F_{n+1}}{F_{n+2}} \\
+	\frac{1}{F_{n+1}(F_{n+1}+F_{n+2})}&=\frac{F_{n+1}+F_{n+2}-
+		F_{n+1}}{F_{n+2}}\cdot\frac{1}{F_{n+1}(F_{n+1}+F_{n+2})} \\
+	\frac{1}{F_{n+1}(F_{n+1}+F_{n+2})}&=\frac{F_{n+1}+F_{n+2}-
+		F_{n+1}}{F_{n+2}F_{n+1}(F_{n+1}+F_{n+2})} \\
+	\frac{1}{F_{n+1}F_{n+3}}&=\frac{\cancel{F_{n+1}+F_{n+2}}}
+		{F_{n+2}F_{n+1}\cancel{(F_{n+1}+F_{n+2})}}-\frac{\cancel{
+		F_{n+1}}}{F_{n+2}\cancel{F_{n+1}}(F_{n+1}+F_{n+2})} \\
+	\frac{1}{F_{n+1}F_{n+3}}&=\frac{1}{F_{n+1}F_{n+2}}-\frac{1}
+		{F_{n+2}F_{n+3}}
+\end{align*}
+\qed
+
+\item[(b)]
+$\begin{aligned}[t]
+	&\sum_{n=0}^{\infty}\frac{1}{F_{n+1}F_{n+3}} \\
+	=\,&\sum_{n=0}^{\infty}\left(\frac{1}{F_{n+1}F_{n+2}}-
+		\frac{1}{F_{n+2}F_{n+3}}\right) \\
+	=\,&\frac{1}{F_1F_2}-\cancel{\frac{1}{F_2F_3}+\frac{1}{F_2F_3}}
+		-\cancel{\frac{1}{F_4F_5}+\frac{1}{F_4F_5}}
+		-\cancel{\frac{1}{F_5F_6}+\frac{1}{F_5F_6}}-\cdots \\
+	=\,&\frac{1}{1\cdot1} \\
+	=\,&\boxed{1}
+\end{aligned}$
+
+\end{itemize}
+
+\title{Progress on Problem Set \#42}
+\maketitle
+
+\section*{Problem 1}
+\begin{itemize}
+\begin{minipage}[t]{0.5\linewidth}
+\item[(a)]
+$\begin{aligned}[t]
+	&(k+1)^2-k^2 \\
+	=\,&k^2+2k+1-k^2 \\
+	=\,&\boxed{2k+1}
+\end{aligned}$
+
+\item[(c)]
+Let $\displaystyle{S_n=\sum_{k=1}^{n}\left((k+1)^2-k^2\right)}$.
+
+\begin{minipage}[t]{0.2\linewidth}
+$\begin{aligned}[t]
+	S_1&=\underset{+5}{3} \\
+	S_2&=\underset{+7}{8} \\
+	S_3&=\,15
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.2\linewidth}
+$\begin{aligned}[t]
+	S_4&=\underset{+11}{\overset{+9}{24}} \\
+	S_5&=\underset{+13}{35} \\
+	S_5&=\,48
+\end{aligned}$
+\end{minipage}
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth}
+\item[(b)]
+$\begin{aligned}[t]
+	&\sum_{k=1}^{n}\left((k+1)^2-k^2\right) \\
+	=\,&\sum_{k=1}^{n}(2k+1) \\
+	=\,&\sum_{k=1}^{n}2k+\sum_{k=1}^{n}1 \\
+	=\,&\boxed{2\sum_{k=1}^{n}k+n} \\
+\end{aligned}$
+\end{minipage}
+
+Let $D_n=S_{n+1}-S_{n}=2n+3$.
+
+\begin{minipage}[t]{0.6\linewidth}
+$\begin{aligned}
+	S_{n+1}&=D_n+S_n \\
+	S_{n+1}&=2n+3+S_n \\
+	&=2n+3+2(n-1)+3+S_{n-1} \\
+	&=2n+3+2(n-1)+3+2(n-2)+3+\cdots+2(n-(n-1))+3+2(n-n)+3 \\
+	&=2n+3+2n-2+3+2n-4+3+\cdots+2n-2n+2+3+2n-2n+3 \\
+	&=\underbrace{3+3+\cdots+3}_{n\text{ terms}}+
+		\underbrace{2n+2n+\cdots+2n}_{n\text{ terms}}
+		-2-4-\cdots-2n+2-2n \\
+	&=3n+2n^2-(2+4+\cdots+2n-2+2n) \\
+	&=3n+2n^2-(2+2n+4+2n-2+\cdots) \\
+	&=3n+2n^2-\underbrace{((2+2n)+(2+2n)+\cdots)}_{\frac{n}{2}
+		\text{ terms}} \\
+	&=3n+2n^2-\frac{n}{2}(2+2n) \\
+	&=3n+2n^2-n-n^2 \\
+	&=\boxed{n^2+2n}
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth}
+\item[(d)]
+$\begin{aligned}[t]
+	\sum_{k=1}^{n}\left((k+1)^2-k^2\right)&=n^2+2n \\
+	2\sum_{k=1}^{n}k+n&=n^2+2n \\
+	2\sum_{k=1}^{n}k&=n^2+n \\
+	\Aboxed{\sum_{k=1}^{n}k&=\frac{n^2+n}{2}} \\
+\end{aligned}$
+\end{minipage}
+\end{itemize}
+
+\pagebreak
+\section*{Problem 2}
+\begin{itemize}
+\item[(a)]
+\begin{minipage}[t]{0.33\linewidth}
+$\begin{aligned}[t]
+	&\sum_{k=1}^{n}\left((k+1)^3-k^3\right) \\
+	=\,&\sum_{k=1}^{n}(k+1)^3-\sum_{k=1}^{n}k^3 \\
+	=\,&\sum_{k=2}^{n+1}k^3-\sum_{k=1}^{n}k^3 \\
+	=\,&(n+1)^3+\sum_{k=2}^{n}k^3-\sum_{k=2}^{n}k^3-1 \\
+	=\,&(n+1)^3-1
+\end{aligned} \\$
+\end{minipage}
+\begin{minipage}[t]{0.66\linewidth}
+$\begin{aligned}[t]
+	\sum_{k=1}^{n}\left((k+1)^3-k^3\right)&=
+		\sum_{k=1}^{n}\left(k^3+3k^2+3k+1-k^3\right) \\
+	(n+1)^3-1&=\sum_{k=1}^{n}3k^2+\sum_{k=1}^{n}3k+\sum_{k=1}^{n}1 \\
+	(n+1)^3-1&=3\sum_{k=1}^{n}k^2+3\cdot\frac{n(n+1)}{2}+n \\
+	3\sum_{k=1}^{n}k^2&=n^3+3n^2+3n+1-1-\frac{3n(n+1)}{2}-n \\
+	\sum_{k=1}^{n}k^2&=\frac{n^3+3n^2+2n-\frac{3n^2+3n}{2}}{3} \\
+	\sum_{k=1}^{n}k^2&=\frac{2n^3+6n^2+4n-3n^2-3n}{6} \\
+	\Aboxed{\sum_{k=1}^{n}k^2&=\frac{2n^3+3n^2+n}{6}} \\
+\end{aligned}$
+\end{minipage}
+\end{itemize}
+
+\section*{Problem 3}
+$\begin{aligned}
+	&1\cdot2+3\cdot4+\cdots+(2n-1)2n \\
+	=\,&\sum_{k=1}^{n}(2k-1)2k \\
+	=\,&\sum_{k=1}^{n}4k^2-\sum_{k=1}^{n}2k \\
+	=\,&4\cdot\frac{2n^3+3n^2+n}{6}-2\cdot\frac{n(n+1)}{2} \\
+	=\,&\frac{4n^3+6n^2+2n}{3}-\frac{3n(n+1)}{3} \\
+	=\,&\frac{4n^3+6n^2+2n-3n^2-3}{3} \\
+	=\,&\boxed{\frac{4n^3+3n^2+2n-3}{3}} \\
+\end{aligned}$
+
+\section*{Problem 4}
+\begin{itemize}
+\begin{minipage}[t]{0.52\linewidth}
+\item[(a)]
+$\begin{aligned}[t]
+	&\sum_{n=1}^{20}f(n) \\
+	=\,&\sum_{n=1}^{20}\left(3x^2-7x+2\right) \\
+	=\,&\sum_{n=1}^{20}3x^2-\sum_{n=1}^{20}7x+\sum_{n=1}^{20}2 \\
+	=\,&\frac{3\left(2(20)^3+3(20)^2+20\right)}{6}-\frac{7\cdot20(20+1)}{2}+40 \\
+	=\,&\frac{2(8000)+3(400)+20}{2}-\frac{7\cdot420}{2}+40 \\
+	=\,&\frac{16000+1200+20}{2}-1470+40 \\
+	=\,&8000+600+10-1430 \\
+	=\,&\boxed{7180} \\
+\end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.47\linewidth}
+\item[(b)]
+$\begin{aligned}[t]
+	\sum_{k=1}^{n}f(n)&=0 \\
+	\sum_{k=1}^{n}\left(k^2-11k-28\right)&=0 \\
+	\sum_{k=1}^{n}k^2-\sum_{k=1}^{n}11k-\sum_{k=1}^{n}28&=0 \\
+	\frac{2n^3+3n^2+n}{6}-11\cdot\frac{n(n+1)}{2}-28n&=0 \\
+	2n^3+3n^2+n-33n(n+1)-168n&=0 \\
+	2n^3+3n^2+n-33n^2-33n-168n&=0 \\
+	2n^3-30n^2-200n&=0 \\
+	n\left(n^2-15n-100\right)&=0 \\
+	n(n-20)(n+5)&=0 \\
+\cancel{n=0}, n=20, \cancel{n=-5}\;\Rightarrow\;\Aboxed{x&=20}
+\end{aligned}$
+\end{minipage}
+\end{itemize}
+
+\section*{Problem 5}
+$\begin{aligned}
+	&1\cdot4+3\cdot6+\cdots+(2n-1)(2n+2) \\
+	=\,&\sum_{k=1}^{n}(2k-1)(2k+2) \\
+	=\,&\sum_{k=1}^{n}\left(4k^2+2k-2\right) \\
+	=\,&4\sum_{k=1}^{n}k^2+2\sum_{k=1}^{n}k-\sum_{k=1}^{n}2 \\
+	=\,&4\cdot\frac{2n^3+3n^2+n}{6}+2\cdot\frac{n(n+1)}{2}-2n \\
+	=\,&\frac{4n^3+6n^2+2n}{3}+\frac{3n(n+1)}{3}-\frac{6n}{3} \\
+	=\,&\frac{4n^3+6n^2+2n+3n^2+3-6n}{3} \\
+	=\,&\boxed{\frac{4n^3+9n^2-4n+3}{3}} \\
+\end{aligned}$
+
+\end{document}
+
+% \setlength{\abovedisplayskip}{0pt}
+% \begin{alignat*}{3}
+% 	\text{Let }S_n&=\sum_{k=1}^{n}\left((k+1)^3-k^3\right) &
+% 		D_n&=S_{n+1}-S_n & E_n&=D_{n+1}-D_n \\
+% 	S_1&=7 &\qquad D_1&=19 &\qquad E_1&=18\\
+% 	S_2&=26 & D_2&=37 & E_2&=24 \\
+% 	S_3&=63 & D_3&=61 & E_3&=30 \\
+% 	S_4&=124 & D_4&=91 & E_4&=36 \\
+% 	S_5&=215 & D_5&=127 \\
+% 	S_6&=342
+% \end{alignat*}
+
+% $\begin{aligned}
+% 	E_n&=6n+12 \\
+% 	D_{n+1}&=E_n+D_n \\
+% 	D_{n+1}&=6n+12+D_n \\
+% 	&=6n+12+6(n-1)+12+D_{n-1} \\
+% 	&=6n+12+6(n-1)+12+6(n-2)+12+\cdots+6(n-(n-1))+12+6(n-n)+7 \\
+% 	\alignedintertext{(Add $7$ to the end instead of $12$ as $D_1=7$.)} \\
+% 	&=6n+12+6n-6+12+6n-12+12+\cdots+6n-6n+6+12+6n-6n+7 \\
+% 	&=\underbrace{12+12+\cdots+12}_{n\text{ terms}}+
+% 		\underbrace{6n+6n+\cdots+6n}_{n\text{ terms}}
+% 		-6-12-\cdots-6n+6-6n+7 \\
+% 	&=12n+6n^2-(6+12+\cdots+6n-6+6n)+7 \\
+% 	&=12n+6n^2-(6+6n+12+6n-6+\cdots)+7 \\
+% 	&=12n+6n^2-\underbrace{((6+6n)+(6+6n)+\cdots)}_{\frac{n}{2}
+% 		\text{ terms}}+7 \\
+% 	&=12n+6n^2-\frac{n}{2}(6+6n)+7 \\
+% 	&=12n+6n^2-3n-3n^2+7 \\
+% 	&=\boxed{3n^2+9n+7}
+% \end{aligned}$
+
+% $\begin{aligned}
+% 	D_n&=3n^2+9n+7 \\
+% 	S_{n+1}&=D_n+S_n \\
+% 	S_{n+1}&=3n^2+9n+7+S_n \\
+% 	&=3n^2+9n+7+3(n-1)^2+9(n-1)+7+S_{n-1} \\
+% 	&=\begin{aligned}[t]
+% 		&3n^2+9n+7+3(n-1)^2+9(n-1)+7+3(n-2)^2+9(n-2)+7+\cdots+ \\
+% 		&3(n-(n-1))^2+9(n-(n-1))+7+3(n-n)^2+9(n-n)+7 \\
+% 	\end{aligned} \\
+% 	&=\begin{aligned}[t]
+% 		&3n^2+9n+7+3(n^2-2n+1)+9n-9+7+3(n^2-4n+4)+9n-18+7+\cdots+ \\
+% 		&3\left(n^2-2n(n-1)+(n-1)^2\right)+9n-9(n-1)+7+3(n^2-2n^2+n^2)
+% 			+9n-9n+7
+% 	\end{aligned} \\
+% 	&=\begin{aligned}[t]
+% 		&3n^2+9n+7+3n^2-6n+3+9n-9+7+3n^2-12n+12+9n-18+7+\cdots+ \\
+% 		&3n^2-6n(n-1)+3(n^2-2n+1)+9n-9n+9+7+3n^2-6n^2+3n^2+9n-9n+7
+% 	\end{aligned} \\
+% 	&=\begin{aligned}[t]
+% 		&3n^2+9n+7+3n^2-6n+3+9n-9+7+3n^2-12n+12+9n-18+7+\cdots+ \\
+% 		&3n^2-6n^2+6n+3n^2-6n+3+9n-9n+9+7+3n^2-6n^2+3n^2+9n-9n+7
+% 	\end{aligned} \\
+% 	&=\begin{aligned}[t]
+% 		&3n^2+9n+7+3n^2-6n+3+9n-9+7+3n^2-12n+12+9n-18+7+\cdots+ \\
+% 		&3n^2-6n^2+6n+3n^2-6n+3+9n-9n+9+7+3n^2-6n^2+3n^2+9n-9n+7
+% 	\end{aligned} \\
+% 	&=\begin{aligned}[t]
+% 		&\underbrace{3n^2+3n^2+\cdots+3n^2}_{n\text{ terms}}+
+% 		\underbrace{9n+9n+\cdots+9n}_{n\text{ terms}}+
+% 		\underbrace{7+7+\cdots+7}_{n\text{ terms}} \\
+% 		&-6n+3-9-12n+12-18+\cdots-6n^2+6n+3n^2-6n+3-9n+9-6n^2+3n^2-9n
+% 	\end{aligned} \\
+% 	&=\begin{aligned}[t]
+% 		&\underbrace{3n^2+3n^2+\cdots+3n^2}_{n\text{ terms}}+
+% 		\underbrace{9n+9n+\cdots+9n}_{n\text{ terms}}+
+% 		\underbrace{7+7+\cdots+7}_{n\text{ terms}} \\
+% 		&-6n-6-12n-6+\cdots-3n^2-9n+12-3n^2-9n
+% 	\end{aligned} \\
+% 	&=\begin{aligned}[t]
+% 		&\underbrace{3n^2+3n^2+\cdots+3n^2}_{n\text{ terms}}+
+% 		\underbrace{9n+9n+\cdots+9n}_{n\text{ terms}}+
+% 		\underbrace{7+7+\cdots+7}_{n\text{ terms}} \\
+% 		&-\left(6n+6+12n+6-\cdots+3n^2+9n-12+3n^2+9n\right)
+% 	\end{aligned} \\
+% 	% &=12n+6n^2-(6+12+\cdots+6n-6+6n)+7 \\
+% 	% &=12n+6n^2-(6+6n+12+6n-6+\cdots)+7 \\
+% 	% &=12n+6n^2-\underbrace{((6+6n)+(6+6n)+\cdots)}_{\frac{n}{2}
+% 	% 	\text{ terms}}+7 \\
+% 	% &=12n+6n^2-\frac{n}{2}(6+6n)+7 \\
+% 	% &=12n+6n^2-3n-3n^2+7 \\
+% 	% &=\boxed{3n^2+9n+7}
+% \end{aligned}$

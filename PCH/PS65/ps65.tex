@@ -1,0 +1,186 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{pgfplots}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\paren}[1]{\ensuremath\left(#1\right)}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\limit}[2][x]{\ensuremath{\displaystyle\lim_{#1\to#2}}}
+\newcommand*{\Limit}[3][x]{\ensuremath{\displaystyle\lim_{#1\to#2}\left[#3\right]}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\Deriv}[2][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}\left[#2\right]}}
+\newcommand*{\iinteg}[2][x]{\ensuremath{\displaystyle\int #2\;\mathrm{d}#1}}
+\newcommand*{\dinteg}[4][x]{\ensuremath{\displaystyle\int_{#2}^{#3}#4\;\mathrm{d}#1}}
+\newcommand*{\abs}[1]{\ensuremath{\left|#1\right|}}
+\newcommand*{\eps}{\varepsilon}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\cbrt}[1]{\ensuremath{\sqrt[3]{#1}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+
+%opening
+\title{Problem Set \#65}
+\author{Jayden Li}
+\date{April 23, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{2}
+\begin{itemize}
+	\item[(a)]
+	At $x=4$, where the $f$ goes from decreasing to increasing. By the first derivative test it is a local minimum.
+
+	\item[(b)]
+	We need to compare whether the function decreases more where the derivative is a semicircle, or whether it increases more. We can find out by calculating the area under or above the graph, which represents the quantity of change accumulated by $f'$.
+	
+	The area above the semicircle is $2^2\cdot\pi/2=2\pi\approx6.28$, so the absolute difference between $f(0)$ and $f(4)$ is approximately $6.28$. Because the function is decreasing, we see that $f(0)$ is approximately $6.28$ higher than $f(4)$.
+
+	The area below the line is the area of a triangle with legs of length $2$ and $6$. Its area is $2\cdot6/2=6$. Therefore $f(10)$ is $6$ higher than $f(4)$.
+
+	It is known that $f(10)=2$. Therefore, we see that $f(4)=2-6=-4$.
+
+	We found earlier that $f(0)-6.28\approx f(4)$, so $f(0)\approx-4+6.28=2.28$.
+
+	Because $2.28>2$, $f$ reaches an absolute maximum at $x=0$.
+\end{itemize}
+
+\problem{3}
+$R$ has an absolute maximum at $t=2.29$ and $R(2.29)=3.95$. Therefore the fastest rate in which water fills into the rank is $3.95$ gallons per hour.
+
+\problem{5}
+\begin{itemize}
+	\item[(a)]
+	If $(1,-2)$ were a critical point, then the derivative evaluated at $x=1,y=-2$ is zero or not differentiable at that point (definition of a critical point). $2(1)+(-2)=0$, so it is a critical point.
+
+	\item[(b)] 
+	We use the second derivative test. We first find the second derivative $\diff[2]{y}{x}$:
+	\begin{equation*}
+		\diff[2]{y}{x}=\Deriv{2x+y}=2+\diff{y}{x}=2+2x+y
+	\end{equation*}
+	The second derivative evaluated at $(1,-2)$ is $2+2(1)+(-2)=2>0$. Thus, by the second derivative test the point $(1,-2)$ is a local minimum.
+\end{itemize}
+
+\problem{6}
+\begin{itemize}
+	\item[(a)]
+	An inflection point is where the function $f$ changes from concave down to concave up, or from concave up to concave down (definition of inflection point). A point is concave up if the second derivative $f''$ is greater than $0$ at that point, and concave down if $f''$ is less than $0$ (definition of concavity). So we can say that an inflection point is where the second derivative $f''$ changes sign -- in other words, where the first derivative $f'$ changes from increasing to decreasing, or from decreasing to increasing. On the graph of $f'$, we see that this happens at $x=2$ and $x=6$, which are the inflection points of $f$.
+
+	\item[(b)]
+	\begin{align*}
+		g(x)&=f(x)-x \\
+		g'(x)&=f'(x)-1
+	\end{align*}
+	Decreasing on $(0,5)$, which is where the graph of $f'$ translated down $1$ unit is negative.
+
+	\item[(c)]
+	Suppose that $c\in[0,7]$ is a critical point of $g$. Then $g$ is either not differentiable at $c$, or $g'(c)=0$. $f$ is differentiable on $[0,7]$. $x$ is differentiable for all real numbers. Therefore, $g$ is differentiable on $[0,7]$, so there is no point $c$ where $g$ is not differentiable. So all critical points $c$ are such that $g'(c)=0$.
+	\begin{align*}
+		g'(c)&=0 \\
+		f'(x)-1&=0 \\
+		f'(c)&=1
+	\end{align*}
+	By looking at the graph of $f'$, $c$ must equal $5$. So we have a critical point at $x=5$.
+	
+	By the closed interval method, the absolute minimum is either at the endpoints (which are $x=0$ and $x=7$), or at critical points ($x=5$). If we were to draw the graph of $g'$, it is obvious that the area above the semicircle connected to a line segment is greater than the area under the triangle. So I claim that the absolute minimum occurs at $x=4$.
+
+	It is known that $f(4)=3$, so $g(4)=f(4)-4=3-4=-1$. The absolute maximum of $g$ on the interval $[0,7]$ is $-1$.
+\end{itemize}
+
+\problem{7}
+\begin{itemize}
+	\item[(a)]
+	\begin{equation*}
+		H'(6)\approx\frac{H(7)-H(5)}{7-5}=\frac{11-6}{2}=\frac{5}{2}
+	\end{equation*}
+	The rate of growth of the tree $6$ years after being grown, in meters per year.
+
+	\item[(b)]
+	Consider the interval $[3,5]$. The average rate of change of $H$ over this interval is given by:
+	\begin{equation*}
+		\frac{H(5)-H(3)}{5-3}=\frac{6-2}{2}=2
+	\end{equation*}
+	$H$ is differentiable on $(3,5)$ (given by the problem), so it must be continuous on $[3,5]$. Then there must exist some $c\in(3,5)$ such that $H'(c)=2$ (by the mean value theorem).
+\end{itemize}
+
+\problem{8}
+\begin{itemize}
+	\item[(a)]
+	Assuming that $r'$ has a constant rate of change on $[7,10]$, $r''(8.5)$ will equal the average rate of change on $[7,10]$.
+	\begin{equation*}
+		r''(8.5)=\frac{r'(10)-r'(7)}{10-7}=\frac{-3.8-(4.4)}{3}=\frac{0.6}{3}=0.2
+	\end{equation*}
+
+	\item[(b)]
+	Yes by the intermediate value theorem.
+	
+	Because $r$ is twice-differentiable, $r'$ must be differentiable and therefore continuous on $[0,3]$.
+
+	Let $c=-6$. We have that $c\in(r'(0),r'(3))$. By the intermediate value theorem, $r'(t)=c$ for some $t\in(0,3)$.
+\end{itemize}
+
+\problem{9}
+\begin{itemize}
+	\item[(a)]
+	$f$ is increasing on $[-6,-2)\cup(2,5)$ because that is where $f'$ is positive.
+
+	\item[(b)]
+	Critical points are $x=-2$ and $x=2$. Endpoints are $x=-6$ and $x=5$. $f'$ exists for all values on $[-6,5]$ so $f$ must also be continuous on $[-6,5]$ so we can use the closed interval method. Because I don't want to think of an easier way, we use integration to calculate $f(-6)$, $f(2)$ and $f(5)$.
+	\begin{gather*}
+		f(-2)=7 \\
+		\dinteg{-6}{-2}{f'(x)}=f(-2)-f(-6) \implies 4=7-f(-6) \implies f(-6)=3 \\
+		\dinteg{-2}{2}{f'(x)}=f(2)-f(-2) \implies -2\pi=f(2)-7 \implies f(2)=7-2\pi \\
+		\dinteg{-2}{5}{f'(x)}=f(5)-f(-2) \implies -2\pi+3=f(5)-7 \implies f(5)=10-2\pi
+	\end{gather*}
+	The absolute minimum value is $7-2\pi$ because it is less than all the other points.
+
+	\item[(c)]
+	$f''(3)$ doesn't exist because $f'$ has a sharp corner at $x=3$ and sharp corners are not differentiable.
+
+	$f''(5)$ doesn't exist. Since $f'$ is continuous on the closed interval $[-6,5]$, $f'$ is differentiable on the open interval $(-6,5)\not\ni5$.
+\end{itemize}
+
+\end{document}

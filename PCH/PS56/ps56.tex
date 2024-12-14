@@ -1,0 +1,287 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\paren}[1]{\ensuremath\left(#1\right)}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\limit}[2][x]{\ensuremath{\displaystyle\lim_{#1\to#2}}}
+\newcommand*{\Limit}[3][x]{\ensuremath{\displaystyle\lim_{#1\to#2}\left[#3\right]}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\Deriv}[2][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}\left[#2\right]}}
+\newcommand*{\abs}[1]{\ensuremath{\left|#1\right|}}
+
+\newcommand*{\eps}{\varepsilon}
+
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+
+\DeclareMathOperator{\DNE}{DNE}
+
+%opening
+\title{Problem Set \#56}
+\author{Jayden Li}
+\date{March 30, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{1}
+\begin{itemize}
+	\item $x=1$ because $f(1)$ is not defined.
+	\item $x=3$ because $\limit{3^-}f(x)=-1\neq3=\limit{3^+}f(x)$ so $\limit{3}f(x)$ DNE.
+	\item $x=5$ because $\limit{5^-}f(x)=\limit{5^+}f(x)=\limit{5}f(x)=1\neq3=f(5)$
+\end{itemize}
+
+\problem{2}
+\begin{itemize}
+	\item[(d)]
+	\begin{minipage}[t]{0.49\linewidth}
+		\textbf{Case 1.} $a\in\mathbb{R}\cap\mathbb{Z}'$
+		\begin{align*}
+			\limit{a^+}f(x)&=\floor{a} \\
+			\limit{a^-}f(x)&=\floor{a} \\
+			\implies\limit{a}f(x)&=\floor{a} \\
+			f(a)&=\floor{a}
+		\end{align*}
+		Therefore $f$ is continuous on $a$.
+	\end{minipage}
+	\begin{minipage}[t]{0.49\linewidth}
+		\textbf{Case 2.} $a\in\mathbb{Z}$
+		\begin{align*}
+			&\limit{a^+}f(x)=\floor{a}=a \\
+			&\limit{a^-}f(x)=\floor{a}=a-1 \\
+			\implies&\limit{a}f(x)\DNE \\
+		\end{align*}
+		Therefore $f$ is discontinuous on $a$.
+	\end{minipage}
+
+	\boxed{f\text{ is discontinuous for all }a\in\mathbb{Z}}
+\end{itemize}
+
+\problem{3}
+\begin{proof}
+	Let $a$ be an integer. We have:
+	\begin{align*}
+		f(a)&=\floor{a}=a \\
+		\limit{a^+}f(x)&=\limit{a^+}\floor{x}=a \\
+		\limit{a^-}f(x)&=\limit{a^-}\floor{x}=a-1
+	\end{align*}
+	Therefore $\limit{a^+}f(x)=f(a)$, so $f$ is continuous from the right at any integer. $\limit{a^-}f(x)\neq f(a)$ so $f$ is discontinuous from the left at any integer.
+\end{proof}
+
+\problem{5}
+If $f$ and $g$ are continuous at $a$, then $\limit{a}f(x)=f(a)$ and $\limit{a}g(x)=g(a)$.
+
+\noindent\textit{Limit rules from PS\#54 are in parentheses at the end of the line.}
+
+\begin{multicols}{2}
+	\allowdisplaybreaks[0]
+	\begin{enumerate}
+		\item \begin{align*}
+			\Limit{a}{f(x)+g(x)}&\overset{?}{=}f(a)+g(a) \\
+			\limit{a}f(x)+\limit{a}g(x)&\overset{?}{=}f(a)+g(a) \tag{1} \\
+			f(a)+g(a)&=f(a)+g(a)
+		\end{align*}
+		\item \begin{align*}
+			\Limit{a}{f(x)-g(x)}&\overset{?}{=}f(a)-g(a) \\
+			\limit{a}f(x)-\limit{a}g(x)&\overset{?}{=}f(a)-g(a) \tag{1} \\
+			f(a)-g(a)&=f(a)-g(a)
+		\end{align*}
+		\item \begin{align*}
+			\limit{a}cf(x)&\overset{?}{=}cf(a) \\
+			c\limit{a}f(x)&\overset{?}{=}cf(a) \tag{2} \\
+			cf(a)&=cf(a)
+		\end{align*}
+		\item \begin{align*}
+			\limit{a}f(x)g(x)&\overset{?}{=}f(a)g(a) \\
+			\limit{a}f(x)\cdot\limit{a}g(x)&\overset{?}{=}f(a)g(a) \tag{3} \\
+			f(a)g(a)&=f(a)g(a)
+		\end{align*}
+		\item \begin{align*}
+			\limit{a}\frac{f(x)}{g(x)}&\overset{?}{=}\frac{f(a)}{g(a)} \\
+			\frac{\limit{a}f(x)}{\limit{a}g(x)}&\overset{?}{=}\frac{f(a)}{g(a)} \tag{4} \\
+			\frac{f(a)}{g(a)}&=\frac{f(a)}{g(a)}
+		\end{align*}
+	\end{enumerate}
+	\allowdisplaybreaks
+\end{multicols}
+
+\problem{6}
+\begin{lemma}
+	For any $k\in\mathbb{N}_0$, $cx^k$ is continuous for all $c,x\in\mathbb{R}$.
+\end{lemma}
+\begin{proof}
+	Notice that because $k$ is a positive integer:
+	\begin{equation*}
+		x^k=\underbrace{x\cdot x\cdot\ldots\cdot x}_{k\text{ times}}=\prod_{m=1}^{k}x
+	\end{equation*}
+	Let $a\in\mathbb{R}$. We will prove that $x^k$ is continuous at $x=a$.
+	\begin{align*}
+		\limit{a}cx^k\overset{?}{=}ca^k \\
+		\limit{a}c\prod_{m=1}^{k}x\overset{?}{=}ca^k \\
+		\intertext{By limit rule \#2 and \#3 from PS\#54:}
+		c\prod_{m=1}^{k}\limit{a}x\overset{?}{=}ca^k \\
+		\intertext{By limit rule \#7 from PS\#54:}
+		c\prod_{m=1}^{k}a\overset{?}{=}ca^k \\
+		c\cdot\underbrace{a\cdot a\cdot\ldots\cdot a}_{k\text{ times}}&\overset{?}{=}ca^k \\
+		ca^k&=ca^k
+	\end{align*}
+\end{proof}
+
+\begin{proof}
+	Any $n$-degree polynomial can be written in the following form:
+	\begin{equation*}
+		f(x)=\sum_{k=0}^{n}a_kx^k
+	\end{equation*}
+	Where $a_k\in\mathbb{R}$. Then, by Lemma 1, each term of the polynomial is continuous on $\mathbb{R}$. By Theorem 1, $f$ must be continuous on $\mathbb{R}$.
+\end{proof}
+
+\problem{7}
+Let $f(x)=\dfrac{x^3+2x^2-1}{5-3x}$. Observe that $f$ is a rational function so $f$ is continuous on its domain by Theorem 2. The domain of $f$ is $5-3x\neq0\implies x\neq5/3$.
+
+Because $-2\neq5/3$, $-2$ is within the domain of $f$. By the definition of continuity, we have:
+\begin{align*}
+	\limit{-2}f(x)&=f(-2) \\
+	\limit{-2}\frac{x^3+2x^2-1}{5-3x}&=\frac{(-2)^3+2(-2)^2-1}{5-3(-2)} \\
+	\limit{-2}\frac{x^3+2x^2-1}{5-3x}&=\frac{-8+8-1}{5-(-6)} \\
+	\limit{-2}\frac{x^3+2x^2-1}{5-3x}&=\boxed{-\frac{1}{11}}
+\end{align*}
+
+\problem{8}
+\begin{itemize}
+	\item[(a)] $f$ is a polynomial, so it is continuous on \boxed{\mathbb{R}}.
+	\item[(b)] $g$ is a rational function, so it is continuous on its domain. The denominator of $g$ must not equal $0$, so $x^2-1\neq0\implies x\neq1,x\neq-1$. Therefore $g$ is continuous on \boxed{\interval[open left, open right]{-\infty}{-1}\cup\interval[open left, open right]{-1}{1}\cup\interval[open left, open right]{1}{\infty}}.
+	\item[(c)]
+	\begin{align*}
+		h(x)&=\sqrt{x}+\frac{x+1}{x-1}+\frac{x+1}{x^2+1} \\
+		h(x)&=\frac{\sqrt{x}(x-1)\paren{x^2+1}}{(x-1)\paren{x^2+1}}+\frac{(x+1)\paren{x^2+1}}{(x-1)\paren{x^2+1}}+\frac{(x+1)(x-1)}{(x-1)\paren{x^2+1}} \\
+		h(x)&=\frac{\sqrt{x}(x-1)\paren{x^2+1}+(x+1)\paren{x^2+1}+(x+1)(x-1)}{(x-1)\paren{x^2+1}}
+	\end{align*}
+	So $h$ is a rational function. Its domain is $x\neq1,x\geq0$.
+	
+	Therefore, $h$ is continuous on \boxed{\interval[open right]{0}{1}\cup\interval[open left, open right]{1}{\infty}}.
+\end{itemize}
+
+\problem{9}
+Let $f(x)=\dfrac{\sin x}{2+\cos x}$. Observe that $f$ is a rational function so $f$ is continuous on its domain by Theorem 2. The domain of $f$ is $2+\cos x\neq0\implies\cos x=-2$. $\cos x$ does not equal $-2$ for real values of $x$, so we can say that the domain of $f$ is $\mathbb{R}$. It is also continuous on $\mathbb{R}$.
+
+Clearly $\pi\in\mathbb{R}$. By the definition of continuity:
+\begin{align*}
+	\limit{\pi}\frac{\sin x}{2+\cos x}&=\frac{\sin\pi}{2+\cos\pi} \\
+	\limit{\pi}\frac{\sin x}{2+\cos x}&=\frac{0}{2+(-1)} \\
+	\limit{\pi}\frac{\sin x}{2+\cos x}&=\boxed{0}
+\end{align*}
+
+\problem{10}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Let $y=g(x)$.
+		\item For all $\eps>0$, there exists some $\delta>0$ such that $\abs{x-a}<\delta\implies\abs{y-b}<\eps$.
+		\item Because $f$ is continuous at $b$, by the definition of continuity $\limit[y]{b}f(y)=f(b)\iff$ for all $\eps'>0$, there exists some $\delta'>0$ such that $\abs{y-b}<\delta'\implies\abs{f(y)-f(b)}<\eps'$.
+		\item Let $\eps=\delta'$. Then, $\abs{x-a}<\delta\implies\abs{y-b}<\delta'\implies\abs{f(y)-f(b)}<\eps'$.
+		\item Recall that $y=g(x)$. Therefore $\abs{x-a}<\delta\implies\abs{f(g(x))-f(b)}<\eps'$. In other words $\limit{a}f(g(x))=f(b)$.
+	\end{enumerate}
+\end{proof}
+
+\problem{11}
+\begin{itemize}
+	\item[(a)]
+	Let $f(x)=\sin x$ and $g(x)=x^2$. Then $h(x)=\sin(x^2)=f(g(x))=(f\circ g)(x)$. Notice that the domain of both $f$ and $g$ are $\mathbb{R}$, and the range of $g$ is a subset of $\mathbb{R}$.
+
+	Let $a$ be some real number. $g$ is continuous at $a$ because $g$ is a polynomial and is continuous on $\mathbb{R}$. Likewise, $f$ is a trigonometric function and is continuous on its domain. $f$ is defined on $\mathbb{R}$ so it must be continuous on $\mathbb{R}$. Because $g(a)$ must be real, $f$ is continuous at $g(a)$.
+
+	Because $g$ is continuous at $a$ and $f$ is continuous at $g(a)$, by Theorem 5 we have that $f\circ g$ is continuous at $a$. $a$ is any real number. Therefore $h$ is continuous on $\mathbb{R}$.
+
+	\item[(b)]
+	Let $p(x)=\dfrac{1}{x}$ and $q(x)=\sqrt{x^2+7}-4$. Then $F(x)=(p\circ q)(x)$.
+
+	Let $a$ be some real number. By Theorem 5, $p\circ q$ is continuous at $a$ if $p$ is continuous at $q(a)$ and $g$ is continuous at $a$.
+
+	Let $r(x)=\sqrt{x^2+7}$ and $s(x)=4$. Then $q(x)=(r-s)(x)$. $r$ is continuous on $\mathbb{R}$ because it is a root function and root functions are continuous on its domain by Theorem 3, and the domain of $r$ is $\mathbb{R}$ because $x^2+7\not<0$ for all $x\in\mathbb{R}$. $s$ is obvious continuous everywhere. Therefore, by Theorem 1 $q$ is continuous on $\mathbb{R}$.
+
+	$p$ is a rational function and by Theorem 3 is continuous everyone on its domain. So $p$ is continuous at $q(a)$ if and only if it is defined at $q(a)$. $p$ is defined at q(a) if $q(a)\neq0$.
+	\begin{align*}
+		\sqrt{a^2+7}-4&\neq0 \\
+		a^2+7&\neq16 \\
+		a^2&\neq9 \\
+		a&\neq\pm3
+	\end{align*}
+	Thus $q$ is defined for all real numbers except for $3$ and $-3$.
+
+	Therefore, $F$ is continuous on $\interval[open left, open right]{-\infty}{-3}\cup\interval[open left, open right]{-3}{3}\cup\interval[open left, open right]{3}{\infty}$
+\end{itemize}
+
+\problem{12}
+\begin{itemize}
+	\item[(a)]
+	\begin{enumerate}
+		\item Let $f(x)=4x^3-6x^2+3x-2$.
+		\item Let $N=0$.
+		\item $f$ is continuous on $\mathbb{R}$ because $f$ is a polynomial and polynomials are continuous on $\mathbb{R}$ by Theorem 2.
+		\item $f(1)=4-6+3-2=-1$ and $f(2)=32-24+6-2=12$. Observe that $f(1)<N<f(2)$.
+		\item Therefore, by the IVT, there exists some $c\in(1,2)$ such that $f(c)=0$.
+		\item Thus the equation $4x^3-6x^2+3x-2=0$ has at least one real root.
+	\end{enumerate}
+
+	\item[(b)]
+	\begin{enumerate}
+		\item Let $g(x)=\cos x-x$.
+		\item Let $N=0$.
+		\item $g$ is continuous on $\mathbb{R}$. $\cos$ is continuous on its domain ($\mathbb{R}$) as it is a trigonometric function, while $x$ is a polynomial and continuous on $\mathbb{R}$.
+		\item $g(0)=1-0=1$ and $g(\pi/2)=-\pi/2$. Observe that $g(\pi/2)<N<g(0)$.
+		\item Therefore, by the IVT, there exists some $c\in(0,\pi/2)$ such that $g(c)=0$ and the equation $g(x)=0$ has at least one real root.
+		\item Thus $\cos x-x=0$ has at least one real root, so $\cos x=x$ has at least one real root.
+	\end{enumerate}
+\end{itemize}
+
+\aps
+\begin{itemize}
+	\item[13.]A
+	\item[14.] $f$ is continuous (given). $f(-\pi)\approx0.14$ and $f(-\pi/2)\approx0.45$. $f(-\pi)<0.240<f(-\pi/2)$. Therefore there exists some $c(-\pi,-\pi/2)$ such that $f(c)=0.240$ by the IVT. $c\approx-2.09$.
+	\item[15.]A
+\end{itemize}
+
+\end{document}

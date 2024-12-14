@@ -1,0 +1,242 @@
+\documentclass{article}
+
+\usepackage[letterpaper,top=0.6in, left=0.8in, right=0.8in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{siunitx}
+\usepackage{esdiff}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{vwcol}
+\usepackage{interval}
+\usepackage{afterpage}
+\usepackage{tikz}
+\usepackage{mdframed}
+\usepackage{cancel}
+\usepackage{tabularray}
+
+\intervalconfig {
+	soft open fences
+}
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\fontsize{12pt}{12pt}\selectfont
+
+\title{Problem Set \#38}
+\author{Jayden Li}
+\date{January 6, 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+In class we found that $f(x)=x^2-3x+2$. For an arbitrary function
+$g$, $f(x)$ must equal $0$ to cancel the $g(x)$ term.
+\centering
+\begin{minipage}[t]{0.3\linewidth}
+\[
+\begin{aligned}
+	f(x)&=0 \\
+	(x-2)(x-1)&=0 \\
+\end{aligned}
+\]
+\begin{equation*}
+	x=2,\,x=1
+\end{equation*}
+\begin{align*}
+	f(x)g(x)+a_nx+b_n&=x^{n+1} \\
+	f(2)g(2)+2a_n+b_n&=2^{n+1} \\
+	f(1)g(1)+1a_n+b_n&=1^{n+1} \\
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth}
+\[
+\begin{aligned}
+	2a_n+b_n&=2^{n+1}&(1) \\
+	a_n+b_n&=1&(2) \\
+	2a_n+2b_n&=2&(3)
+\end{aligned}
+\]
+\begin{gather*}
+	(1)-(2):\,
+	\setlength{\abovedisplayskip}{3pt}
+	\boxed{a_n=2^{n-1}-1} \\
+	(3)-(1):\,
+	\boxed{b_n=2-2^{n+1}}
+\end{gather*}
+\end{minipage}
+\flushleft
+
+\section*{Problem 2}
+Given that $a=10$ and $b=5$, the equation for the ellipse is
+$\displaystyle{\frac{x^2}{100}+\frac{y^2}{25}=1}$.
+
+\centering
+\begin{minipage}[t]{0.4\linewidth}
+\[\begin{aligned}
+	a_1+a_2+a_3&=255 \\
+	a_1+d+a_1+d+a_1+2d&=255 \\
+	3a_1+3d&=255 \\
+	a_2&=85 \\
+	\\
+	a_1&=\left|OP_1\right|^2 \\
+	a_1&=(\sqrt{10^2+0^2})^2 \\
+	a_1&=100 \\
+	\\
+	d&=a_2-a_1 \\
+	d&=85-100 \\
+	d&=-15 \\
+	\\
+	a_3&=a_2+d \\
+	a_3&=70
+\end{aligned}\]
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth}
+\begin{align*}
+	\frac{x_3^2}{100}+\frac{y_3^2}{25}&=1 \\
+	x_3^2+y_3^2&=70 \\
+	\\
+	x_3^2+4y_3^2&=100 \\
+	x_3^2+y_3^2&=70 \\
+	\\
+	3y_3^2&=30 \\
+	y_3&=\pm\sqrt{10} \\
+	\\
+	x_3^2+10&=70 \\
+	x_3&=\pm\sqrt{60}
+\end{align*}
+\setlength{\abovedisplayskip}{0pt}
+\qquad\fbox{\parbox[t][0.47in]{1.775in}{\begin{gather*}
+	(\sqrt{60},\sqrt{10}),\,(\sqrt{60},-\sqrt{10}), \\
+	(-\sqrt{60},\sqrt{10}),\,(-\sqrt{60},-\sqrt{10})
+\end{gather*}}}
+\end{minipage}
+\flushleft
+
+\section*{Problem 4}
+\begin{itemize}
+\item[(a)]
+\begin{align*}
+	f(x)&=\sqrt{x^2-4},\,x\leq-1 \\
+	\intertext{Range of $f$: $f(x)\geq0$}
+	x&=\sqrt{f^{-1}(x)^2-4},\,f^{-1}(x)\leq-2 \\
+	x^2&=f^{-1}(x)^2-4 \\
+	f^{-1}(x)&=\pm\sqrt{x^2+4}
+	\intertext{If the $\pm$ were plus, then
+	$f^{-1}(x)\geq2$. If the $\pm$ were minus, then
+	$f^{-1}(x)\leq2$. In addition, the range of $f$
+	is the domain of $f^{-1}$. Therefore:}
+	\Aboxed{f^{-1}(x)&=-\sqrt{x^2+4},\,x\geq0}
+\end{align*}
+
+\item[(b)]
+\begin{align*}
+	a_n&=-f^{-1}(a_{n-1}) \\
+	a_n&=\sqrt{a_{n-1}^2+4} \\
+	a_n^2&=a_{n-1}^2+4 \\
+	\intertext{$a_n^2$ is an arithmetic sequence with $d=4$}
+	a_n^2&=a_1+4(n-1) \\
+	a_n^2&=4n-3 \\
+	a_n&=\pm\sqrt{4n-3}
+	\intertext{$-$ will not work because $a_1$ would equal
+	$-\sqrt{4-3}=-1\neq1$}
+	\Aboxed{a_n&=\sqrt{4n-3}}
+\end{align*}
+
+\item[(c)]
+\begin{align*}
+	b_n&=\frac{1}{a_n+a_{n+1}} \\
+	&=\frac{1}{\sqrt{4n-3}+\sqrt{4n+1}}\cdot
+		\frac{\sqrt{4n-3}-\sqrt{4n+1}}{\sqrt{4n-3}-\sqrt{4n+1}} \\
+	&=\frac{\sqrt{4n-3}-\sqrt{4n+1}}{4n-3-(4n+1)} \\
+	&=\frac{\sqrt{4n-3}-\sqrt{4n+1}}{-4} \\
+	&=\frac{a_n-a_{n+1}}{-4}
+\end{align*}
+Let $S_n$ be the $n$th partial sum of $b_n$.
+\begin{align*}
+	S_n&=b_1+b_2+\cdots+b_n \\
+	&=\frac{a_1-a_2}{-4}+\frac{a_2-a_3}{-4}+\cdots+
+		\frac{a_{n-1}-a_n}{-4}+\frac{a_n-a_{n+1}}{-4} \\
+	&=-\frac{1}{4}(a_1\cancel{-a_2}\cancel{+a_2}\cancel{-a_3}+
+		\hdots\cancel{+a_{n-1}}\cancel{-a_n}\cancel{+a_n}-a_{n+1}) \\
+	&=-\frac{1}{4}(a_1-a_{n+1}) \\
+	&=\boxed{-\frac{1-\sqrt{4n+1}}{4}}
+\end{align*}
+\end{itemize}
+
+\section*{Problem 6}
+\begin{itemize}
+\item[(a)]
+\begin{minipage}[t]{0.4\linewidth}
+\begin{align*}
+	a_3a_4&=117 \\
+	a_2+a_5&=22 \\
+	\\
+	(a_1+2d)(a_1+3d)&=117 \\
+	(a_1+d)+(a_1+4d)&=22 \\
+	\\
+	a_1^2+5a_1d+6d^2&=117 \\
+	2a_1+5d&=22 \\
+	a_1&=11-\frac{5d}{2}
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\begin{align*}
+	\left(11-\frac{5d}{2}\right)^2+5d\left(11-\frac{5d}{2}\right)+
+		6d^2&=117 \\
+	121\cancel{-55d}+\frac{25d^2}{4}\cancel{+55d}-\frac{25d^2}{2}+
+		6d^2&=117 \\
+	\frac{25d^2}{4}-\frac{50d^2}{4}+\frac{24d^2}{4}&=-4 \\
+	25d^2-50d^2+24d^2&=-16 \\
+	-d^2&=-16 \\
+	d&=4
+\end{align*}
+\end{minipage}
+\begin{gather*}
+	a_1=11-\frac{5\cdot4}{2}=1 \\
+	a_n=1+4(n-1) \\
+	\boxed{a_n=4n-3}
+\end{gather*}
+
+\item[(b)]
+\begin{align}
+	b_n&=\frac{\frac{1}{2}(1+4n-3)n}{n+p} \nonumber\\
+	&=\frac{n(2n-1)}{n+p} \\
+	&=\frac{2n(n-\frac{1}{2})}{n+p}
+\end{align}
+For $b_n$ to be an arithmetic sequence, it can be written as a
+in the form $b_n=b_1+d(n-1)$. This implies that in the above formula
+for $b_n$, $\frac{n}{2}\left(n-\frac{1}{2}\right)$ is divisble
+by $n+p$. This leaves two possibilities:
+
+\centering
+\begin{minipage}[t]{0.4\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	\text{\textbf{Case 1.} Equation (1): }n&=n+p \\
+	p&=0
+	\intertext{\centering{However $p$ is a nonzero constant.}}
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\setlength{\abovedisplayskip}{0pt}
+\begin{align*}
+	\text{\textbf{Case 2.} Equation (2): }n-\frac{1}{2}&=n+p \\
+	\Aboxed{p&=-\frac{1}{2}}
+\end{align*}
+\end{minipage}
+
+\end{itemize}
+
+\end{document}

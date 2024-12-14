@@ -1,0 +1,376 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{pgfplots}
+\usepackage[skip=6pt]{parskip}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\paren}[1]{\ensuremath\left(#1\right)}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\limit}[2][x]{\ensuremath{\displaystyle\lim_{#1\to#2}}}
+\newcommand*{\Limit}[3][x]{\ensuremath{\displaystyle\lim_{#1\to#2}\left[#3\right]}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\Deriv}[2][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}\left[#2\right]}}
+\newcommand*{\iinteg}[2][x]{\ensuremath{\displaystyle\int #2\;\mathrm{d}#1}}
+\newcommand*{\dinteg}[4][x]{\ensuremath{\displaystyle\int_{#2}^{#3}#4\;\mathrm{d}#1}}
+\newcommand*{\abs}[1]{\ensuremath{\left|#1\right|}}
+\newcommand*{\eps}{\varepsilon}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\cbrt}[1]{\ensuremath{\sqrt[3]{#1}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+% \setstretch{1.25}
+% \fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+
+% \problem{2}
+% Let $P:\mathbb{R}\to\mathbb{R}$ be an $n$-degree-or-less polynomial in the following form:
+% \begin{equation*}
+% 	P(x)=\sum_{k=1}^{n}c_kx^k+c_0
+% \end{equation*}
+% Where $c_k$ is a real constant. We write it as such instead of $P(x)=\sum_{k=0}^{n}c_kx^k$ in order to avoid the issue of $P(0)$ being undefined due to $0^0$.
+
+% Observe that because $P(0)=0$, the constant term $c_0$ must equal $0$.
+
+% Suppose that the degree of $P$ is less than $2 \iff n=2$.
+% \begin{align*}
+% 	\sum_{k=1}^{2}c_k\paren{x^2+1}^k&=\paren{\sum_{k=1}^{2}c_kx^k}^2+1 \\
+% 	c_1\paren{x^2+1}+c_2\paren{x^2+1}^2&=\paren{c_1x+c_2x^2}^2+1 \\
+% 	c_1x^2+c_1+c_2x^4+2c_2x^2+c_2&=c_1^2x^2+2c_1c_2x^3+c_2^2x^4+1 \\
+% 	c_2x^4+(c_1+2c_2)x^2+(c_1+c_2)&=c_2^2x^4+2c_1c_2x^3+c_1^2x^2+1
+% \end{align*}
+% By matching coefficients, all of the following must be true.
+% \begin{align}
+% 	c_2&=c_2^2 \implies c_2\in\{-1,0,1\} \\
+% 	c_1+2c_2&=c_1^2 \\
+% 	2c_1c_2&=0 \implies 0\in\{c_1,c_2\} \\
+% 	c_1+c_2&=1 \implies c_2=-c_1
+% \end{align}
+
+% If $c_2=0$, then $c_1=1$, which satisfies all 4 conditions. Thus, \boxed{P(x)=x} is a solution.
+
+% If $c_2=1$, then $c_1=0$ because $(3)$, which contradicts $(2)$.
+
+% If $c_2=-1$, then $c_1=0$ because $(3)$, which contradicts $(4)$.
+
+% \pagebreak
+
+% \begin{align*}
+% 	\sum_{k=1}^{3}c_k\paren{x^2+1}^k&=\paren{\sum_{k=1}^{3}c_kx^k}^2+1 \\
+% 	c_1\paren{x^2+1}+c_2\paren{x^2+1}^2+c_3\paren{x^2+1}^3&=\paren{c_1x+c_2x^2+c_3x^3}^2+1 \\
+% 	\begin{aligned}
+% 		c_1x^2+c_1+c_2x^4+2c_2x^2+c_2+& \\
+% 		c_3x^6+3c_3x^4+3c_3x^2+c_3&
+% 	\end{aligned}&=\begin{aligned}
+% 		&c_1^2x^2+2c_1xc_2x^2+2c_1xc_3x^3+ \\
+% 		&c_2^2x^4+2c_2x^2c_3x^3+c_3^2x^6+1 \\
+% 	\end{aligned} \\
+% 	\begin{aligned}
+% 		c_3x^6+(c_2+3c_3)x^4+(c_1+2c_2+3c_3)x^2+& \\
+% 		(c_1+c_2+c_3) &
+% 	\end{aligned}&=\begin{aligned}
+% 		&c_1^2x^2+2c_1c_2x^3+2c_1c_3x^4+ \\
+% 		&c_2^2x^4+2c_2c_3x^5+c_3^2x^6+1 \\
+% 	\end{aligned} \\
+% 	\begin{aligned}
+% 		c_3x^6+(c_2+3c_3)x^4+(c_1+2c_2+3c_3)x^2+& \\
+% 		(c_1+c_2+c_3) &
+% 	\end{aligned}&=\begin{aligned}
+% 		&c_3^2x^6+2c_2c_3x^5+(2c_1c_3+c_2^2)x^4+ \\
+% 		&2c_1c_2x^3+c_1^2x^2+1
+% 	\end{aligned}
+% \end{align*}
+% \begin{align}
+% 	c_3&=c_3^2 \implies c_3\in\{-1,0,1\} \\
+% 	2c_2c_3&=0 \implies 0\in\{c_2,c_3\} \\
+% 	c_2+3c_3&=2c_1c_3+c_2^2 \\
+% 	2c_1c_2&=0 \implies 0\in\{c_1,c_2\} \\
+% 	c_1+2c_2+3c_3&=c_1^2 \\
+% 	c_1+c_2+c_3&=1
+% \end{align}
+
+% Suppose $c_2=0$, then $c_1+c_3=0$ and $c_1+3c_3=c_1^2$.
+% \begin{itemize}
+% 	\item Suppose $c_3=-1$, then $c_1=2$, which contradicts $(9)$.
+% 	\item Suppose $c_3=0$, then $c_1=1$, which satisfies all 6 conditions. We have rediscovered $P(x)=x$.
+% 	\item Suppose $c_3=1$, then $c_1=0$, which contradicts $(9)$.
+% \end{itemize}
+
+% Suppose $c_1=0$ and $c_2\neq0$, then $c_3=0$ and $c_2=1$, which contradicts $(9)$.
+
+% \pagebreak
+
+% \begin{align*}
+% 	\sum_{k=1}^{n+1}c_k\paren{x^2+1}^k&=\paren{\sum_{k=1}^{n+1}c_kx^k}^2+1 \\
+% 	\sum_{k=1}^{n}c_k\paren{x^2+1}^k+c_{n+1}\paren{x^2+1}^{n+1}&=\paren{\sum_{k=1}^{n}c_kx^k+c_{n+1}x^{n+1}}^2+1 \\
+% 	\sum_{k=1}^{n}c_k\paren{x^2+1}^k+c_{n+1}\paren{x^2+1}^{n+1}&=\paren{\sum_{k=1}^{n}c_kx^k}^2+2c_{n+1}x^{n+1}\sum_{k=1}^{n}c_kx^k+(2c_{n+1}x^{n+1})^2+1 \\
+% \end{align*}
+
+% \pagebreak
+
+\problem{1}
+
+\begin{mdframed}
+	\textit{Prove or disprove: If $x,y\in\mathbb{R}$ with $y\geq0$ and $y(y+1)\leq(x+1)^2$, then $y(y-1)\leq x^2$.}
+\end{mdframed}
+
+Observe that the two regions are bounded by hyperbolas. We will calculate the standard forms for the two hyperbolas and parameterize them. Define $R_0:y(y+1)\leq(x+1)^2$ and $R_1:y(y-1)\leq x^2$. Notice that if $R_0$ were a subset of $R_1$, then any point on $R_0$ must automatically be on $R_1$.
+
+\begin{multicols}{2}
+	\begin{align*}
+		y(y+1)&\leq(x+1)^2 \\
+		y^2+y&\leq(x+1)^2 \\
+		\paren{y+\frac12}^2-\frac14-(x+1)^2&\leq0 \\
+		4\paren{y+\frac12}^2-4(x+1)^2&\leq1 \\
+		\frac{\paren{y+\frac12}^2}{(1/2)^2}-\frac{(x+1)^2}{(1/2)^2}&\leq1
+	\end{align*}
+	\begin{align}
+		x_0(t)&=-1+\frac12\tan t \\
+		y_0(t)&=-\frac{1}{2}+\frac12\sec t
+	\end{align}
+
+	\begin{align*}
+		y(y-1)&\leq x^2 \\
+		y^2-y&\leq x^2 \\
+		\paren{y-\frac12}^2-\frac14-x^2\leq0 \\
+		4\paren{y-\frac12}^2-4x^2\leq1 \\
+		\frac{\paren{y-\frac12}^2}{(1/2)^2}-\frac{x^2}{(1/2)^2}&\leq1
+	\end{align*}
+	\begin{align}
+		x_1(t)&=\frac12\tan t \\
+		y_1(t)&=\frac{1}{2}+\frac12\sec t
+	\end{align}
+\end{multicols}
+
+Next, we calculate the interval for $y$ which satisfies each of the two inequalities at some arbitrary value $x$.
+
+Observe that $x_0,x_1$ maps the parameter $t$ to its corresponding $x$ coordinate. We need to calculate $x_0^{-1},x_1^{-1}$ which will map the $x$ coordinate to the parameter. We can then evaluate $y_0,y_1$ at the value $t$ calculated by these inverse functions to obtain the desired interval for $y$
+
+However, $x_0^{-1}$ and $y_0^{-1}$ are actually multivalued, because there are two values $t$ for which a the $x$-coordinate of a point on a hyperbola equals some constant. Define the upper branch to be $x_{00}^{-1}$ and $x_{10}^{-1}$, and define the lower branch to be $x_{01}^{-1}$ and $x_{11}^{-1}$. It follows from this definition that $x_{00}^{-1}(x)>x_{01}^{-1}(x)$ and $x_{10}^{-1}(x)>x_{11}^{-1}(x)$.
+
+\begin{align*}
+	&x_0(t)=-1+\frac12\tan t \implies 2x_0(t)+2=\tan t \implies x_{00}^{-1}(x)=\arctan(2x+2)+\pi,\;x_{01}^{-1}(x)=\arctan(2x+2) \\
+	&x_1(t)=\frac12\tan t \implies 2x_1(t)=\tan t \implies x_{10}^{-1}(x)=\arctan(2x)+\pi,\;x_{11}^{-1}(x)=\arctan(2x)
+\end{align*}
+
+It is known that:
+\begin{gather}
+	\sec(\arctan\theta)=\sqrt{1+\theta^2} \\
+	\sec(\arctan\theta+\pi)=\frac{1}{\cos(\arctan\theta+\pi)}
+	=\frac{1}{-\cos(\arctan\theta)}=-\sec(\arctan\theta)=-\sqrt{1+\theta^2}
+\end{gather}
+The square root of any positive number is positive, and $1+\theta^2$ must be positive for any real value $\theta$. Therefore:
+\begin{equation}
+	\sec(\arctan\theta)\geq\sec(\arctan\theta+\pi)\leq-1
+\end{equation}
+
+Therefore, $y_0(\arctan\theta)>y_0(\arctan\theta+\pi)$ for all $\theta$, since $y_0$ is the secant function scaled by a positive number added to a constant. Likewise, $y_1(\arctan\theta)>y_1(\arctan\theta+\pi)$.
+
+Because $x_{00}^{-1}(x)=x_{01}^{-1}(x)+\pi$, from the above inequality we see that $y_0(x_{01}^{-1}(x))>y_0(x_{00}^{-1}(x))$. Likewise, by similar logic $y_1(x_{11}^{-1}(x))>y_1(x_{10}^{-1}(x))$.
+
+Thus, for any value of $c$, the intersection between  the set of all points on $R_0$ and the set of all points contained on the vertical line $x=c$ is precisely the interval $I_0=[y_0(x_{00}^{-1}(c)),y_0(x_{01}^{-1}(c))]$. Similarly, the intersection between the line $x=c$ and the region $R_1$ is the interval $I_1=[y_1(x_{10}^{-1}(c)),y_1(x_{11}^{-1}(c))]$.
+
+Notice that $\sec(x_{00}^{-1}(c)),\sec(x_{10}^{-1}(c))<-1$, which means that $y_0(x_{00}^{-1}(c)),y_1(x_{10}^{-1}(c))<0$. However, $y\geq0$ so the intervals should actually be defined as $I_0=[0,y_0(x_{01}^{-1}(c))]$ and $I_1=[0,y_1(x_{11}^{-1}(c))]$.
+
+Notice that because $y_0$ and $y_1$ differ by a constant, $y_0(x_{01}^{-1}(c))<y_1(x_{11}^{-1}(c))$. Thus, the right end point of $I_0$ must be less than the right end point of $I_1$. This implies that $I_0\subset I_1$, which implies that $R_0\subset R_1$.
+
+Since $R_0$ is a subset of $R_1$, it follows that every point $(x,y)\in R_0$ must also be on $R_1$. \qed
+
+\problem{2}
+
+\begin{mdframed}
+	\textit{Find all polynomial P such that $P(x^2+1)=(P(x))^2+1$ and $P(0)=0$}
+\end{mdframed}
+
+We start by writing out some values of $P(x)$.
+\begin{itemize}
+	\item $P(0)=0$.
+	\item $P(1)=P(0^2+1)=(P(0))^2+1=1$.
+	\item $P(2)=P(1^2+1)=(P(1))^2+1=2$.
+	\item $P(5)=P(2^2+1)=(P(2))^2+1=5$.
+\end{itemize}
+\ldots and so on. We define a sequence $\{a_n\}$ where $a_{n+1}=a_n^2+1$ and $a_0=0$. I claim that for any $n\in\mathbb{N}_0$, $P(a_n)=a_n$.
+
+\begin{proof}
+	We will use induction.
+
+	\textbf{Base case.} $n=0$. It is known that $P(a_0)=P(0)=0=a_0$.
+
+	\textbf{Hypothesis.} Suppose that $P(a_n)=a_n$. Need to show that $P(a_{n+1})=a_{n+1}$.
+	
+	\textbf{Inductive step.}
+	$P(a_{n+1})=P\paren{a_n^2+1}=(P(a_n))^2+1=(a_n)^2+1=a_{n+1}$.
+\end{proof}
+
+\begin{mdframed}
+	\textbf{Lemma 1.} \textit{$m^2\geq m$ for all $m\in\mathbb{N}_0$.}
+	\begin{proof}
+		If $m\geq1$, we can divide both sides by $m$ to obtain $m\geq1$, which is true. If $m=0$, then $0^2=0\geq0$. 
+	\end{proof}
+\end{mdframed}
+
+I also claim that $a$ diverges and tends to $\infty$, which can be shown with the lemma.
+
+\begin{proof}
+	First, we show that $a_n\geq n$ by induction.
+
+	\textbf{Base case.} $a_0=0\geq0$.
+
+	\textbf{Hypothesis.} Suppose that $a_n\geq n$. Need to show that $a_{n+1}\geq n+1$.
+
+	\textbf{Inductive step.} $a_n\geq n \implies a_n^2\geq n \implies a_n^2+1\geq n+1 \implies a_{n+1}\geq n+1$.
+
+	Therefore, if $n$ was arbitrarily large, $a_n$ would always be larger than or equal to $n$. Thus, $a$ diverges and tends to $\infty$.	
+\end{proof}
+
+\vspace*{-8pt}
+\rule{\textwidth}{0.1pt}
+
+I will now use some nice calculus theorems we just learned in PCH. $P$ is a polynomial, so it must be differentiable and continuous on $\mathbb{R}$. By the Mean Value theorem, for all $m\in\mathbb{N}_0$, the following must be true for some $c\in(a_m,a_{m+1})$:
+
+\begin{equation*}
+	P'(c)=\frac{P(a_{m+1})-P(a_m)}{a_{m+1}-a_m}=\frac{a_{m+1}-a_m}{a_{m+1}-a_m}=1
+\end{equation*}
+
+However, because there are infinitely many natural numbers, $P'(x)=1$ must have infinitely many solutions. Because $P$ is a polynomial, $P'$ is also a polynomial. Let $f(x)=P'(x)-1$, so $f$ has a root at any and all points where $P'(x)=1$. $P'(x)$ cannot equal $1$ at infinitely many points because $f$ cannot have infinitely many roots. Therefore, $P'$ must be the constant function with $P'(x)=1$.
+
+\begin{equation*}
+	P(x)=\iinteg{1}=x+C
+\end{equation*}
+
+$P(0)=0$ so the constant is $0$. Thus, \boxed{P(x)=x}.
+
+% Let $P:\mathbb{R}\to\mathbb{R}$ be an $n$-degree-or-less polynomial in the following form:
+% \begin{equation*}
+% 	P(x)=\sum_{k=1}^{n}c_kx^k+c_0
+% \end{equation*}
+% Where $c_k$ is a real constant. We write it as such instead of $P(x)=\sum_{k=0}^{n}c_kx^k$ in order to avoid the issue of $P(0)$ being undefined due to $0^0$. Observe that because $P(0)=0$, the constant term $c_0$ must equal $0$.
+% \begin{align*}
+% 	\sum_{k=1}^{n}c_k\paren{x^2+1}^k+c_0&=\paren{\sum_{k=1}^{n}c_kx^k}^2+c_0+1 \\
+% 	\sum_{k=1}^{n}c_k\paren{x^2+1}^k&=\paren{\sum_{k=1}^{n}c_kx^k}^2+1
+% 	\intertext{Apply binomial theorem and \url{https://math.stackexchange.com/a/3241579}}
+% 	\sum_{k=1}^{n}\paren{c_k\sum_{m=0}^{k}\binom{k}{m}\paren{x^2}^m1^{k-m}}&=\sum_{k=1}^{n}\sum_{m=1}^{n}c_kx^kc_mx^m+1 \\
+% 	\sum_{k=1}^{n}\paren{c_k\sum_{m=0}^{k}\binom{k}{m}x^{2m}}&=\sum_{k=1}^{n}\sum_{m=1}^{n}c_kx^kc_mx^m+1 \\
+% 	\sum_{k=1}^{n}\paren{c_k\sum_{m=0}^{k}\binom{k}{m}x^{2m}}-\sum_{k=1}^{n}\sum_{m=1}^{n}c_kx^kc_mx^m&=1 \\
+% 	\sum_{k=1}^{n}\paren{c_k\sum_{m=0}^{k}\binom{k}{m}x^{2m}-\sum_{m=1}^{n}c_kx^kc_mx^m}&=1 \\
+% 	\sum_{k=1}^{n}\paren{c_k\sum_{m=1}^{k}\binom{k}{m}x^{2m}+c_k\binom{k}{0}x^{0}-\sum_{m=1}^{n}c_kc_mx^{k+m}}&=1 \\
+% 	\sum_{k=1}^{n}\paren{c_k\sum_{m=1}^{k}\binom{k}{m}x^{2m}-\sum_{m=1}^{n}c_kc_mx^{k+m}}+\sum_{k=1}^{n}c_k&=1
+% 	\intertext{The constant terms on the left and right hand side must equal each other. Therefore, $\sum_{k=1}^{n}c_k=1$.}
+% 	\sum_{k=1}^{n}\paren{c_k\sum_{m=1}^{k}\binom{k}{m}x^{2m}-\sum_{m=1}^{n}c_kc_mx^{k+m}}&=0 \\
+% 	\sum_{k=1}^{n}c_k\sum_{m=1}^{k}\binom{k}{m}x^{2m}&=\sum_{k=1}^{n}\sum_{m=1}^{n}c_kc_mx^{k+m}
+% \end{align*}$
+% We work with the left-hand side first.
+% \begin{gather*}
+% 	\sum_{k=1}^{n}c_k\sum_{m=1}^{k}\binom{k}{m}x^{2m}=c_1\sum_{m=1}^{1}\binom{1}{m}x^{2m}+c_2\sum_{m=1}^{2}\binom{2}{m}x^{2m}+c_3\sum_{m=1}^{3}\binom{3}{m}x^{2m}+\ldots+c_n\sum_{m=1}^{n}\binom{n}{m}x^{2m} \\
+% 	=c_1\binom{1}{1}x^2+c_2\binom{2}{1}x^2+c_2\binom{2}{2}x^4+c_3\binom{3}{1}x^2+c_3\binom{3}{2}x^4+c_3\binom{3}{3}x^6+\ldots+c_n\sum_{m=1}^{n}\binom{n}{m}x^{2m}
+% \end{gather*}
+% Observe that, after ``unrolling'' all the summations, there will be exactly $k$ $x^2$ terms, $k-1$ $x^4$ terms, $k-2$ $x^6$ terms, etc., and there will be only one $x^2n$ term.
+
+% Further, notice that the coefficient on the $x^{2d}$ where $d\in\mathbb{N}_1$ term will be:
+% \begin{equation*}
+% 	c_d\binom{d}{d}+c_{d+1}\binom{d+1}{d}+c_{d+2}\binom{d+2}{d}+\ldots+c_n\binom{n}{d}=\sum_{i=d}^{n}c_i\binom{i}{d}
+% \end{equation*}
+% The largest exponent of $x$ is $2n$ and the lowest is $2$, so $d\in\mathbb{N}\cap[1,n]$.
+
+% This formula suggests that the coefficient of the $x^{2d}$ term will be the sum of exactly $n-d+1$ terms, which is what we found earlier.
+
+% We may now turn our attention to the right-hand side, which is:
+% \begin{equation*}
+% 	\sum_{k=1}^{n}\sum_{m=1}^{n}c_kc_mx^{k+m}
+% \end{equation*}
+% This expression says that the coefficient of the $x^p$ where $p\in\mathbb{N}_1$ is the sum of all $c_kc_m$ where $k+m=p$ and $1\leq k,m\leq n$. Notice that because $k$ and $m$ are at least $1$, $\max(k,m)=p-1$. Also notice that $m=p-k$. If $p$ is even, the coefficient of $x^p$ can be written as the following sum:
+% \begin{gather*}
+% 	c_1c_{p-1}+c_2c_{p-2}+c_3c_{p-3}+\ldots+c_{p/2-1}c_{p/2+1}+c_{p/2}c_{p/2}+c_{p/2+1}c_{p/2-1}+\ldots+c_{p-3}c_3+c_{p-2}c_2+c_{p-1}c_1 \\
+% 	\intertext{Observe that everything to the left of $c_{p/2}c_{p/2}$ is equal to everything to the right.}
+% 	=2\paren{c_1c_{p-1}+c_2c_{p-2}+c_3c_{p-3}+\ldots+c_{p/2-1}c_{p/2+1}}+c_{p/2}^2 \\
+% 	=2\sum_{k=1}^{p/2-1}c_kc_{p-k}+c_{p/2}^2
+% \end{gather*}
+% However, it is possible for one of the indices of $c$ to be greater than $n$. In such a case, we define $c_k=0$ if $k>n$.
+
+% Using a similar process, we have the following formula for if $p$ is odd:
+% \begin{equation*}
+% 	2\sum_{k=1}^{(p-1)/2}c_kc_{p-k}
+% \end{equation*}
+
+% Also notice that the largest exponent is $2n$ and the lowest is $2$. Therefore, $p\in\mathbb{N}\cap[2,2n]$.
+
+% Now, we can put the two sides together.
+
+% First, notice that the left-hand side only contains even powers of $x$. Then, we can match coefficients for even values of $p$. Because we found the coefficients of $x^{2d}$ earlier, let $d=p/2\iff p=2d$. Notice that the interval of $2d\in\mathbb{N}\cap[2,2n]$ is exactly the same as that of $p\in\mathbb{N}\cap[2,2n]$.
+% \begin{align}
+% 	2\sum_{k=1}^{(p-1)/2}c_kc_{p-k}&=0 & \text{for all odd $p$}\\
+% 	2\sum_{k=1}^{p/2-1}c_kc_{p-k}+c_{p/2}^2&=\sum_{k=p/2}^{n}c_k\binom{k}{p/2} & \text{for all even $p$} \\
+% 	% \implies 2\sum_{k=1}^{p/2-1}c_kc_{p-k}+c_{p/2}^2-\sum_{k=p/2}^{n}c_k\binom{k}{p/2}&=0 & \text{for all even $p$} \\
+% 	\sum_{k=1}^{n}c_k&=1
+% 	% \implies \sum_{k=1}^{n}c_k-1&=0
+% \end{align}
+
+% Suppose $p=3$.
+% \begin{equation*}
+% 	2\sum_{k=1}^{(3-1)/2}c_kc_{3-k}=2c_1c_2=0 \implies c_1c_2=0 \implies 0\in\{c_1,c_2\}
+% \end{equation*}
+
+% Then suppose $p=2$.
+% \begin{align*}
+% 	2\sum_{k=1}^{2/2-1}c_kc_{2-k}+c_{2/2}^2&=\sum_{k=2/2}^{n}c_k\binom{k}{2/2} \\
+% 	2\sum_{k=1}^{0}c_kc_{2-k}+c_1^2&=\sum_{k=1}^{n}c_k\paren{\frac{k!}{1!(k-1)!}} \\
+% 	c_1^2&=\sum_{k=1}^{n}kc_k \\
+% 	c_1^2&=\sum_{k=1}^{n}c_k+\sum_{k=1}^{n}(k-1)c_k
+% 	\intertext{Apply equation $(3)$.}
+% 	c_1^2&=1+\sum_{k=1}^{n}(k-1)c_k \\
+% 	c_1^2&=1+c_2+2c_3+3c_4+\ldots+(n-1)c_n
+% \end{align*}
+% \begin{align*}
+% 	2\sum_{k=1}^{4/2-1}c_kc_{4-k}+c_{4/2}^2&=\sum_{k=4/2}^{n}c_k\binom{k}{4/2} \\
+% 	2\sum_{k=1}^{1}c_kc_{4-k}+c_2^2&=\sum_{k=2}^{n}c_k\paren{\frac{k!}{2!(k-2)!}} \\
+% 	2c_1c_3+c_1^2&=\sum_{k=1}^{n}\paren{\frac{k(k-1)}{2}}c_k \\
+% 	2c_1c_3+c_1^2&=c_2+3c_3+6c_4+10c_5+15c_6 \\
+% \end{align*}
+% Suppose $c_2=0$.
+
+% \textcolor{blue}{Not sure how to proceed -- I was thinking about inducting on $n$? That is, to show that if $\{c_1,c_2,\ldots,c_n\}=\{1,0,0,\ldots\}$, then that must hold for $n+1$.}
+
+
+\end{document}
+

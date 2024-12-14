@@ -1,0 +1,156 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\renewcommand{\Re}{{\mathrm{Re}}}
+\renewcommand{\Im}{{\mathrm{Im}}}
+
+% \allowdisplaybreaks
+
+%opening
+\title{Problem Set \#53}
+\author{Jayden Li}
+\date{February 16, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\section*{Problem 7}
+\begin{itemize}
+\item[(b)]
+	\begin{align*}
+		|3-\sqrt{3}i|&=\sqrt{9+3}=\sqrt{12} \\
+		\arg(3-\sqrt{3}i)&=\arctan\left(\frac{-\sqrt{3}}{3}\right)=-\frac{\pi}{6} \\
+		\\
+		(3-\sqrt{3})^5&=\left(\sqrt{12}e^{-\frac{i\pi}{6}}\right)^5 \\
+		&=(\sqrt{12})^5\left(\cos\left(-\frac{\pi}{6}\right)+i\sin\left(-\frac{\pi}{6}\right)\right)^5 \\
+		&=(\sqrt{12})^4(\sqrt{12})\left(\cos\left(-\frac{5\pi}{6}\right)+i\sin\left(-\frac{5\pi}{6}\right)\right) \\
+		&=144(2\sqrt{3})\left(-\frac{\sqrt{3}}{2}-\frac{1}{2}i\right) \\
+		&=-\frac{144\cdot2\cdot3}{2}-\frac{288\sqrt{3}}{2}i \\
+		&=\boxed{-432-144\sqrt{3}i}
+	\end{align*}	
+\end{itemize}
+
+\section*{Problem 10}
+\begin{itemize}
+\item[(a)]
+	Let $z=a+bi$. Then $\overline{z}=a-bi$, $\Re(z)=a$ and $\Im(z)=b$.
+	\begin{align*}
+		\frac{z+\overline{z}}{2}&=\frac{a+bi+a-bi}{2}=\frac{2a}{2}=\Re(z) \\
+		\frac{z-\overline{z}}{2i}&=\frac{a+bi-a+bi}{2i}=\frac{2bi}{2i}=b=\Im(z)
+	\end{align*}
+	\qed
+
+\item[(b)]
+	\begin{align}
+		e^{i\theta}&=\cos\theta+i\sin\theta \\
+		e^{-i\theta}&=\cos(-\theta)+i\sin(-\theta)=\cos\theta-i\sin\theta
+	\end{align}
+	\begin{minipage}[t]{0.5\linewidth}
+		$(1)+(2)$:
+		\begin{align*}
+			e^{i\theta}+e^{-i\theta}&=2\cos\theta \\
+			\frac{1}{2}\left(e^{i\theta}+e^{-i\theta}\right)&=\cos\theta
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		$(1)-(2)$:
+		\begin{align*}
+			e^{i\theta}-e^{-i\theta}&=2i\sin\theta \\
+			\frac{1}{2i}\left(e^{i\theta}-e^{-i\theta}\right)&=\sin\theta
+		\end{align*}
+	\end{minipage}
+	\qed
+
+\item[(c)]
+	\begin{minipage}[t]{0.5\linewidth}
+		\begin{align*}
+			\sin(i)&=\frac{1}{2i}\left(e^{i\cdot i}-e^{-i\cdot i}\right) \\
+			&=\frac{1(-i)}{2i(-i)}\left(e^{-1}-e^1\right) \\
+			&=\frac{-i\left(e^{-1}-e^1\right)}{2} \\
+			&=i\left(\frac{e^1-e^{-1}}{2}\right) \\
+			\Aboxed{\sin(i)&=i\sinh1} \\
+			&=\frac{i}{2}\left(\frac{e^2}{e}-\frac{1}{e}\right) \\
+			\Aboxed{\sin(i)&=\frac{ie^2-i}{2e}}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		\begin{align*}
+			\cos(i)&=\frac{1}{2}\left(e^{i\cdot i}+e^{-i\cdot i}\right) \\
+			&=\frac{e^{-1}+e^1}{2} \\
+			\Aboxed{\cos(i)&=\cosh1} \\
+			&=\frac{1}{2}\left(\frac{1}{e}+\frac{e^2}{e}\right) \\
+			\Aboxed{\cos(i)&=\frac{1+e^2}{2e}}
+		\end{align*}
+	\end{minipage}
+
+\item[(d)]
+	Let $\theta=ix$. Then $x=-i\theta$.
+	
+	\begin{minipage}[t]{0.5\linewidth}
+		\begin{align*}
+			\cos(ix)&=\frac{e^{i\cdot ix}+e^{-i\cdot ix}}{2} \\
+			\cos\theta&=\frac{e^{-x}+e^x}{2} \\
+			&=\cosh x \\
+			&=\cosh(-i\theta) \\
+			\Aboxed{\cos\theta&=\cosh(i\theta)}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		\begin{align*}
+			\sin(ix)&=\frac{e^{i\cdot ix}-e^{-i\cdot ix}}{2i} \\
+			\sin\theta&=\frac{e^{-x}-e^x}{2}\cdot\frac{1}{i} \\
+			&=\frac{e^x-e^{-x}}{2}\cdot\frac{1}{-i}\left(\frac{i}{i}\right) \\
+			&=i\sinh x \\
+			&=i\sinh(-i\theta) \\
+			\Aboxed{\sin\theta&=-i\sinh(i\theta)}
+		\end{align*}
+	\end{minipage}
+
+\item[(e)]
+	\begin{align*}
+		\sin(i)&=i\sinh1 \\
+		\cos(i)&=\cosh1
+	\end{align*}
+
+\end{itemize}
+
+\end{document}

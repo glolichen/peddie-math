@@ -1,0 +1,217 @@
+\documentclass[preview, margin=0.6in]{standalone}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{pgfplots}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\paren}[1]{\ensuremath\left(#1\right)}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\limit}[2][x]{\ensuremath{\displaystyle\lim_{#1\to#2}}}
+\newcommand*{\Limit}[3][x]{\ensuremath{\displaystyle\lim_{#1\to#2}\left[#3\right]}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\Deriv}[2][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}\left[#2\right]}}
+\newcommand*{\iinteg}[2][x]{\ensuremath{\displaystyle\int #2\;\mathrm{d}#1}}
+\newcommand*{\dinteg}[4][x]{\ensuremath{\displaystyle\int_{#2}^{#3}#4\;\mathrm{d}#1}}
+\newcommand*{\abs}[1]{\ensuremath{\left|#1\right|}}
+\newcommand*{\eps}{\varepsilon}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\cbrt}[1]{\ensuremath{\sqrt[3]{#1}}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\setlength{\parindent}{0pt}
+
+%opening
+\title{\vspace*{-30pt}Problem Set \#69}
+\author{Jayden Li}
+\date{May 12, 2024}
+
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{2}
+Let $s$ be the side length of the square.
+\begin{align*}
+	V&=s^2 \\
+	\diff Vt&=2s\diff st
+	=2\cdot4\cdot6
+	=48
+\end{align*}
+The area of the square is increasing at a rate of $48\,cm^2/s$.
+
+\problem{4}
+\begin{align*}
+	y&=x^3+2x \\
+	\diff yt&=3x^2\diff xt+2\diff xt
+	=3\cdot2^2\cdot5+2\cdot5=\boxed{70}
+\end{align*}
+
+\problem{6}
+Let $d_1$ be the ground distance between the plane and the radio station and let $d_2$ be the actual distance.
+\begin{align*}
+	d_2^2&=1^2+d_1^2 \\
+	2d_2\diff{d_2}{t}&=2d_1\diff{d_1}{t} \\
+	\sqrt{1+2^2}\diff{d_2}{t}&=2\cdot500 \\
+	\diff{d_2}{t}&=\frac{1000}{\sqrt{5}}\cdot\frac{\sqrt{5}}{\sqrt{5}} \\
+	\diff{d_2}{t}&=\boxed{200\sqrt{5}\,mi/h}
+\end{align*}
+\textit{This is not a very well worded question -- is the actual distance (accounting for altitude) between the plane and the radio station or the ground distance 2 miles? I took it as the latter, so I had $d_1=2$ instead of $d_2=2$.}
+
+\problem{8}
+Let $s$ be the distance traveled by the first car and $w$ the distance traveled by the second.
+\begin{align*}
+	D^2&=s^2+w^2 \\
+	2D\diff Dt&=2s\diff st+2w\diff wt \\
+	\sqrt{(2\cdot60^2)+(2\cdot25)^2}\diff Dt&=(2\cdot60)(60)+(2\cdot25)(25) \\
+	130\diff Dt&=8450 \\
+	\diff Dt&=65
+\end{align*}
+The cars are moving apart at a rate of $65\,mi/h$.
+
+\problem{10}
+Let $h$ be the altitude of the triangle and $b$ be the base.
+\begin{align*}
+	A&=\frac12hb \\
+	\diff At&=\frac12 \diff ht b+\frac12 h \diff bt \\
+	2&=\frac12 20+\frac12 10 \diff bt \\
+	5\diff bt&=2-10 \\
+	\diff bt&=-\frac85
+\end{align*}
+The base of the triangle is decreasing at a rate of $1.6\,cm/min$.
+
+\problem{12}
+Let $h$ be the height of the water. The water in the tank has the shape of a cone with height $h$, and by similar triangles we see that the radius of the cone must be $h/3$.
+
+Let $V$ be the volume of the cone representing the water.
+\begin{align*}
+	V&=\frac13\pi\paren{\frac h3}^2h \\
+	&=\frac{\pi h^3}{27} \\
+	\diff Vt&=\frac{3\pi h^2}{27}\diff ht
+	=\frac{\pi(200)^2}{9}(20)
+	\approx 279252.680
+\end{align*}
+Let $x$ be the rate at which water is being pumped into the tank.
+\begin{equation*}
+	x-10000=279252.680 \implies x=289252.680
+\end{equation*}
+Water is being pumped into the tank at a rate of $289252.680\,cm^3/min$.
+
+\problem{14}
+Let $x$ be the diameter and height of the pile of gravel. Then $x/2$ is the radius of the cone.
+\begin{align*}
+	V&=\frac13\pi\paren{\frac x2}^2x \\
+	&=\frac{\pi x^3}{12} \\
+	\diff Vt&=\frac{3\pi x^2}{12}\diff xt \\
+	30&=\frac{\pi 10^2}{4}\diff xt \\
+	\diff xt&=\frac{6}{5\pi}
+\end{align*}
+The height of the pile is increasing at a rate of $6/5\pi\,cm/min$.
+
+\problem{18}
+Let $\sin_d$ and $\cos_d$ be sine and cosine functions where the argument is in degrees. We use $\sin_r$ and $\cos_r$ to denote standard sine and cosine functions. We start by finding the derivatives of $\sin_d$ and $\cos_d$.
+\begin{align*}
+	\deriv\sin_d x
+	&=\deriv\sin_r\paren{\frac{\pi}{180}x}
+	=\frac{\pi}{180}\cos_r\paren{\frac{\pi}{180}x}
+	=\frac{\pi}{180}\cos_d x \\
+	\deriv\cos_d x
+	&=\deriv\cos_r\paren{\frac{\pi}{180}x}
+	=-\frac{\pi}{180}\sin_r\paren{\frac{\pi}{180}x}
+	=-\frac{\pi}{180}\sin_d x
+\end{align*}
+Let $x$ be the third side of the triangle. By the law of cosines:
+\begin{align*}
+	x^2&=12^2+15^2-2(12)(15)\cos_d\theta \\
+	&=369-360\cos_d\theta \\
+	2x\diff xt&=-360\paren{-\frac{\pi}{180}\sin_d\theta}\diff{\theta}{t} \\
+	\sqrt{369-360\cos_d(60)}\diff xt&=\pi\sin_d(60)(2) \\
+	\diff xt&\approx0.396
+\end{align*}
+The length of the third side is increasing at a rate of $0.396\,cm/min$.
+
+\problem{19}
+Let $h$ be the height of the rocket, let $\theta$ be the rotation of the camera and let $d$ be the distance from the camera to the rocket.
+
+\begin{itemize}
+	\item[(a)]
+	\begin{align*}
+		d^2&=4000^2+h^2 \\
+		2d\diff dt&=2h\diff ht \\
+		\sqrt{4000^2+3000^2}\diff dt&=3000\cdot600 \\
+		\diff dt&=360
+	\end{align*}
+	The distance between the rocket and the camera is increasing at a rate of $360\,ft/s$.
+	
+	\item[(b)]
+	\begin{align*}
+		\tan\theta&=\frac{h}{4000} \implies \theta=\arctan\frac{h}{4000} \\
+		\sec^2(\theta)\diff{\theta}{t}&=\frac{1}{4000}\diff ht \\
+		\sec^2\paren{\arctan\frac{3000}{4000}}\diff{\theta}{t}&=\frac{600}{4000} \\
+		\diff{\theta}{t}&=0.096
+	\end{align*}
+	The angle of the camera is changing at a rate of $0.096\,rad/s$.
+\end{itemize}
+
+\problem{20}
+Let $\theta$ be the angle of elevation of the telescope and let $d$ be the distance between the plane and telescope.
+\begin{align*}
+	\tan\theta&=\frac{5}{d} \implies \frac{1}{d^2}=\paren{\frac{\tan\theta}{5}}^2 \\
+	\sec^2(\theta)\diff{\theta}{t}&=-\frac{5}{d^2}\diff dt \\
+	\sec^2\paren{\frac{\pi}{3}}\paren{-\frac{\pi}{6}}&=-5\paren{\frac{\tan\frac{\pi}{3}}{5}}^2\diff dt \\
+	\frac{4\pi}{6}&=\frac35\diff dt \\
+	\diff dt&=\frac{10\pi}{9}
+\end{align*}
+The plane is traveling at a speed of $10\pi/9\,km/min$.
+
+\problem{21}
+
+
+\problem{22}
+
+\end{document}

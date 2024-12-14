@@ -1,0 +1,269 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{pgfplots}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\paren}[1]{\ensuremath\left(#1\right)}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\limit}[2][x]{\ensuremath{\displaystyle\lim_{#1\to#2}}}
+\newcommand*{\Limit}[3][x]{\ensuremath{\displaystyle\lim_{#1\to#2}\left[#3\right]}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\Deriv}[2][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}\left[#2\right]}}
+\newcommand*{\iinteg}[2][x]{\ensuremath{\displaystyle\int #2\;\mathrm{d}#1}}
+\newcommand*{\dinteg}[4][x]{\ensuremath{\displaystyle\int_{#2}^{#3}#4\;\mathrm{d}#1}}
+\newcommand*{\abs}[1]{\ensuremath{\left|#1\right|}}
+\newcommand*{\eps}{\varepsilon}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\cbrt}[1]{\ensuremath{\sqrt[3]{#1}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+
+%opening
+\title{Problem Set \#63}
+\author{Jayden Li}
+\date{April 17, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{1}
+\begin{itemize}
+	\item[(a)]
+	$f$ is a polynomial so it is differentiable on $(1,3)$ and continuous on $[1,3]$.
+	\begin{align*}
+		f(1)&=5-12(1)+3(1)^2=5-12+3=-4 \\
+		f(3)&=5-12(3)+3(3)^2=5-36+27=-4
+	\end{align*}
+	\begin{align*}
+		f'(x)&=0 \\
+		-12+6x&=0 \\
+		x&=2
+	\end{align*}
+
+	\item[(b)]
+	$\sqrt{x}$ is continuous on $[0,9]$ and differentiable on $(0,9)$, and $x/3$ is continuous and differentiable on $\mathbb{R}$. So $f$ is continuous on $[0,9]$ and differentiable on $(0,9)$.
+	\begin{align*}
+		f(0)&=\sqrt{0}-0/3=0 \\
+		f(9)&=\sqrt{9}-9/3=0
+	\end{align*}
+	\begin{align*}
+		f'(x)&=0 \\
+		\frac{1}{2\sqrt{x}}-\frac{1}{3}&=0 \\
+		2\sqrt{x}&=3 \\
+		\sqrt{x}&=\frac{3}{2} \\
+		x&=\frac{\sqrt{3}}{\sqrt{2}}\cdot\frac{\sqrt{2}}{\sqrt{2}}
+		\intertext{Discard negative case since $x\in(0,9)$.}
+		x&=\frac{\sqrt{6}}{2}
+	\end{align*}
+\end{itemize}
+
+\problem{2}
+\begin{align*}
+	f(x)&=1-\paren{\cbrt{x}}^2 \\
+	f(-1)&=1-\paren{\cbrt{-1}}^2=0 \\
+	f(1)&=1-\paren{\cbrt{1}}^2=0
+\end{align*}
+\begin{align*}
+	f'(c)&=0 \\
+	-\frac{2}{3\cbrt{c}}&=0 \\
+	-2&=0\cdot3\cbrt{c}
+\end{align*}
+Zero multiplied by any real number is $0$, so the above statement is false.
+
+This does not contradict Rolle's Theorem because $f$ is not differentiable at $x=0$, so $f$ is not differentiable on $(-1,1)$, which is one of the conditions of Rolle's Theorem.
+
+\problem{3}
+$x\in\{0.9,3.2,4.4,6.1\}$
+
+\problem{4}
+\begin{itemize}
+	\begin{minipage}[t]{0.5\linewidth}
+		\item[(a)]
+		\phantom{}
+
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				% restrict y to domain=0:10,
+				samples=100,
+				minor tick num=1,
+				xmin = 0, xmax = 10,
+				ymin = 0, ymax = 10,
+				axis lines=middle,
+				axis line style={->},
+				x label style={anchor=west},
+				y label style={anchor=south},
+				xlabel={$x$},
+				ylabel={$f(x)$},
+				unbounded coords=jump]
+				\addplot[mark=none, domain=0:10] {x+4/x};
+			\end{axis}
+		\end{tikzpicture}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		\item[(b)]
+		\phantom{}
+
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				% restrict y to domain=0:10,
+				samples=100,
+				minor tick num=1,
+				xmin = 0, xmax = 10,
+				ymin = 0, ymax = 10,
+				axis lines=middle,
+				axis line style={->},
+				x label style={anchor=west},
+				y label style={anchor=south},
+				xlabel={$x$},
+				ylabel={$f(x)$},
+				unbounded coords=jump]
+				\addplot[mark=none, domain=0:10] {x+4/x};
+				\addplot[mark=none, domain=0:10, color=red] {0.5*x+4.5};
+			\end{axis}
+		\end{tikzpicture}
+	\end{minipage}
+
+	\item[(c)]
+	\begin{align*}
+		f'(c)&=\frac{f(8)-f(1)}{8-1} \\
+		1+4\paren{-1\cdot x^{-2}}&=\frac{8.5-5}{7} \\
+		1-\frac{4}{x^2}&=\frac{3.5}{7} \\
+		\frac{4}{x^2}&=\frac{1}{2} \\
+		x^2&=8
+		\intertext{Ignore negative case since $-\sqrt{8}\not\in[1,8]$.}
+		x&=2\sqrt{2}
+	\end{align*}
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				% restrict y to domain=0:10,
+				samples=100,
+				minor tick num=1,
+				xmin = 0, xmax = 10,
+				ymin = 0, ymax = 10,
+				axis lines=middle,
+				axis line style={->},
+				x label style={anchor=west},
+				y label style={anchor=south},
+				xlabel={$x$},
+				ylabel={$f(x)$},
+				unbounded coords=jump]
+				\addplot[mark=none, domain=0:10] {x+4/x};
+				\addplot[mark=none, domain=0:10, color=red] {0.5*x+4.5};
+				\addplot[mark=none, domain=0:10, color=blue] {0.5*x+2.83};
+			\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+\end{itemize}
+
+\problem{5}
+\begin{itemize}
+	\item[(a)]
+	$f$ is differentiable on $(-1,1)$ and continuous on $[-1,1]$ because it is a polynomial.
+	\begin{align*}
+		f'(x)&=\frac{f(1)-f(-1)}{1-(-1)} \\
+		6x+2&=\frac{10-6}{2} \\
+		6x&=2-2 \\
+		x&=0
+	\end{align*}
+
+	\item[(b)]
+	$\cbrt{x}$ is differentiable at all real numbers except $0$, so it is differentiable on $(0,1)$ and continuous on $[0,1]$.
+	\begin{multicols}{2}
+		\begin{align*}
+			f'(x)&=\frac{\cbrt{1}-\cbrt{0}}{1-0} \\
+			\frac{1}{3}x^{-2/3}&=1 \\
+			\frac{1}{\paren{\cbrt{x}}^2}&=3 \\
+			\paren{\cbrt{x}}^2&=\frac{1}{3} \\
+			\cbrt{x}&=\frac{1}{\sqrt{3}}\cdot\frac{\sqrt{3}}{\sqrt{3}} \\
+			x&=\frac{\paren{\sqrt{3}}^3}{3^3} \\
+			x&=\frac{3\sqrt{3}}{27} \\
+			x&=\frac{\sqrt{3}}{9}
+		\end{align*}
+	\end{multicols}
+\end{itemize}
+
+\problem{6}
+\begin{align*}
+	f(4)-f(1)&=f'(c)(4-1) \\
+	(4-3)^{-2}-(1-2)^{-2}&=-2(c-3)^{-3}\cdot1\cdot3 \\
+	\frac{1}{1^2}-\frac{1}{(-1)^2}&=-\frac{6}{(c-3)^3} \\
+	0\cdot(c-3)^3&=-6
+\end{align*}
+Which is impossible since any number multiplied by $0$ is $0$.
+
+This does not contradict the MVT because $f$ is undefined at $x=3$, so it is not continuous on $[1,4]$.
+
+\problem{7}
+
+
+\problem{8}
+
+
+\problem{9}
+
+
+\problem{10}
+
+
+\problem{11}
+
+
+\problem{12}
+
+
+\problem{13}
+
+
+\problem{14}
+
+
+\problem{15}
+
+\end{document}

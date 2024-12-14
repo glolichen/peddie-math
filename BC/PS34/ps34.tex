@@ -1,0 +1,165 @@
+% JUMP TO LINE 60, 73
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{pgfplots}
+\usepackage{parskip}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+\setlength{\parindent}{0pt}
+
+%opening
+\title{\vspace*{-30pt}Problem Set \#34}
+\author{Jayden Li}
+\date{\today}
+
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{4}
+Let $M(t)$ be the mass of dissolved salt in kg. $\mathrm{d}M/\mathrm{d}t$ in kg/min. Water exits the tank at $10\si{\liter}/\si{\min}$.
+
+$\begin{aligned}[t]
+	&\diff Mt=-\frac{M(t)\si{\kilo\gram}}{1000\si{\liter}}\cdot \frac{10\si{\liter}}{\min}=-\frac{M(t)}{100}
+	\implies \frac{1}{M(t)}\,\mathrm{d}M=-\frac{1}{100}\,\mathrm{d}t
+	\implies \int\frac{1}{M(t)}\,\mathrm{d}M=-\int\frac{1}{100}\,\mathrm{d}t \\
+	\implies{}&\ln|M(t)|=-\frac{t}{100}+C
+	\implies M(t)=Ce^{-t/100} \\
+	\implies{}&M(0)=15
+	\implies 15=Ce^0
+	\implies C=15
+\end{aligned}$
+
+\begin{itemize}
+	\item[(a)] $\displaystyle M(t)=15e^{-t/100}$
+	\item[(b)] $\displaystyle M(20)=15e^{-1/5}=12.281\si{kg}$
+\end{itemize}
+
+\problem{5}
+Let $A(t)$ be the amount of alcohol in the vat. Initial concentration is $500\cdot 4\%=500\cdot0.04=20$
+
+$\begin{aligned}[t]
+	&\diff At=5\cdot0.06-\frac{A(t)}{500}\cdot5=0.3-0.01A(t)
+	\implies \int \frac{1}{0.3-0.01A(t)}\,\mathrm{d}A=\int \mathrm{d}t \\
+	\implies{}& -100\ln|0.3-0.01A(t)|=t+C
+	\implies \left|0.3-\frac{1}{100}A(t)\right|=\exp \left(-\frac{t}{100}+C\right) \\
+	\implies{}& 0.3-\frac{1}{100}A(t)=Ce^{-t/100}
+	\implies A(t)=30-Ce^{-t/100} \\
+	\implies{}& A(0)=30-Ce^{-0/100}=20
+	\implies 30-20=C
+	\implies C=10 \\
+	\implies{}&\frac{A(60)}{500}=\frac{30-10e^{-60/100}}{500}
+	=\frac{30-10e^{-3/5}}{500}
+	\approx 0.049
+	=\boxed{4.9\%}
+\end{aligned}$
+
+\problem{6}
+We have that $\mathrm{d}m/\mathrm{d}t=km(t)$. Obviously the raindrop starts with a velocity of zero.
+
+$\begin{aligned}[t]
+	& \deriv[t]mv
+	=m\diff vt+v\diff mt=\cancel{m(t)}\diff vt+vk\cancel{m(t)}=g\cancel{m(t)}
+	\implies \diff vt=g-kv
+	\implies \frac{1}{g-kv}\diff vt=1 \\
+	\implies{}& \int \frac{1}{g-kv}\,\mathrm{d}v=\int\mathrm{d}t
+	\implies -\frac1k\ln|g-kv|=t+C
+	\implies \exp(\ln|g-kv|)=\exp(-kt+C) \\
+	\implies{}& |g-kv|=e^Ce^{-kt}
+	\implies g-kv=Ce^{-kt}
+	\implies v(t)=\frac{g-Ce^{-kt}}k \\
+	&v(0)=g-Ce^{0}=0
+	\implies g-C=0
+	\implies C=g \\
+	\implies{}& \lim_{t\to \infty}v(t)=\lim_{t\to \infty}\frac{g-\cancel{ge^{-kt}}}k=\boxed{\frac gk}
+\end{aligned}$
+
+\problem{7}
+\begin{itemize}
+	\item[(a)] Obviously:
+		\begin{align*}
+			\diff At&=k \sqrt{A(t)}(M-A(t)) \\
+			\diff[2]At&=k\cdot A'(t) \frac{1}{2 \sqrt{A(t)}} (M-A(t))+k \sqrt{A(t)}(-A'(t)) \\
+					  &=\frac{kA'(t)(M-A(t))}{2 \sqrt{A(t)}}-kA'(t) \sqrt{A(t)}
+		\end{align*}
+		When $A(t)=\dfrac M3$, then $\displaystyle A'(t)=k \sqrt{\frac M3} \left(M-\frac M3\right)=k \frac{2M}{3}\sqrt{\frac M3}$. Then:
+
+		\begin{align*}
+		    A''\left(\frac M3\right)
+			&=k \left(\frac{k \frac{2M}{3}\sqrt{\frac M3} \left(M-\frac M3\right)}{2 \sqrt{\frac M3}}-k \frac{2M}{3}\sqrt{\frac M3} \sqrt{\frac{M}{3}}\right) \\
+			&=k^2 \left(\frac{\frac{2M}{3}\cdot \frac{2M}{3}}{2}-\frac{2M}{3}\cdot \frac M3\right)
+			=k^2 \left(\frac{2M}{9}-\frac{2M}{9}\right)
+			=0
+		\end{align*}
+
+		So $A(t)=M/3$ is a critical value and probably a local maximum of $A''$, but I am too lazy to do the second (third) derivative test.
+
+	\item[(b)]
+		$\begin{aligned}[t]
+			&\diff At=k \sqrt{A(t)}(M-A(t))
+			\implies \int\frac{1}{\sqrt{A(t)}(M-A(t))}\,\mathrm{d}A=\int k \,\mathrm{d}t \\
+			\implies{}& \frac{2\arctanh \left(\frac{\sqrt{A}}{\sqrt{M}}\right)}{\sqrt{M}}=kt+C
+			\implies \arctanh \left(\frac{\sqrt{A}}{\sqrt{M}}\right)=\frac{\sqrt{M}}{2}kt+C \\
+			\implies{}&\frac{\sqrt{A}}{\sqrt{M}}=\tanh \left(\frac{\sqrt{M}}{2}kt+C\right)
+			\implies \frac{A}{M}=\tanh^2 \left(\frac{\sqrt{M}}{2}kt+C\right) \\
+			\implies{}& \boxed{A=M\tanh^2 \left(\frac{\sqrt{M}}{2}kt+C\right)}
+		\end{aligned}$
+\end{itemize}
+
+\end{document}

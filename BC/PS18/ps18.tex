@@ -1,0 +1,403 @@
+% JUMP TO LINE 60, 73
+% \documentclass[preview, margin=0.6in]{standalone}
+\documentclass{article}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+\setlength{\parindent}{0pt}
+
+%opening
+\title{\vspace*{-30pt}Problem Set \#18}
+\author{Jayden Li}
+\date{\today}
+
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+\problem{1}
+\begin{itemize}
+	\item[(b)]
+		$\begin{aligned}[t]
+		    \int \frac{6x-2}{x^2-2x-3}\,\mathrm{d}x
+			&=\int \frac{6x-2}{(x-3)(x+1)}\,\mathrm{d}x
+			=\int\left(\frac{A}{x-3}+\frac{B}{x+1}\right)\mathrm{d}x \\
+			\alignedintertext{
+				\begin{mdframed}
+					$\begin{aligned}[t]
+						\frac{A}{x-3}+\frac{B}{x+1}=\frac{6x-2}{x^2-2x-3}
+						&\implies Ax+A+Bx-3B=6x-2
+						\implies \left\{\begin{aligned}
+							A+B&=6 \\
+							A-3B&=-2
+						\end{aligned}\right. \\
+						&\implies 4B=8
+						\implies B=2
+						\implies A=4
+					\end{aligned}$
+				\end{mdframed}
+			}
+			&=\int\left(\frac{4}{x-3}+\frac{2}{x+1}\right)\mathrm{d}x
+			=\boxed{4\ln|x-3|+2\ln|x+1|+C}
+		\end{aligned}$
+
+	\item[(c)]
+		$\begin{aligned}[t]
+			\int \frac{2x+5}{x^2+2x-8}\,\mathrm{d}x
+			&=\int \frac{2x+5}{(x+4)(x-2)}\,\mathrm{d}x
+			=\int\left(\frac{A}{x+4}+\frac{B}{x-2}\right)\mathrm{d}x \\
+			\alignedintertext{
+				\begin{mdframed}
+					$\begin{aligned}[t]
+						\frac{A}{x+4}+\frac{B}{x-2}=\frac{2x+5}{x^2+2x-8}
+						&\implies Ax-2A+Bx+4B=2x+5
+						\implies \left\{\begin{aligned}
+							A+B&=2 \\
+							-2A+4B&=5
+						\end{aligned}\right. \\
+						&\implies 6B=9
+						\implies B=\frac{3}{2}
+						\implies A=\frac{1}{2}
+					\end{aligned}$
+				\end{mdframed}
+			}
+			&=\int\left(\frac{1/2}{x+4}+\frac{3/2}{x-2}\right)\mathrm{d}x
+			=\boxed{\frac12 \ln|x+4|+\frac32\ln|x-2|+C}
+		\end{aligned}$
+\end{itemize}
+
+\problem{2}
+\begin{itemize}
+	\item[(b)]
+		$\begin{aligned}[t]
+			\int \frac{x^2+4x-1}{x^3-x}\,\mathrm{d}x
+			&=\int \frac{x^2+4x-1}{x(x+1)(x-1)}\,\mathrm{d}x
+			=\int\left(\frac{A}{x}+\frac{B}{x+1}+\frac{C}{x-1}\right)\mathrm{d}x \\
+			\alignedintertext{
+				\begin{mdframed}
+					$\begin{aligned}[t]
+						&\frac Ax+\frac{B}{x+1}+\frac{C}{x-1}=\frac{x^2+4x-1}{x^3-x} \\
+						\implies{}& A(x+1)(x-1)+Bx(x-1)+Cx(x+1)=x^2+4x-1 \\
+						\implies{}& Ax^2-A+Bx^2-Bx+Cx^2+Cx=x^2+4x-1
+						\implies \left\{\begin{aligned}
+								A+B+C&=1 \\
+								-B+C&=4 \\
+								-A&=-1
+						\end{aligned}\right. \\
+						\implies{}& A=1
+						\implies \left\{\begin{aligned}
+								B+C&=0 \\
+								-B+C&=4
+						\end{aligned}\right.
+						\implies 2C=4
+						\implies C=2
+						\implies B=-2
+					\end{aligned}$
+				\end{mdframed}
+			}
+			&=\int\left(\frac{1}{x}-\frac{2}{x+1}+\frac{2}{x-1}\right)\mathrm{d}x
+			=\boxed{\ln|x|-2\ln|x+1|+2\ln|x-1|+C}
+		\end{aligned}$
+
+	\item[(c)]
+		$\begin{aligned}[t]
+			\int \frac{4x+28}{(x+1)(x^2-4x+3)}\,\mathrm{d}x
+			&=\int \frac{4x+28}{(x+1)(x-1)(x-3)}\,\mathrm{d}x
+			=\int\left(\frac{A}{x+1}+\frac{B}{x-1}+\frac{C}{x-3}\right)\mathrm{d}x \\
+			\alignedintertext{
+				\begin{mdframed}
+					$\begin{aligned}[t]
+						&\frac{A}{x+1}+\frac{B}{x-1}+\frac{C}{x-3}=\frac{4x+28}{(x+1)(x-1)(x-3)} \\
+						\implies{}& A(x-1)(x-3)+B(x+1)(x-3)+C(x+1)(x-1)=4x+28 \\
+						\implies{}& A \left(x^2-4x+3\right)+B \left(x^2-2x-3\right)+C \left(x^2-1\right)=4x+28 \\
+						\implies{}& Ax^2-4Ax+3A+Bx^2-2Bx-3B+Cx^2-C=4x+28
+						\implies\left\{\begin{aligned}
+								A+B+C&=0 \\
+								-4A-2B&=4 \\
+								3A-3B-C&=28
+						\end{aligned}\right. \\
+						\implies{}&\left\{\begin{aligned}
+								4A-2B&=28 \\
+								-4A-2B&=4
+						\end{aligned}\right.
+						\implies -4B=32
+						\implies B=-8
+						\implies A=3
+						\implies C=5
+					\end{aligned}$
+				\end{mdframed}
+			}
+			&=\int\left(\frac{3}{x+1}-\frac{8}{x-1}+\frac{5}{x-3}\right)\mathrm{d}x \\
+			&=\boxed{3\ln|x+1|-8\ln|x-1|+5\ln|x-3|+C}
+		\end{aligned}$
+\end{itemize}
+
+\problem{3}
+\begin{itemize}
+	\item[(a)]
+		$\begin{aligned}[t]
+			\int \frac{3x^2-7x+2}{x^3-2x^2+x}\,\mathrm{d}x
+			&=\int \frac{3x^2-7x+2}{x(x-1)(x-1)}\,\mathrm{d}x
+			=\int \left(\frac{A}{x}+\frac{B}{x-1}+\frac{C}{(x-1)^2}\right)\,\mathrm{d}x \\
+			\alignedintertext{
+				\begin{mdframed}
+					$\begin{aligned}[t]
+						&\frac{A}{x}+\frac{B}{x-1}+\frac{C}{(x-1)^2}=\frac{3x^2-7x+2}{x(x-1)(x-1)} \\
+						\implies{}& \frac{A(x-1)(x^2-2x+1)+Bx(x^2-2x+1)+Cx(x-1)}{x(x-1)(x-1)^2}=\frac{3x^2-7x+2}{x(x-1)(x-1)} \\
+						\implies{}& A \left(x^3-3x^2+3x-1\right)+B \left(x^3-2x^2+x\right)+C \left(x^2-x\right)=(x-1)\left(3x^2-7x+2\right) \\
+						\implies{}& Ax^3-3Ax^2+3Ax-A+Bx^3-2Bx^2+Bx+Cx^2-Cx=3x^3-10x^2+9x-2 \\
+						\implies{}& \left\{\begin{aligned}
+								A+B&=3 \\
+								-3A-2B+C&=-10 \\
+								3A+B-C&=9 \\
+								-A&=-2
+						\end{aligned}\right.
+						\implies A=2
+						\implies B=1
+						\implies C=-2
+					\end{aligned}$
+				\end{mdframed}
+			}
+			&=\int \left(\frac{2}{x}+\frac{1}{x-1}-\frac{2}{(x-1)^2}\right)\,\mathrm{d}x
+			=\boxed{2\ln|x|+\ln|x-1|+\frac{2}{x-1}+C}
+		\end{aligned}$
+
+	\item[(b)]
+		$\begin{aligned}[t]
+		    \int \frac{3x^2-2x-3}{x^3-x^2}\,\mathrm{d}x
+			&=\int \frac{3x^2-2x-3}{x^2(x-1)}\,\mathrm{d}x
+			=\int\left(\frac{A}{x}+\frac{B}{x^2}+\frac{C}{x-1}\right)\mathrm{d}x \\
+			\alignedintertext{
+				\begin{mdframed}
+					$\begin{aligned}[t]
+						&\frac{A}{x}+\frac{B}{x^2}+\frac{C}{x-1}=\frac{3x^2-2x-3}{x^2(x-1)}
+						\implies \frac{Ax^2(x-1)+Bx(x-1)+Cx^3}{x^3(x-1)}=\frac{3x^2-2x-3}{x^2(x-1)} \\
+						\implies{}& Ax^3-Ax^2+Bx^2-Bx+Cx^3=3x^3-2x^2-3x
+						\implies\left\{\begin{aligned}
+								A+C&=3 \\
+								-A+B&=-2 \\
+								-B&=-3
+						\end{aligned}\right. \\
+						\implies{}& B=3
+						\implies A=5
+						\implies C=-2
+					\end{aligned}$
+				\end{mdframed}
+			}
+			&=\int\left(\frac{5}{x}+\frac{3}{x^2}-\frac{2}{x-1}\right)\mathrm{d}x
+			=\boxed{5\ln|x|-\frac 3x-2\ln|x-1|+C}
+		\end{aligned}$
+
+	\item[(c)]
+		$\begin{aligned}[t]
+		    \int \frac{x^2}{(x+1)^3}\,\mathrm{d}x
+			&\left[\begin{aligned}
+					t&=x+1 \\
+					\mathrm{d}t&=\mathrm{d}x
+			\end{aligned}\right]
+			\int \frac{(t-1)^2}{t^3}\,\mathrm{d}x
+			=\int \frac{t^2-2t+1}{t^3}\,\mathrm{d}t
+			=\int \left(\frac{1}{t}-\frac{2}{t^2}+\frac{1}{t^3}\right)\,\mathrm{d}t \\
+			&=\ln|t|+\frac2t+\frac{-1/2}{t^2}
+			=\boxed{\ln|x+1|+\frac{2}{x+1}-\frac{1}{2(x+1)^2}+C}
+		\end{aligned}$
+\end{itemize}
+
+\problem{4}
+$\begin{aligned}[t]
+    \int \ln\left(x^2-x+2\right)\mathrm{d}x
+	&=\left[\begin{alignedat}{2}
+			u&=\ln\left(x^2-x+2\right) &\quad \mathrm{d}u&=\frac{(2x-1)\,\mathrm{d}x}{x^2-x+2} \\
+			\mathrm{d}v&=\mathrm{d}x & v&=x
+	\end{alignedat}\right]
+	x \ln\left(x^2-x+2\right)-\int \frac{2x^2-x}{x^2-x+2}\,\mathrm{d}x \\
+	&=x \ln\left(x^2-x+2\right)-\int \left(2+\frac{x-4}{x^2-x+2}\right)\mathrm{d}x \\
+	&=x \ln\left(x^2-x+2\right)-2x-\frac12\int \left(\frac{2x-1}{x^2-x+2}-\frac{7}{x^2-x+2}\right)\mathrm{d}x \\
+	&=\left[\begin{aligned}
+			t&=x^2-x+2 \\
+			\mathrm{d}t&=(2x-1)\,\mathrm{d}x
+	\end{aligned}\right]
+	x \ln\left(x^2-x+2\right)-2x-\frac12 \int \frac{1}{t}\,\mathrm{d}t+\frac12 \int \frac{7}{x^2-x+2}\,\mathrm{d}x \\
+	&=x \ln\left(x^2-x+2\right)-2x-\frac12 \ln \left|x^2-x+2\right|+\frac12 \int \frac{7}{x^2-x+2}\,\mathrm{d}x \\
+	\alignedintertext{
+		\begin{mdframed}
+			$\begin{aligned}[t]
+			    \int \frac{7}{x^2-x+2}\,\mathrm{d}x
+				&=\int \frac{7}{\left(x-\frac12\right)^2-\frac14+2}\,\mathrm{d}x
+				=\left[\begin{aligned}
+						t&=x-\frac12 \\
+						\mathrm{d}t&=\mathrm{d}x
+				\end{aligned}\right]
+				7\int \frac{1}{t^2+\frac74}\,\mathrm{d}t
+				=7 \int \frac{1}{\frac74 \left(\frac47t^2+1\right)}\,\mathrm{d}t \\
+				&=7\cdot\frac47 \int \frac{1}{\frac47t^2+1}\,\mathrm{d}t
+				=\left[\begin{aligned}
+						s&=\frac{2}{\sqrt{7}}t \\
+						\mathrm{d}s&=\frac{2}{\sqrt{7}}\,\mathrm{d}t
+				\end{aligned}\right]
+				4\cdot \frac{\sqrt{7}}{2}\int \frac{1}{s^2+1}\,\mathrm{d}s
+				=2\sqrt7\arctan s \\
+				&=2\sqrt7 \arctan \left(\frac{2}{\sqrt{7}}t\right)
+				=2\sqrt7 \arctan \left(\frac{2}{\sqrt{7}}\left(x-\frac12\right)\right)+C
+			\end{aligned}$	
+		\end{mdframed}
+	}
+	&=x \ln\left(x^2-x+2\right)-2x-\frac12 \ln \left|x^2-x+2\right|+\frac12 \left(2\sqrt7 \arctan \left(\frac{2}{\sqrt{7}}\left(x-\frac12\right)\right)\right) \\
+	&=\boxed{x \ln\left(x^2-x+2\right)-2x-\frac12 \ln \left|x^2-x+2\right|+\sqrt7 \arctan \left(\frac{2}{\sqrt{7}}\left(x-\frac12\right)\right)+C}
+\end{aligned}$
+
+\problem{5}
+\begin{mdframed}
+	\begin{minipage}[t]{0.33\linewidth} 
+		\begin{align*}
+			\cos\left(2\cdot \frac{\theta}{2}\right)&=2\cos^2 \left(\frac{\theta}{2}\right)-1 \\
+			\cos\theta+1&=2\cos^2 \left(\frac{\theta}{2}\right) \\
+			\cos \frac{\theta}{2}&=\pm\sqrt{\frac{\cos\theta+1}{2}}
+			\intertext{$\cos(\theta/2)\geq0$ if $\theta\in[-\pi,\pi]$}
+			\cos \frac{\theta}{2}&=\boxed{\sqrt{\frac{\cos\theta+1}{2}}}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[t]{0.33\linewidth} 
+		\begin{align*}
+			\cos\left(2\cdot \frac{\theta}{2}\right)&=1-2\sin^2 \left(\frac{\theta}{2}\right) \\
+			2\sin^2 \left(\frac{\theta}{2}\right)&=1-\cos\theta \\
+			\sin \frac{\theta}{2}&=\boxed{\pm \sqrt{\frac{1-\cos\theta}{2}}}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}[t]{0.33\linewidth} 
+		\begin{align*}
+			\tan \frac{\theta}{2}&=\sqrt{\frac{1-\cos\theta}{2}}/ \sqrt{\frac{1+\cos\theta}{2}} \\
+								 &=\frac{\sqrt{1-\cos\theta}\sqrt{1-\cos\theta}}{\sqrt{1+\cos\theta}\sqrt{1-\cos\theta}} \\
+								 &=\frac{1-\cos\theta}{\sqrt{1-\cos^2\theta}}
+								 =\boxed{\frac{1-\cos\theta}{\sin\theta}}
+		\end{align*}
+	\end{minipage}
+\end{mdframed}
+
+\begin{itemize}
+	\item[(a)]
+		$\begin{aligned}[t]
+		    \frac{1}{\sqrt{1+t^2}}
+			&=\left(\sqrt{1+\left(\frac{1-\cos\theta}{\sin\theta}\right)^2}\right)^{-1}
+			=\left(\sqrt{\frac{\sin^2\theta}{\sin^2\theta}+\frac{1-2\cos\theta+\cos^2\theta}{\sin^2\theta}}\right)^{-1} \\
+			&=\sqrt{\left(\frac{1-2\cos\theta+\cos^2\theta+\sin^2\theta}{\sin^2\theta}\right)^{-1}}
+			=\sqrt{\frac{1-\cos^2\theta}{2-2\cos\theta}}
+			=\sqrt{\frac12\cdot \frac{(1+\cos\theta)(1-\cos\theta)}{1-\cos\theta}} \\
+			&=\sqrt{\frac{1+\cos\theta}{2}}
+			=\cos \frac{\theta}{2} \\
+		    \frac{t}{\sqrt{1+t^2}}
+			&=\tan \frac{\theta}{2}\cdot \sqrt{\frac{1+\cos\theta}{2}}
+			=\pm\sqrt{\frac{(1-\cos\theta)^2(1+\cos\theta)}{2\sin^2\theta}}
+			=\pm\sqrt{\frac{(1-\cos\theta)^2(1+\cos\theta)}{2(1+\cos\theta)(1-\cos\theta)}} \\
+			&=\pm\sqrt{\frac{1-\cos\theta}{2}}
+			=\sin \frac{\theta}{2}
+		\end{aligned}$
+
+	\item[(b)]
+		$\begin{aligned}[t]
+		    \frac{1-t^2}{1+t^2}
+			&=\frac{\displaystyle\frac{\sin^2 x}{\sin^2 x}-\frac{(1-\cos  x)^2}{\sin^2 x}}{\displaystyle\frac{\sin^2 x}{\sin^2 x}+\frac{(1-\cos x)^2}{\sin^2 x}}
+			=\frac{\sin^2 x-\left(1-2\cos x+\cos^2 x\right)}{\sin^2 x+\left(1-2\cos x+\cos^2 x\right)}
+			=\frac{\sin^2 x-1+2\cos x-\cos^2 x}{\sin^2 x+1-2\cos x+\cos^2 x} \\
+			&=\frac{1-\cos^2 x-1+2\cos x-\cos^2 x}{2-2\cos x} 
+			=\frac{2\cos x-2\cos^2 x}{2-2\cos x} 
+			=\frac{\cos( x)(1-\cos x)}{1-\cos x}
+			=\cos x \\
+			\frac{2t}{1+t^2}
+			&=\frac{\displaystyle \frac{2-2\cos x}{\sin x}}{\displaystyle \frac{\sin^2 x}{\sin^2 x}+\frac{(1-\cos x)^2}{\sin^2 x}}
+			=\frac{2-2\cos x}{\sin^2x+1-2\cos x+\cos^2x}\cdot\sin x
+			=\frac{2-2\cos x}{2-2\cos x}\cdot\sin x
+			=\sin x
+		\end{aligned}$
+
+	\item[(c)]
+		$\begin{aligned}
+			t&=\tan \left(\frac x2\right)
+			\implies\arctan t=\frac x2
+			\implies\frac{1}{1+t^2}\,\mathrm{d}t=\frac12 \,\mathrm{d}x
+			\implies\mathrm{d}x=\frac{2}{1+t^2}\,\mathrm{d}t
+		\end{aligned}$
+\end{itemize}
+
+\problem{6}
+$\begin{aligned}[t]
+    \int_{1}^{2}\frac{x^2+1}{3x-x^2}\,\mathrm{d}x
+	&=\int_{1}^{2}\left(-1+\frac{3x+1}{x(3-x)}\right)\mathrm{d}x
+	=\int_{1}^{2}\left(-1\right)\mathrm{d}x+\int_{1}^{2}\left(\frac{A}{x}+\frac{B}{3-x}\right)\mathrm{d}x \\
+	\alignedintertext{
+		\begin{mdframed}
+			$\begin{aligned}[t]
+				\frac{A}{x}+\frac{B}{3-x}=\frac{3x+1}{x(3-x)}
+				&\implies 3A-Ax+Bx=3x+1
+				\implies \left\{\begin{aligned}
+						-A+B&=3 \\
+						3A&=1
+				\end{aligned}\right.
+				\implies A=\frac13 \\
+				&\implies -\frac13+B=3
+				\implies B=\frac{10}{3}
+			\end{aligned}$
+		\end{mdframed}
+	}
+	&=\left[-x\right]_{1}^{2}+\int_{1}^{2}\left(\frac{1/3}{x}+\frac{10/3}{3-x}\right)\mathrm{d}x
+	=-1+\left[\frac13\ln|x|-\frac{10}{3}\ln|3-x|\right]_{1}^{2} \\
+	&=-1+\frac13\ln2-\cancel{\frac{10}{3}\ln1}-\cancel{\frac{1}{3}\ln1}+\frac{10}{3}\ln2
+	=\boxed{\frac{11}{3}\ln2-1}
+\end{aligned}$
+
+\end{document}

@@ -1,0 +1,133 @@
+% JUMP TO LINE 60, 73
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+\title{\vspace*{-30pt}Problem Set \#35}
+\author{Jayden Li}
+\date{\today}
+
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\maketitle
+\problem{3}
+\begin{itemize}
+	\item[(a)]
+		$\begin{aligned}[t]
+			\diff yt=ky \left(1-\frac yK\right)
+			&\implies y(0)=\frac{K}{1+Ae^{-kt}}
+			=\frac{8\times10^7}{1+\frac{8\times 10^7-2\times10^7}{2\times10^7}e^{-0.71t}}
+			=\frac{8\times10^7}{1+3e^{-0.71t}} \\
+			&\implies y(1)=\frac{8\times10^7}{1+3e^{-0.71}}
+		\end{aligned}$
+
+		Biomass the following year is approximately $3.2\times10^7$ kg.
+
+	\item[(b)]
+		$\begin{aligned}[t]
+		    \frac{8\times10^7}{1+3e^{-0.71t}}=4\times 10^7
+			\implies 1+3e^{-0.71t}=2
+			\implies -0.71t=\ln\frac13
+			\implies t=1.547
+		\end{aligned}$
+
+		It will take approximately $1.547$ years for the biomass to reach $4\times 10^7$ kg.
+\end{itemize}
+
+\problem{4}
+\begin{itemize}
+	\item[(a,b)]
+	\textit{I'll derive everything again, because why not}
+
+	$\begin{aligned}[t]
+		\diff yt=ky(1-y)
+		&\implies \frac{1}{ky(1-y)}\diff yt=1
+		\implies \int \frac{1}{ky(1-y)}\,\mathrm{d}y
+		\implies \int\left(\frac{A}{ky}+\frac{B}{1-y}\right)\mathrm{d}y=t+C \\
+		\alignedintertext{
+		\begin{mdframed}
+			$\begin{aligned}[t]
+			    \frac{A}{ky}+\frac{B}{1-y}=\frac{1}{ky(1-y)}
+				&\implies A-Ay+Bky=1
+				\implies \left\{\begin{aligned}
+						A&=1 \\
+						-A+Bk&=0
+				\end{aligned}\right.
+				\implies A=1 \\
+				&\implies -1+Bk=0
+				\implies B=1/k
+			\end{aligned}$
+		\end{mdframed}
+		}
+		&\implies \int\left(\frac{1}{ky}+\frac{\frac{1}{k}}{1-y}\right)\mathrm{d}y
+		=\frac1k \int\left(\frac{1}{y}+\frac{1}{1-y}\right)\mathrm{d}y
+		=\frac1k \left(\ln|y|-\ln|1-y|\right) \\
+		&\implies \exp(\ln|y|-\ln|1-y|)
+		% \implies y=\frac{1}{1+Ae^{-kt}}
+	\end{aligned}$
+
+	where $A$ is a constant determined by the size of the population and the size of the original rumor.
+
+	\item[(c)]
+\end{itemize}
+\end{document}

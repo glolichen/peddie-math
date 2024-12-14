@@ -1,0 +1,262 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\renewcommand\qedsymbol{\Smiley[1.3]}
+\newcommand*{\paren}[1]{\ensuremath\left(#1\right)}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\limit}[2][x]{\ensuremath{\displaystyle\lim_{#1\to#2}}}
+\newcommand*{\Limit}[3][x]{\ensuremath{\displaystyle\lim_{#1\to#2}\left[#3\right]}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\Deriv}[2][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}\left[#2\right]}}
+\newcommand*{\abs}[1]{\ensuremath{\left|#1\right|}}
+
+\newcommand*{\eps}{\varepsilon}
+
+\DeclareMathOperator{\DNE}{DNE}
+
+%opening
+\title{Problem Set \#$55\dfrac{1}{2}$}
+\author{Jayden Li}
+\date{March 22, 2024}
+
+\allowdisplaybreaks
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\maketitle
+
+\problem{2}
+\begin{align*}
+	&|\tan x-1|<0.2 \\
+	\implies{}&-0.2<\tan x-1<0.2 \\
+	\implies{}&0.8<\tan x<1.2 \\
+	\implies{}&\arctan(0.8)<x<\arctan(1.2) \\
+	&\abs{x-\frac{\pi}{4}}<\delta \\
+	\implies{}&-\delta<x-\frac{\pi}{4}<\delta \\
+	\implies{}&\frac{\pi}{4}-\delta<x<\frac{\pi}{4}+\delta
+\end{align*}
+\begin{align*}
+	\delta&=\min\paren{\frac{\pi}{4}+\arctan(0.8),\arctan(1.2)-\frac{\pi}{4}} \\
+	&=\boxed{\arctan(1.2)-\frac{\pi}{4}}
+\end{align*}
+
+\problem{3}
+\begin{itemize}
+	\item[(a)]
+	\begin{equation*}
+		r^2\pi=1000\implies\boxed{r=\sqrt{\frac{1000}{\pi}}\mathrm{cm}}
+	\end{equation*}
+
+	\item[(b)]
+	\begin{gather*}
+		995<r^2\pi<1005 \\
+		\frac{995}{\pi}<r^2<\frac{1005}{\pi} \\
+		\sqrt{\frac{995}{\pi}}<r<\sqrt{\frac{1005}{\pi}} \\
+		\sqrt{\frac{1000}{\pi}}-\delta<r<\sqrt{\frac{1000}{\pi}}+\delta \\
+		\delta=\min\paren{\sqrt{\frac{1000}{\pi}}-\sqrt{\frac{995}{\pi}},\sqrt{\frac{1005}{\pi}}-\sqrt{\frac{1000}{\pi}}} \\
+		\delta\approx\boxed{0.044547\mathrm{cm}}
+	\end{gather*}
+
+	\item[(c)]
+	$x$ is the area. $f$ is the function that calculates the radius needed for a circle with radius $x$. $a$ is the desired radius that $x$ tends to. As $x$ tends to $a$, $L$ tends to $f(x)$. $\eps=5\mathrm{cm}$. $\delta\approx0.044547\mathrm{cm}$.
+\end{itemize}
+
+\problem{4}
+\begin{align*}
+	|4x-8|&<\eps \\
+	4|x-2|&<\eps \\
+	|x-2|&<\frac{\eps}{4}
+\end{align*}
+
+Obviously/clearly/trivially $\delta=\dfrac{\eps}{4}$.
+
+\begin{proof}
+	Let $\delta=\dfrac{\eps}{4}$. If $|x-2|<\delta$, $4|x-2|<4\cdot\dfrac{\eps}{4}$. Therefore $|4x-8|<\eps$.
+\end{proof}
+
+\begin{itemize}
+	\item[(a)]
+	$\delta=\dfrac{\eps}{4}=\dfrac{0.1}{4}=\boxed{0.025}$
+
+	\item[(b)]
+	$\delta=\dfrac{\eps}{4}=\dfrac{0.01}{4}=\boxed{0.0025}$
+\end{itemize}
+
+\problem{5}
+\begin{itemize}
+	\item[(b)]
+	\begin{align*}
+		\abs{\frac{x^2+x-6}{x-2}-5}<\eps \\
+		\abs{\frac{(x+3)\cancel{(x-2)}-5}{\cancel{x-2}}}<\eps \\
+		\abs{x+3-5}<\eps \\
+		\abs{x-2}<\eps \\
+		\abs{x-2}<\delta
+	\end{align*}
+	I claim that $\delta=\eps$.
+
+	\begin{proof}
+		Let $\delta=\eps$.
+		\begin{equation*}
+			\abs{x-2}<\delta
+			\implies\abs{x+3-5}<\eps
+			\implies\abs{\frac{(x+3)(x-2)}{x-2}-5}<\eps
+			\implies\abs{\frac{x^2+x-6}{x-2}-5}<\eps
+		\end{equation*}
+	\end{proof}
+
+
+	\item[(d)]
+	Because $x^2$ and $\sqrt{x}$ are always positive:
+	\begin{equation*}
+		\abs{x^2-0}<\eps
+		\implies |x^2|<\eps
+		\implies |x-0|<\sqrt{\eps}
+	\end{equation*}
+	I claim that $\delta=\sqrt{\eps}$.
+
+	\begin{proof}
+		Let $\delta=\sqrt{\eps}$.
+		\begin{equation*}
+			\abs{x-0}<\delta
+			\implies\abs{x}<\sqrt{\eps} \\
+			\implies\paren{\abs{x}}^2<\eps \\
+			\implies\abs{x^2-0}<\eps
+		\end{equation*}
+	\end{proof}
+
+	\item[(e)]
+	\begin{equation*}
+		\abs{\abs{x}-0}<\eps
+		\implies |x|<\eps
+		\implies |x-0|<\eps
+	\end{equation*}
+	I claim that $\delta=\eps$.
+
+	\begin{proof}
+		Let $\delta=\eps$.
+		\begin{equation*}
+			\abs{x-0}<\delta
+			\implies\abs{\abs{x-0}}<\eps
+			\implies\abs{\abs{x}-0}<\eps
+		\end{equation*}
+	\end{proof}
+
+	\item[(f)]
+	\begin{equation*}
+		\abs{x^2-4x+5-1}<\eps
+		\implies\abs{x^2-4x+4}<\eps
+		\implies\abs{(x-2)^2}<\eps
+		\implies\abs{x-2}<\sqrt{\eps}
+	\end{equation*}
+	I claim that $\delta=\sqrt{\eps}$.
+
+	\begin{proof}
+		Let $\delta=\sqrt{\eps}$.
+		\begin{gather*}
+			\abs{x-2}<\delta
+			\implies\abs{(x-2)^2}<\delta^2
+			\implies\abs{x^2-4x+4}<\eps
+			\implies\abs{x^2-4x+5-1}<\eps
+		\end{gather*}
+	\end{proof}
+
+	\item[(g)]
+	\begin{equation*}
+		\abs{x^2-1-3}<\eps
+		\implies\abs{x+2}\abs{x-2}<\eps \tag{1}
+	\end{equation*}
+	Suppose $\delta=1$. By definition:
+	\begin{equation*}
+		|x+2|<\delta
+		\implies-1<x+2<1
+		\implies-5<x-2<-3
+		\implies\abs{x-2}<5 \tag{2}
+	\end{equation*}
+	Substitute (2) into (1):
+	\begin{equation*}
+		5\abs{x+2}<\eps
+		\implies\abs{x+2}<\frac{\eps}{5}
+	\end{equation*}
+	I claim that $\delta=\min\paren{1,\eps/5}$.
+	\begin{proof}
+		Let $\delta=\min\paren{1,\eps/5}$. If $\abs{x+2}<\delta$ then all of the following are true:
+		\begin{align*}
+			\abs{x+2}&<1 \tag{3} \\
+			\abs{x+2}&<\frac{\eps}{5} \tag{4}
+		\end{align*}
+
+		From (3) we have:
+		\begin{equation*}
+			\abs{x+2}<1
+			\implies-1<x+2<1
+			\implies-5<x-2<-3
+			\implies\abs{x-2}<5 \tag{5}
+		\end{equation*}
+
+		Multiple (3) and (5):
+		\begin{equation*}
+			\abs{x-2}\abs{x+2}=\abs{x^2-16}<5\cdot\frac{\eps}{5}=\eps
+		\end{equation*}
+
+		Thus by the $\eps$-$\delta$ definition $\Limit{-2}{x^2-1}=3$.
+	\end{proof}
+
+\end{itemize}
+
+\problem{7}
+\textbf{Lemma.} Density of rational and irrational numbers: there exists both a rational and irrational number on the open interval $(x,y)$ where $x<y$. (by obvious intuition)
+
+\begin{proof}
+	Suppose not. Let $L=\limit{0}f(x)$ and choose $\eps=0.1$. By the $\eps$-$\delta$ definition there must exist some $\delta>0$ such that $|x|<\delta$. On the open interval $(-\delta,\delta)$, there exists both a rational number $p$ and an irrational number $q$ (by the Lemma).
+	
+	On the interval $(-\delta,\delta)$, we have $\abs{f(p)-f(q)}=1\not<\eps=0.1$. We have a contradiction and the limit $\limit{0}f(x)$ does not exist.
+\end{proof}
+
+\problem{8}
+\begin{align*}
+	\frac{1}{(x+3)^4}&>10000 \\
+	1&>10000(x+3)^4 \\
+	\sqrt[4]{1}&>\sqrt[4]{10000(x+3)^4} \\
+	1&>10(x+3) \\
+	-29&>10x \\
+	\Aboxed{x&<-\frac{29}{10}}
+\end{align*}
+
+\end{document}

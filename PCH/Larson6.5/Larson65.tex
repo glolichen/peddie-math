@@ -1,0 +1,169 @@
+\documentclass{article}
+
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{tikzsymbols}
+
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+	\noalign{%
+		\vskip\belowdisplayshortskip
+		\vtop{\hsize=\linewidth#1\par
+		\expandafter}%
+		\expandafter\prevdepth\the\prevdepth
+	}%
+}
+
+\DeclareMathOperator{\cis}{cis}
+
+%opening
+\title{Larson Chapter 6.5}
+\author{Jayden Li}
+\date{February 20, 2024}
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\fontsize{12pt}{12pt}\selectfont
+\allowdisplaybreaks
+\maketitle
+
+\begin{itemize}
+\item[133.]
+	\begin{align*}
+		z^2&=2-2i \\
+		z^2&=2\sqrt{2}\cis\left(-\frac{\pi}{4}\right) \\
+		z&=\sqrt{2\sqrt{2}}\cis\left(\frac{-\frac{\pi}{4}+2\pi k}{2}\right) \\
+		k=0:z&=\sqrt{2\sqrt{2}}\cis\left(-\frac{\pi}{8}\right) \\
+		z&=\sqrt{2\sqrt{2}}\left(\sqrt{\frac{\frac{\sqrt{2}}{2}+1}{2}}-i\sqrt{\frac{1-\frac{\sqrt{2}}{2}}{2}}\right) \\
+		z&=\frac{\sqrt{2\sqrt{2}}\sqrt{\sqrt{2}+2}}{2}-i\frac{\sqrt{2\sqrt{2}}\sqrt{2-\sqrt{2}}}{2} \\
+		z&=\sqrt{\frac{4+4\sqrt{2}}{4}}-i\sqrt{\frac{4\sqrt{2}-4}{4}} \\
+		\Aboxed{z&=\sqrt{1+\sqrt{2}}-i\sqrt{\sqrt{2}-1}}
+		\\
+		k=1:z&=\sqrt{2\sqrt{2}}\cis\left(\frac{-\frac{\pi}{4}+\frac{8\pi}{4}}{2}\right) \\
+		z&=\sqrt{2\sqrt{2}}\cis\left(-\frac{\pi}{8}+\pi\right) \\
+		z&=\sqrt{2\sqrt{2}}\left(\cos\left(-\frac{\pi}{8}+\pi\right)+i\sin\left(-\frac{\pi}{8}+\pi\right) \right) \\
+		z&=\sqrt{2\sqrt{2}}\left(-\frac{\sqrt{\sqrt{2}+2}}{2}+i\left(-\left(-\frac{\sqrt{2-\sqrt{2}}}{2}\right)\right)\right) \\
+		z&=-\frac{\sqrt{2\sqrt{2}}\sqrt{\sqrt{2}+2}}{2}+i\frac{\sqrt{2\sqrt{2}}\sqrt{2-\sqrt{2}}}{2} \\
+		z&=-\sqrt{\frac{4+4\sqrt{2}}{4}}+i\sqrt{\frac{4\sqrt{2}-4}{4}} \\
+		\Aboxed{z&=-\sqrt{1+\sqrt{2}}+i\sqrt{\sqrt{2}-1}}
+	\end{align*}
+
+\item[135.]
+	\begin{align*}
+		z^2&=1+\sqrt{3}i \\
+		z^2&=2\cis\frac{\pi}{3} \\
+		z&=\sqrt{2}\cis\left(\frac{\frac{\pi}{3}+2\pi k}{2}\right) \\
+		k=0:z&=\sqrt{2}\cis\frac{\pi}{6} \\
+		z&=\sqrt{2}\left(\frac{\sqrt{3}}{2}+\frac{i}{2}\right) \\
+		\Aboxed{z&=\frac{\sqrt{6}}{2}+i\frac{\sqrt{2}}{2}} \\
+		k=1:z&=\sqrt{2}\cis\left(\frac{\pi}{6}+\pi\right) \\
+		z&=\sqrt{2}\left(-\frac{\sqrt{3}}{2}-\frac{i}{2}\right) \\
+		\Aboxed{z&=-\frac{\sqrt{6}}{2}-i\frac{\sqrt{2}}{2}}
+	\end{align*}
+
+\item[139.]
+	\begin{align*}
+		z^4&=8\left(\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}\right) \\
+		z&=\sqrt[4]{8}\left(\cos\left(\frac{\frac{2\pi}{3}+\frac{6\pi k}{3}}{4}\right)+i\sin\left(\frac{\frac{2\pi}{3}+\frac{6\pi k}{3}}{4}\right)\right) \\
+		z&=\sqrt[4]{8}\left(\cos\left(\frac{\pi}{6}+\frac{3\pi k}{6}\right)+i\sin\left(\frac{\pi}{6}+\frac{3\pi k}{6}\right)\right) \\
+		k=0:z&=\sqrt[4]{8}\left(\frac{\sqrt{3}}{2}+i\frac{1}{2}\right) \\
+		\Aboxed{z&=\frac{\sqrt[4]{8}\sqrt{3}}{2}+i\frac{\sqrt[4]{8}}{2}} \\
+		k=1:z&=\sqrt[4]{8}\left(\cos\frac{2\pi}{3}+i\sin\frac{2\pi}{3}\right) \\
+		\Aboxed{z&=-\frac{\sqrt[4]{8}}{2}+i\frac{\sqrt[4]{8}\sqrt{3}}{2}} \\
+		k=2:z&=\sqrt[4]{8}\left(-\cos\frac{\pi}{6}-i\sin\frac{\pi}{6}\right) \\
+		\Aboxed{z&=-\frac{\sqrt[4]{8}\sqrt{3}}{2}-i\frac{\sqrt[4]{8}}{2}} \\
+		k=1:z&=\sqrt[4]{8}\left(-\cos\frac{2\pi}{3}-i\sin\frac{2\pi}{3}\right) \\
+		\Aboxed{z&=\frac{\sqrt[4]{8}}{2}-i\frac{\sqrt[4]{8}\sqrt{3}}{2}} \\
+	\end{align*}
+
+\item[141.]
+	\begin{align*}
+		z^3&=-25i \\
+		z^3&=25\cis\frac{3\pi}{2} \\
+		z&=\sqrt[3]{25}\cis\left(\frac{\frac{3\pi}{2}+\frac{4\pi k}{2}}{3}\right) \\
+		k=0:z&=\sqrt[3]{25}\cis\frac{\pi}{2} \\
+		\Aboxed{z&=i\sqrt[3]{25}} \\
+		k=1:z&=\sqrt[3]{25}\cis\frac{7\pi}{6} \\
+		z&=\sqrt[3]{25}\left(-\frac{\sqrt{3}}{2}-\frac{i}{2}\right) \\
+		\Aboxed{z&=-\frac{\sqrt[3]{25}\sqrt{3}}{2}-i\frac{\sqrt[3]{25}}{2}} \\
+		k=2:z&=\sqrt[3]{25}\cis\frac{11\pi}{6} \\
+		z&=\sqrt[3]{25}\left(\frac{\sqrt{3}}{2}-\frac{i}{2}\right) \\
+		\Aboxed{z&=\frac{\sqrt[3]{25}\sqrt{3}}{2}-i\frac{\sqrt[3]{25}}{2}}
+	\end{align*}
+
+\item[151.]
+	\begin{align*}
+		z^5&=128(-1+i) \\
+		z^5&=128\left(\sqrt{2}\cis\frac{3\pi}{4}\right) \\
+		z&=\sqrt[5]{128\sqrt{2}}\cis\left(\frac{\frac{3\pi}{4}+\frac{8\pi k}{4}}{5}\right) \\
+		k=0:z&=\sqrt[5]{128\sqrt{2}}\left(\cos\frac{3\pi}{20}+i\sin\frac{3\pi}{20}\right) \\
+		\Aboxed{z&=\sqrt[5]{128\sqrt{2}}\cos\frac{3\pi}{20}+i\sqrt[5]{128\sqrt{2}}\sin\frac{3\pi}{20}} \\
+		k=1:\Aboxed{z&=\sqrt[5]{128\sqrt{2}}\cos\frac{11\pi}{20}+i\sqrt[5]{128\sqrt{2}}\sin\frac{11\pi}{20}} \\
+		k=2:\Aboxed{z&=\sqrt[5]{128\sqrt{2}}\cos\frac{19\pi}{20}+i\sqrt[5]{128\sqrt{2}}\sin\frac{19\pi}{20}} \\
+		k=3:\Aboxed{z&=\sqrt[5]{128\sqrt{2}}\cos\frac{27\pi}{20}+i\sqrt[5]{128\sqrt{2}}\sin\frac{27\pi}{20}} \\
+		k=4:z&=\sqrt[5]{128\sqrt{2}}\cos\frac{35\pi}{20}+i\sqrt[5]{128\sqrt{2}}\sin\frac{35\pi}{20} \\
+		z&=\sqrt[5]{128\sqrt{2}}\cos\frac{7\pi}{4}+i\sqrt[5]{128\sqrt{2}}\sin\frac{7\pi}{4} \\
+		z&=\sqrt[5]{128\sqrt{2}}\sqrt[5]{\left(\frac{\sqrt{2}}{2}\right)^5}+i\sqrt[5]{128\sqrt{2}}\sqrt[5]{\left(-\frac{\sqrt{2}}{2}\right)^5} \\
+		z&=\sqrt[5]{\frac{128\sqrt{2}\cdot\sqrt{2^5}}{32}}+i\sqrt[5]{\frac{128\sqrt{2}\cdot\sqrt{2^5}}{-32}} \\
+		z&=\sqrt[5]{4\sqrt{64}}+i\sqrt[5]{-4\sqrt{64}} \\
+		z&=\sqrt[5]{32}+i\sqrt[5]{-32} \\
+		\Aboxed{z&=2-2i}
+	\end{align*}
+
+\item[153.]
+	\begin{align*}
+		x^4-i&=0 \\
+		x^4&=\cis\frac{\pi}{2} \\
+		x&=\cis\left(\frac{\frac{\pi}{2}+\frac{4\pi k}{2}}{4}\right) \\
+		x&=\cis\frac{\pi+4\pi k}{8} \\
+		k=0:x&=\cos\frac{\pi}{8}+i\sin\frac{\pi}{8} \\
+		\Aboxed{x&=\frac{\sqrt{\sqrt{2}+2}}{2}+i\frac{\sqrt{2-\sqrt{2}}}{2}} \\
+		k=1:x&=\cos\frac{5\pi}{8}+i\sin\frac{5\pi}{8} \\
+		\Aboxed{x&=-\frac{\sqrt{2-\sqrt{2}}}{2}+i\frac{\sqrt{\sqrt{2}+2}}{2}} \\
+		k=2:x&=\cos\frac{9\pi}{8}+i\sin\frac{9\pi}{8} \\
+		\Aboxed{x&=-\frac{\sqrt{\sqrt{2}+2}}{2}-i\frac{\sqrt{2-\sqrt{2}}}{2}} \\
+		k=3:x&=\cos\frac{13\pi}{8}+i\sin\frac{13\pi}{8} \\
+		\Aboxed{x&=\frac{\sqrt{2-\sqrt{2}}}{2}-i\frac{\sqrt{\sqrt{2}+2}}{2}} \\
+	\end{align*}
+
+\item[159.]  
+	\begin{align*}
+		x^3-(1-i)&=0 \\
+		x^3&=\sqrt{2}\cis\left(-\frac{\pi}{4}\right) \\
+		x&=\left(2^{\frac{1}{2}}\right)^{\frac{1}{3}}\cis\left(\frac{-\frac{\pi}{4}+\frac{8\pi k}{4}}{3}\right) \\
+		x&=\sqrt[6]{2}\cis\left(\frac{-\pi+8\pi k}{12}\right) \\
+		k=0:x&=\sqrt[6]{2}\left(\cos\left(-\frac{\pi}{12}\right)+i\sin\left(-\frac{\pi}{12}\right)\right) \\
+		x&=\sqrt[6]{2}\sqrt{\frac{1+\frac{\sqrt{3}}{2}}{2}}-i\sqrt[6]{2}\sqrt{\frac{1-\frac{\sqrt{3}}{2}}{2}} \\
+		\Aboxed{x&=\frac{\sqrt[6]{2}\sqrt{2+\sqrt{3}}}{2}-i\frac{\sqrt[6]{2}\sqrt{2-\sqrt{3}}}{2}} \\
+		k=1:x&=\sqrt[6]{2}\left(\cos\frac{7\pi}{12}+i\sin\frac{7\pi}{12}\right) \\
+		x&=\sqrt[6]{2}\left(-\sqrt{\frac{1+\left(-\frac{\sqrt{3}}{2}\right)}{2}}\right)+i\sqrt[6]{2}\sqrt{\frac{1-\left(-\frac{\sqrt{3}}{2}\right)}{2}} \\
+		\Aboxed{x&=-\frac{\sqrt[6]{2}\sqrt{2-\sqrt{3}}}{2}+i\frac{\sqrt[6]{2}\sqrt{2+\sqrt{3}}}{2}} \\
+		k=2:x&=\sqrt[6]{2}\left(\cos\frac{15\pi}{12}+i\sin\frac{15\pi}{12}\right) \\
+		x&=\sqrt[6]{2}\cos\frac{5\pi}{4}+i\sqrt[6]{2}\sin\frac{5\pi}{4} \\
+		\Aboxed{x&=-\frac{\sqrt[6]{2}\sqrt{2}}{2}-i\frac{\sqrt[6]{2}\sqrt{2}}{2}} \\
+	\end{align*}
+\end{itemize}
+
+\end{document}
