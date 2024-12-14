@@ -1,6 +1,6 @@
-# Peddie Calculus BC
+# Peddie Math psets
 
-Homework submissions for AP Calculus BC problem sets, done in $\LaTeX$ (as is normal). Not complete, many/most questions not assigned.
+Homework submissions for Pre-Calculus Honors and AP Calculus BC problem sets, done in $\LaTeX$ (as is normal). Not complete, many/most questions not completed.
 
 The work is licensed so any derivative content:
 
