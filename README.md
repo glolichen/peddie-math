@@ -1,5 +1,5 @@
 # Peddie Calculus BC
 
-Homework submissions for AP Calculus BC problem sets. Not complete, many/most questions not assigned.
+Homework submissions for AP Calculus BC problem sets, done in $\LaTeX$ (as is normal). Not complete, many/most questions not assigned.
 
-The work is licensed so any derivative ($\lim_{h\to0}\frac{f(x+h)-f(x)}h$) need to properly follow the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+The work is licensed so any derivative ($\displaystyle\lim_{h\to0}\frac{f(x+h)-f(x)}h$) need to properly follow the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License).
