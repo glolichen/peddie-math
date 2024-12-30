@@ -1,0 +1,166 @@
+% JUMP TO LINE 60, 75
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+
+\title{\vspace*{-30pt}Problem Set \# 60}
+\author{Jayden Li}
+\date{\today}
+
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\maketitle
+
+\problem{2}
+\begin{itemize}
+	\item[(a)]
+		$\begin{aligned}[t]
+			\alignedintertext{
+			\begin{mdframed}
+				$\begin{aligned}[t]
+					I(x)&=\exp \int 1\,\mathrm{d}x
+					=\exp(x)
+				\end{aligned}$
+			\end{mdframed}
+			}
+			\diff yx+y=1
+			&\implies \diff yx+1\cdot y=1
+			\implies e^x\diff yx+e^xy=e^x
+			\implies \deriv e^xy=e^x
+			\implies e^xy=e^x+C \\
+			&\implies \boxed{y=1+\frac{C}{e^x}}
+		\end{aligned}$
+
+	\item[(b)]
+		$\begin{aligned}[t]
+		    \diff yx=x-y
+			&\implies \diff yx+y=x
+			\implies e^x\diff yx+e^xy=xe^x
+			\implies \int\deriv e^xy \,\mathrm{d}x=\int xe^x\,\mathrm{d}x \\
+			&\implies e^xy=xe^x-e^x+C
+			\implies \boxed{y=x-1+\frac{C}{e^x}}
+		\end{aligned}$
+
+	\item[(e)]
+		$\begin{aligned}[t]
+			(1+t)\diff ut+u=1+t
+			&\implies \diff ut+\frac{1}{1+t}u=1 \\
+			\alignedintertext{
+			\begin{mdframed}
+				$\begin{aligned}[t]
+					I(t)&=\exp\int \frac{1}{1+t}\,\mathrm{d}t
+					=\exp(\ln|1+t|+C)
+					=C(1+t)
+				\end{aligned}$
+			\end{mdframed}
+			}
+			&\implies (1+t)\diff ut+u=1+t
+			\implies \int\deriv[t] (1+t)u \,\mathrm{d}t=\int\left(1+t\right)\mathrm{d}t \\
+			&\implies (1+t)u=t+\frac{t^2}{2}+C
+			\implies u=\frac{t}{1+t}+\frac{t^2}{2(1+t)}+\frac{C}{1+t}
+		\end{aligned}$
+\end{itemize}
+
+\problem{4}
+$\begin{aligned}[t]
+	\diff yx +P(x)y=Q(x)y^n
+	&\implies \left[\begin{aligned}
+			u&=y^{1-n} \\
+			y&=u^{\frac{1}{1-n}} \\
+			\mathrm{d}y&=\frac{1}{1-n}u^{\frac{n}{1-n}}\,\mathrm{d}u
+	\end{aligned}\right]
+	\frac{1}{1-n}\diff ux u^{\frac{n}{1-n}}+P(x)u^{\frac{1}{1-n}}=Q(x)u^{\frac{n}{1-n}} \\
+	&\implies u^{\frac{-n}{1-n}}\left(\diff ux u^{\frac{n}{1-n}}+(1-n)P(x)u^{\frac{1}{1-n}}\right)=(1-n)Q(x)u^{\frac{n}{1-n}}u^{\frac{-n}{1-n}} \\
+	&\implies \diff ux+(1-n)P(x)u^{\frac{1-n}{1-n}}=(1-n)Q(x) \\
+	&\implies \diff ux+(1-n)P(x)u=(1-n)Q(x) \\
+\end{aligned}$
+
+\problem{5}
+$\begin{aligned}[t]
+    \diff yx +\frac 2xy=\frac{y^3}{x^2}
+	&\implies \left[\begin{aligned}
+			u&=y^{-2} \\
+			y&=u^{-1/2} \\
+			\diff yx&=-\frac12 u^{-3/2}\diff ux
+	\end{aligned}\right]
+	-\frac12 u^{-3/2}\diff ux+\frac2xu^{-1/2}=\frac{\left(u^{-1/2}\right)^3}{x^2} \\
+	&\implies u^{3/2}\left(-\frac12 u^{-3/2}\diff ux+\frac2xu^{-1/2}\right)=u^{3/2}\cdot\frac{u^{-3/2}}{x^2}
+	\implies -2\left(-\frac12\diff ux+\frac2xu\right)=\frac{1}{x^2}\cdot(-2) \\
+	&\implies \diff ux-\frac4xu=-\frac{2}{x^2} \\
+	\alignedintertext{
+	\begin{mdframed}
+		$\begin{aligned}[t]
+			I(x)&=\exp \int\left(-\frac4x\right)\mathrm{d}x
+			=\left(\exp \ln|x|\right)^{-4}
+			=|x|^{-4}
+			=x^{-4}
+		\end{aligned}$
+	\end{mdframed}
+	}
+	&\implies x^{-4}\diff ux-4x^{-5}u=-2x^{-6}
+	\implies \int \deriv[x]\left[x^{-4}u\right]\,\mathrm{d}x=\int\left(-2x^{-6}\right)\mathrm{d}x \\
+	&\implies x^4x^{-4}u=\left(\frac{-2}{-5}x^{-5}+C\right)x^4
+	\implies \boxed{\frac{1}{y^2}=\frac{2}{5x}+Cx^4}
+\end{aligned}$
+
+\end{document}

@@ -1,0 +1,144 @@
+% JUMP TO LINE 60, 75
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+
+\title{\vspace*{-30pt}Problem Set \#37}
+\author{Jayden Li}
+\date{\today}
+
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\maketitle
+
+\problem{3}
+\begin{itemize}
+	\item[(a)]
+		At any time, the distance traveled by the dog is equal to the distance traveled by the rabbit. Also note that because the dog always runs in a straight line to the rabbit, the tangent line to $f(x)$ passes through the rabbit.
+
+		The distance traveled by the dog and rabbit can be calculated using the arc length formula. This is the $y$-coordinate of the rabbit. The $y$-coordinate of the dog equals $f(x)$. The $x$-difference between the animals is always $x$. Therefore:
+
+		$\begin{aligned}[t]
+			&f'(x)=\frac1x\left(f(x)-\int_{x}^{L}\sqrt{1+\left(f'(t)\right)^2}\,\mathrm{d}t\right)
+			\implies xf'(x)=f(x)-\int_{x}^{L}\sqrt{1+\left(f'(t)\right)^2}\,\mathrm{d}t \\
+			\implies{}& \deriv[x]\left[f(x)-xf'(x)\right]=\deriv[x]\int_{x}^{L}\sqrt{1+\left(f'(t)\right)^2}\,\mathrm{d}t
+			\implies f'(x)-f'(x)-xf''(x)=-\sqrt{1+(f'(x))^2} \\
+			\implies{}& xf''(x)=\sqrt{1+(f'(x))^2}
+			\implies \boxed{x\diff[2]yx=\sqrt{1+\left(\diff yx\right)^2}}
+		\end{aligned}$
+
+	\item[(b)]
+		$\begin{aligned}[t]
+			x\diff[2]yx=\sqrt{1+\left(\diff yx\right)^2}
+			&\implies \left[\begin{aligned}
+					z&=\diff yx \\
+					\diff zx&=\diff[2]yx
+			\end{aligned}\right]
+			x\diff zx=\sqrt{1+z^2}
+			\implies \frac{1}{\sqrt{1+z^2}}\diff zx=\frac1x \\
+			&\implies \int\frac{1}{\sqrt{1+z^2}}\,\mathrm{d}z=\int \frac1x\,\mathrm{d}x=\ln|x| \\
+			\alignedintertext{
+			\begin{mdframed}
+				$\begin{aligned}[t]
+				    \int \frac{1}{\sqrt{1+z^2}}\,\mathrm{d}z
+					&=\left[\begin{aligned}
+							z&=\tan\theta \\
+							\mathrm{d}z&=\sec^2\theta
+					\end{aligned}\right]
+					\int \frac{\sec^2\theta}{\sqrt{1+\tan^2\theta}}\,\mathrm{d}\theta
+					=\int \sec\theta\,\mathrm{d}\theta
+					=\ln|\sec\theta+\tan\theta|+C_0 \\
+					&=\ln \left|\sqrt{z^2+1}+z\right|+C_0
+				\end{aligned}$
+			\end{mdframed}
+			}
+			&\implies \ln \left|\sqrt{z^2+1}+z\right|+C_0=\ln|x|
+			\implies C_0\sqrt{z^2+1}+C_0z=x \\
+			&\implies C_0^2\left(z^2+1\right)=x^2-2C_0xz+C_0^2z^2
+			\implies C_0^2=x^2-2C_0xz \\
+			&\implies 2C_0xz=x^2-C_0^2
+			\implies z=\frac{x^2-C_0^2}{2C_0x} \\
+			z(L)=0
+			&\implies\frac{L^2-C_0^2}{2C_0L}=0
+			\implies L^2-C_0^2=0
+			\implies C_0^2=L^2
+			\implies C_0=\pm L \\
+			z=\frac{x^2-L^2}{2Lx}
+			&\implies \begin{aligned}[t]
+				y&=\int \frac{x^2-L^2}{2Lx}\,\mathrm{d}x
+				=\frac12\int\left(\frac{x}{L}-\frac{L}{x}\right)\mathrm{d}x
+				=\frac12 \left(\frac{x^2}{2L}-L\ln|x|\right)+C_1
+			\end{aligned} \\
+			y(0)=0 &\implies\frac12 \left(\frac{0}{2L}-L\right)+C_1
+			=-\frac{L}{2}+C_1=0
+			\implies C_1=\frac{L}{2} \\
+		   &\implies y=\frac12 \left(\frac{x^2}{2L}-L\ln|x|\right)+\frac{L}2
+		   =\boxed{\frac{x^2}{4L}-\frac{L\ln|x|}{2}+\frac{L}{2}}
+		\end{aligned}$
+
+	\item[(c)] No. The above function is not defined at $x=0$, and because the $x$-component of the rabbit's position always equals $0$, the dog will never reach it.
+
+\end{itemize}
+
+\end{document}
