@@ -1,0 +1,231 @@
+% JUMP TO LINE 60, 75
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+
+\title{\vspace*{-30pt}Problem Set \#39}
+\author{Jayden Li}
+\date{\today}
+
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{\abovedisplayskip / 2}
+\setlength{\belowdisplayskip}{\belowdisplayskip / 2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\maketitle
+
+\problem{1}
+For all $k\geq 1$:
+\begin{align*}
+	a_k>a_{k+1}
+	&\iff \frac{k+1}{k}>\frac{k+2}{k+1} \\
+	&\iff k^2+2k+1>k^2+2k
+	& \text{(multiplying positive $k(k+1)$)} \\
+	&\iff k^2+1>k^2
+\end{align*}
+Clearly, the above must be true. Thus, $\{a_n\}$ is an decreasing sequence. \qed
+
+\problem{2}
+\begin{itemize}
+\item[(a)] Done in class
+\item[(b)] Done in class (yes because sine function is between -1 and 1)
+
+\item[(c)]
+$\displaystyle a_n=\left\{\sqrt{2a_{n-1}}\right\},a_1=\sqrt{2}$.
+
+\textbf{\textit{Proof increasing}}
+
+\underline{Base case.} When $n=1$, $a_n=\sqrt{2}$ and $a_{n+1}=\sqrt{2 \sqrt{2}}$. Because square function is increasing for positive values, $a_1<a_2 \iff \sqrt{2} < \sqrt{2 \sqrt{2}} \iff 2 < 2 \sqrt{2}$. Clearly true because $ \sqrt{2}>1$.
+
+\underline{Hypothesis.} Suppose $\displaystyle a_k<a_{k+1}\iff a_k< \sqrt{2a_k}$ when $k\geq1$.
+
+\underline{Inductive Step.}
+Want to show the statement holds for $k+1$, that is, $a_{k+1}<a_{k+2}$.
+\begin{align*}
+	a_{k+1}<a_{k+2}
+	&\iff \sqrt{2a_k}< \sqrt{2 \sqrt{2 a_k}} \\
+	&\iff 2a_k < 2 \sqrt{2a_k} & \text{(square function increasing for positive values)} \\
+	&\iff a_k< \sqrt{2a_k}
+\end{align*}
+By the principle of mathematical induction, the statement $a_k<a_{k+1}$ is true for all $k\geq 1$. \qed
+
+Because the sequence is increasing, it is clearly bounded at the lowest possible value, which is $a_1= \sqrt{2}$. So $\{a_n\}$ is bounded below.
+
+\textbf{\textit{Proof bounded above}}
+
+I claim that the sequence is bounded above at $2$. That is, $a_k<2$ for all $k\geq1$.
+
+\underline{Base case.} When $n=1$, $a_n=\sqrt{2}<2$.
+
+\underline{Hypothesis.} Suppose $\displaystyle a_k<2$ when $k\geq1$.
+
+\underline{Inductive Step.}
+Want to show the statement holds for $k+1$, that is, $a_{k+1}<2$.
+\begin{align*}
+	a_{k+1}<2
+	&\iff \sqrt{2a_k}<2
+	\iff 2a_k<4
+	\iff a_k<2
+\end{align*}
+True from hypothesis.
+
+By the principle of mathematical induction, the statement $a_k<\sqrt{2}$ is true for all $k\geq 1$. \qed
+
+Thus, because $\{a_n\}$ is bounded above and below, it is bounded. \qed
+
+\end{itemize}
+
+\problem{3}
+\begin{itemize}
+	\item[(a)] Done in class
+	\item[(b)] Alternating sequence, so not monotonic. Clearly not bounded as $a_{\infty}$ tends to infinity.
+	\item[(c)] Let $\displaystyle f(x)=\frac{x}{x^2+1}$. Then $f(n)=a_n$ for all $n\in\mathbb N$.
+	\begin{align*}
+	    f'(x)<0
+		&\iff \frac{\left(x^2+1\right)-x(2x)}{\left(x^2+1\right)^2}<0 \\
+		&\iff x^2+1-2x^2<0 & \text{(denominator always positive)} \\
+		&\iff x^2>1 \iff x\in (-\infty,-1)\cup (1,\infty)
+	\end{align*}
+	For all $x>1$, $f'(x)<0$, so $f$ is decreasing for all $x>1$. So $\{a_n\}$ is decreasing for all $n>1$. But $a_1=1/2>2/5=a_2$, so it is decreasing for all $n\geq1$. Therefore $\{a_n\}$ is decreasing and monotonic.
+
+	Clearly it is also bounded because the range of $f$ on the positive real numbers is $(0,\infty)$ (too lazy).
+\end{itemize}
+
+\problem{4}
+\begin{itemize}
+	\item[(a)] Done in class
+	\item[(b)] Same proof as 2c, but with 6 instead of 2. Or:
+
+$\displaystyle a_n=\left\{\sqrt{6a_{n-1}}\right\},a_1=\sqrt{6}$.
+
+\textbf{\textit{Proof increasing}}
+
+\underline{Base case.} When $n=1$, $a_n=\sqrt{6}$ and $a_{n+1}=\sqrt{6 \sqrt{6}}$. Because square function is increasing for positive values, $a_1<a_6 \iff \sqrt{6} < \sqrt{6 \sqrt{6}} \iff 6 < 6 \sqrt{6}$. Clearly true because $ \sqrt{6}>1$.
+
+\underline{Hypothesis.} Suppose $\displaystyle a_k<a_{k+1}\iff a_k< \sqrt{6a_k}$ when $k\geq1$.
+
+\underline{Inductive Step.}
+Want to show the statement holds for $k+1$, that is, $a_{k+1}<a_{k+2}$.
+\begin{align*}
+	a_{k+1}<a_{k+2}
+	&\iff \sqrt{6a_k}< \sqrt{6 \sqrt{6 a_k}} \\
+	&\iff 6a_k < 6 \sqrt{6a_k} & \text{(square function increasing for positive values)} \\
+	&\iff a_k< \sqrt{6a_k}
+\end{align*}
+By the principle of mathematical induction, the statement $a_k<a_{k+1}$ is true for all $k\geq 1$. \qed
+
+Because the sequence is increasing, it is clearly bounded at the lowest possible value, which is $a_1= \sqrt{6}$. So $\{a_n\}$ is bounded below.
+
+\textbf{\textit{Proof bounded above}}
+
+I claim that the sequence is bounded above at $6$. That is, $a_k<6$ for all $k\geq1$.
+
+\underline{Base case.} When $n=1$, $a_n=\sqrt{6}<6$.
+
+\underline{Hypothesis.} Suppose $\displaystyle a_k<6$ when $k\geq1$.
+
+\underline{Inductive Step.}
+Want to show the statement holds for $k+1$, that is, $a_{k+1}<6$.
+\begin{align*}
+	a_{k+1}<6
+	&\iff \sqrt{6a_k}<6
+	\iff 6a_k<36
+	\iff a_k<6
+\end{align*}
+True from hypothesis.
+
+By the principle of mathematical induction, the statement $a_k<\sqrt{6}$ is true for all $k\geq 1$. \qed
+
+Thus, because $\{a_n\}$ is bounded above and below, it is bounded. \qed
+
+\end{itemize}
+
+\problem{5}
+Done in class
+
+\problem{6}
+\begin{itemize}
+\item[(a)] At the start, there is one pair. That pair takes 2 months to produce another pair, so $f_1=f_2=1$. At any time $n\in\mathbb N,n>2$, no rabbits die, so every rabbit at the previous time of $n-1$ are also at time $n$. There are $f_{n-1}$ such rabbits. Rabbits born two months ago at time $n-2$ now become productive and produce new pairs; there are $f_{n-2}$ of these. So the number of rabbits at time $n$ is $f_n=f_{n-1}+f_{n-2}$.
+
+\item[(b)]
+\begin{align*}
+    a_{n-1}=1+\frac{1}{a_{n-2}}
+	&\iff \frac{f_n}{f_{n-1}}=1+\left(\frac{f_{n-1}}{f_{n-2}}\right)^{-1}
+	\iff \frac{f_n}{f_{n-1}}=\frac{f_{n-1}}{f_{n-1}}+\frac{f_{n-2}}{f_{n-1}}
+	\iff \frac{f_n}{f_{n-1}}=\frac{f_n}{f_{n-1}} \\
+	&\iff a_n=1+\frac{1}{a_{n-1}}
+\end{align*}
+
+Let $\displaystyle L= \lim_{n\to\infty}a_n$, then $L=\lim_{n\to \infty}a_{n-1}$. From above, we have:
+\begin{align*}
+    a_n=1+\frac{1}{a_{n-1}}
+	&\implies \lim_{n\to\infty}a_n=\lim_{n\to\infty}\left[1+\frac{1}{a_{n-1}}\right]
+	\implies L=1+\frac 1L
+	\implies L^2-L-1=0 \\
+	&\implies \left(L-\frac12\right)^2-\frac{1}{4}-\frac44=0
+	\implies L-\frac12=\pm \sqrt{\frac54}
+	\implies \boxed{L=\frac{1\pm\sqrt{5}}{2}}
+\end{align*}
+The golden ratio $\varphi$ is defined as the positive case.
+
+\end{itemize}
+
+\end{document}
