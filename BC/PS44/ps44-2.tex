@@ -1,5 +1,5 @@
 % JUMP TO LINE 60, 75
-\documentclass[preview, margin=0.6in]{standalone}
+\documentclass{article}
 \usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
 
 \usepackage{amsmath, amsfonts, amsthm, amssymb}
@@ -57,7 +57,7 @@
 
 %opening
 
-\title{\vspace*{-40pt}Problem Set \#}
+\title{\vspace*{-40pt}Problem Set \#44}
 \author{Jayden Li}
 \date{\today}
 % \allowdisplaybreaks
@@ -72,6 +72,34 @@
 \setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
 \maketitle
 
-\problem{1}
+\problem{6}
+$\begin{aligned}[t]
+    \int x^p\ln x\,\mathrm{d}x
+	&=\left[\begin{aligned}
+			u&=\ln x &\quad \mathrm{d}u&=\frac{\mathrm{d}x}{x} \\
+			\mathrm{d}v&=x^p \,\mathrm{d}x & v&=\frac{x^{p+1}}{p+1}
+	\end{aligned}\right]
+	\frac{x^{p+1}\ln x}{p+1}-\int \frac 1x \frac{x^{p+1}}{p+1}\,\mathrm{d}x
+	=\frac{x^{p+1}\ln x}{p+1}-\frac{1}{p+1}\int x^p\,\mathrm{d}x \\
+	&=\frac{x^{p+1}\ln x}{p+1}-\frac{x^{p+1}}{(p+1)^2}+C \\
+	\int_{0}^{1}x^p \ln x\,\mathrm{d}x
+	&=\lim_{t\to0^+}\int_{t}^{1}x^p\ln x\,\mathrm{d}x
+	=\lim_{t\to0^+}\left[\frac{x^{p+1}\ln x}{p+1}-\frac{x^{p+1}}{(p+1)^2}\right]_{t}^{1} \\
+	&=0-\frac{1}{(p+1)^2}-\lim_{t\to0^+}\left[\frac{t^{p+1}\ln t}{p+1}+\frac{t^{p+1}}{(p+1)^2}\right]
+	=-\frac{1}{(p+1)^2}-\lim_{t\to0^+}\frac{t^{p+1}\ln t}{p+1}+\frac{0}{(p+1)^2} & (1) \\
+	\alignedintertext{\begin{mdframed}
+			$\begin{aligned}[t]
+				\lim_{t\to0^+}t^{p+1}\ln t
+				&=\lim_{t\to0^+}\frac{\ln t}{t^{-p-1}}
+				\underset{\text{LH}}{\overset{\left[\frac 00\right]}{=}} \lim_{t\to0^+}\left[\frac{\frac{1}{t}}{(-p-1)t^{-p-2}}\cdot\frac tt\right]
+				=\lim_{t\to0^+}\frac{1}{-(p+1)t^{-p-1}}
+				=\lim_{t\to0^+}\frac{-t^{p+1}}{p+1}
+				=0
+			\end{aligned}$
+	\end{mdframed}}
+	&=-\frac{1}{(p+1)^2}-0+0=\boxed{-\frac{1}{(p+1)^2}}
+\end{aligned}$
+
+Notice: when $p=-1$, the above is obviously undefined. When $p<-1$, $t^{p+1}$ is not real when $t=1$, so we are not able to evaluate it. So the integral only converges to $-1/(p+1)^2$ when $p>-1$.
 
 \end{document}
