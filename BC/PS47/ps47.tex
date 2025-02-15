@@ -1,0 +1,225 @@
+% JUMP TO LINE 60, 75
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vskip\belowdisplayshortskip
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+
+\title{\vspace*{-40pt}Problem Set \#47}
+\author{Jayden Li}
+\date{\today}
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{\abovedisplayskip/2}
+\setlength{\belowdisplayskip}{\belowdisplayskip/2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\maketitle
+
+\problem{1}
+\begin{itemize}
+	\item[(a)]
+		\begin{gather*}
+			\sum_{k=7}^{\infty}\frac{(-1)^{k-1}4}{k}=\frac47-\frac48+\frac49-\frac4{10}+\cdots \\
+			\lim_{k\to\infty}b_k=\lim_{k\to\infty}\frac4k=0 \tag{i} \\
+			b_k=\frac{4}{k}>\frac{4}{k+1}=b_{n+1} \tag{ii}
+		\end{gather*}
+		The series converges by the altenating series test.
+
+	\item[(b)]
+		\begin{gather*}
+			a_n=\frac{(-1)^{n-1}}{2n+1}, b_n=\frac{1}{2n+1} \\
+			\lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac{1}{2n+1}=0 \tag{i} \\
+			b_n=\frac{1}{2n+1}>\frac{1}{2n+3}=\frac{1}{2(n+1)+1}=b_{n+1} \tag{ii}
+		\end{gather*}
+		The series converges by the altenating series test.
+
+	\item[(c)]
+		\begin{gather*}
+			a_n=(-1)^n \frac{3n-1}{2n+1}, b_n=\frac{3n-1}{2n+1} \\
+			\lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac{3n \left(1-\frac{1}{3n}\right)}{2n \left(1+\frac{1}{2n}\right)}=\frac32 \tag{i}
+		\end{gather*}
+		The series diverges by the $n$th term divergence test.
+
+	\item[(d)]
+		\begin{gather*}
+			a_n=(-1)^n \frac{n}{10^n}, b_n=\frac{n}{10^n} \\
+			\lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac{n}{10^n}\lheqinfty \lim_{n\to\infty}\frac{1}{\ln(10)10^n}=0 \tag{i} \\
+			\deriv[x]\left[\frac{x}{10^x}\right]=\frac{10^x-x\cdot10^x\cdot\ln10}{\left(10^x\right)^2}=\frac{10^x \left(1-x\ln 10\right)}{\left(10^x\right)^2}<0 \impliedby x>\frac{1}{\ln10}
+		\end{gather*}
+		The series is decreating for all $x\geq \lceil 1/\ln 10\rceil=1$ (ii). So it converges by the altenating series test.
+
+	\item[(e)]
+		\begin{gather*}
+			a_n=(-1)^{n+1} \frac{n^2}{n^3+4}, b_n=\frac{n^2}{n^3+4} \\
+			\lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac{n^2}{n^3+4}=\lim_{n\to\infty}\frac{n^2}{n^2 \left(n+\frac{4}{n^2}\right)}=\lim_{n\to\infty}\frac{1}{n}=0 \tag{i}
+		\end{gather*}
+		Let $f(x)=\dfrac{x^2}{x^3+4}$. $\displaystyle f'(x)=\frac{2x \left(x^3+4\right)-x^2 \left(3x^2\right)}{\left(x^3+4\right)^2}=\frac{2x^4+8x-3x^4}{\left(x^3+4\right)^2}<0$. The critical values are: $x^3+4=0\implies x=-\sqrt[3]{4}$, $x=2$ and $x=0$.
+
+		\begin{center}
+			\begin{tikzpicture}	
+				\draw
+				(0,0) node[circle,draw,inner sep=1pt,label=below:$-\infty$](){}
+				-- (5,0) node[circle,draw,inner sep=2pt,label=below:$0$](){} node[midway,above]{$?$}
+				-- (7,0) node[circle,draw,inner sep=2pt,label=below:$2$](){} node[midway,above]{$+$}
+				-- (10,0) node[circle,draw,inner sep=1pt,label=below:$\infty$](){} node[midway,above]{$-$};
+			\end{tikzpicture}
+		\end{center}
+
+		The sequence is decreasing (ii) so the series converges by the alternating series test.
+
+	\item[(f)]
+		\begin{gather*}
+			a_n=(-1)^n \frac{n}{\ln n}, b_n=\frac{n}{\ln n}
+		\end{gather*}
+		It is trivial that $n/\ln n$ does not tend to $0$, so the series diverges by the $n$th term divergence test.
+
+	\item[(g)]
+		Notice that $\cos n\pi=(-1)^n$.
+		\begin{gather*}
+			a_n=\frac{\cos n\pi}{n^{3/4}}=\frac{(-1)^n}{n^{3/4}}, b_n=\frac{1}{n^{3/4}} \\
+			\lim_{n\to \infty}b_n=\lim_{n\to\infty}\frac{1}{n^{3/4}}=0 \tag{i}
+		\end{gather*}
+		$n^{3/4}$ is increasing so $1/n^{3/4}$ is decreasing (ii). So the series converges by the alternating series test.
+
+	\item[(h)]
+		\begin{gather*}
+		    a_n=(-1)^n \sin \left(\frac{\pi}{n}\right), b_n=\sin \left(\frac{\pi}{n}\right) \\
+			\lim_{n\to\infty}b_n=\lim_{n\to\infty}\sin \left(\frac{\pi}{n}\right)=0\text{ as $\dfrac{\pi}{n}\to0$ as $n\to\infty$.} \tag{i}
+		\end{gather*}
+		$\pi/n$ is decreasing and the sine function is increasing. Composing an increasing and decreasing function yields a decreasing function, thus $\sin\left(\pi/n\right)$ is decreasing (ii). Thus by the alternating series test the series converges.
+
+	\item[(i)]
+		\begin{gather*}
+		    a_n=(-1)^n \frac{n^n}{n!}, b_n=\frac{n^n}{n!} \\
+			\lim_{n\to\infty}b_n=\lim_{b\to \infty}\frac{n^n}{n!}=\lim_{b\to\infty}\left[\frac{n}{n}\frac{n}{n-1}\frac{n}{n-2}\ldots \frac{n}{1}\right]=\infty \tag{i}
+		\end{gather*}
+		The series diverges by the $n$th term divergence test.
+\end{itemize}
+
+\problem{2}
+\begin{itemize}
+	\item[(a)]
+		\begin{gather*}
+			a_n=\frac{(-1)^{n+1}}{n^6}, b_n=\frac{1}{n^6}
+			|\mathrm{error}|=|S-S_n|<0.00005 \impliedby |S-S_n|<b_{n+1}\leq 0.00005
+		\end{gather*}
+		Thus, we need to find a $b_{n+1}$ such that the above is true.
+
+		$\begin{aligned}[t]
+			&b_{n+1}=\frac{1}{(n+1)^6}<0.00005 \\
+			\implies{}&\frac{1}{0.00005}<(n+1)^6 &\quad \text{($0.00005, (n+1)^6\in\mathbb R+$ so are allowed to multiply)} \\
+			\implies{}& \sqrt[6]{20000}<n+1 &\quad \text{(no absolute value as $n+1$ must be positive)} \\
+			\implies{}& n > \sqrt[6]{20000}-1=5.21-1 \\
+			\impliedby{}& n= \lceil 4.21\rceil=\boxed{5}
+		\end{aligned}$
+
+	\item[(b)]
+		\begin{gather*}
+			a_n=\frac{(-1)^n}{10^n n!}, b_n=\frac{1}{10^n n!} \\
+			|\mathrm{error}|=|S-S_n|<0.000005 \impliedby |S-S_n|<b_{n+1}\leq 0.000005
+		\end{gather*}
+		Thus, we need to find a $b_{n+1}$ such that the above is true.
+		\begin{align*}
+			b_{n+1}=\frac{1}{10^{n+1} (n+1)!}<0.00005
+			&\implies\frac{1}{0.000005}<10^{n+1}(n+1)! \\
+			&\implies 200000<10^{n+1} (n+1)! \impliedby n=3
+		\end{align*}
+		We need to add up $3-0+1=\boxed 4$ terms.
+\end{itemize}
+
+\problem{3}
+Correct to four decimal places means error is less than $0.0001$. (not completely sure what ``four decimal places'' means though)
+\begin{itemize}
+	\item[(a)]
+		\begin{gather*}
+			a_n=\frac{(-1)^{n+1}}{n^5}, b_n=\frac{1}{n^5} \\
+			b_{n+1}=\frac{1}{(n+1)^5}<0.0001
+			\implies \sqrt[5]{10000}<n+1
+			\impliedby n=\boxed6
+		\end{gather*}
+	\item[(b)]
+		\begin{gather*}
+			a_n=\frac{(-1)^{n-1}n^2}{10^n}, b_n=\frac{n^2}{10^n} \\
+			b_{n+1}=\frac{(n+1)^2}{10^{n+1}}<0.0001
+			\implies 10000<\frac{10^{n+1}}{(n+1)^2}
+			\impliedby n=\boxed5
+		\end{gather*}
+\end{itemize}
+
+\problem{4}
+\begin{equation*}
+	S_{50}=\sum_{n=1}^{50}\frac{(-1)^{n-1}}{n}, a_{50}=\frac{(-1)^{50-1}}{50}<0
+\end{equation*}
+The last term included in the 50th partial sum is a negative term. So $S_{50}$ must be an \boxed{\text{underestimate}}.
+
+\problem{5}
+\begin{gather*}
+    a_n=\frac{(-1)^n}{n+p}, b_n=\frac{1}{n+p}, \lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac{1}{n+p}=0 \text{ for all } p\in\mathbb R \tag{i}
+\end{gather*}
+For condition ii: we must have $b_n\geq b_{n+1}$ for all integral $n\geq 1$. So $b_n$ actually has to be defined for all $n$, therefore there must not be a singularity: $n+p\neq 0 \implies p\neq -n$ so $p$ cannot be a negative integer on $(-\infty, -1]$. But if $p$ is a nonintegral real number on the same integral, there is no singularity but it is necessarily true that $b$ increases on an interval then decreases. So, $p\not\in (\infty, -1]\implies\boxed{p\in(-1,\infty)}$.
+
+\problem{6}
+The alternating series test does not apply because $\{b_n\}$ does not decrease monotonically: $b_1=1, b_2=1/2^2=1/4, b_3=1/3$. The alternating series test is a one-sided relationship, i.e. the conditions are not met does not imply divergence. We have the following:
+\begin{equation*}
+	\sum_{n\text{ odd}}(-1)^{n-1}b_n=\sum_{n\text{ odd}}b_n=\sum_{n=0}^{\infty}\frac{1}{2n+1}
+\end{equation*}
+This diverges when using the limit comparison test with $\sum 1/n$. The even terms converge to a negative number by the $p$-series test. The original series is the sum of (the series with even indices) and (the series with odd indices). Since the series with odd indices diverges, and the series with even indices converges to a finite value, the whole series must still diverge.
+
+\end{document}

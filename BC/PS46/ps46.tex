@@ -31,6 +31,7 @@
 
 \newcommand{\alignedintertext}[1]{%
   \noalign{%
+    \vskip\belowdisplayshortskip
     \vtop{\hsize=\linewidth#1\par
     \expandafter}%
     \expandafter\prevdepth\the\prevdepth
@@ -56,7 +57,7 @@
 
 %opening
 
-\title{\vspace*{-40pt}Problem Set \#}
+\title{\vspace*{-40pt}Problem Set \#46}
 \author{Jayden Li}
 \date{\today}
 % \allowdisplaybreaks
@@ -71,6 +72,23 @@
 \setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
 \maketitle
 
-\problem{1}
+\problem{3}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item[(c)] Converge, LCT to $\displaystyle \frac{\sqrt[3]{k}}{\sqrt{k^3}}$.
+		\item[(d)] Converge, DCT to $\dfrac{\pi/2}{n^{1.2}}$.
+		\item[(e)] Diverge by $n$th term divergence test.
+		\item[(f)] Diverge, LCT to $\dfrac 1n$.
+		\item[(g)] Diverge by $n$th term divergence test.
+		\item[(h)] Converge, LCT to $\dfrac{\sqrt n}{n^2}$.
+		\item[(i)] Diverge, LCT to $\dfrac{n^2}{n^3}$.
+		\item[(j)] Converge, start with $n=3$ and DCT with $\dfrac{2}{e^n}$.
+		\item[(k)] Diverge, LCT to $\dfrac1{n^2}$.
+		\item[(l)] Diverge, LCT to $\dfrac1n$.
+	\end{itemize}
+\end{multicols}
+
+\problem{4}
+When $p>1$, the series converges by direct comparison to $1/n^p$.
 
 \end{document}

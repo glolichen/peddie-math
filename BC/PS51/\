@@ -31,6 +31,7 @@
 
 \newcommand{\alignedintertext}[1]{%
   \noalign{%
+    \vskip\belowdisplayshortskip
     \vtop{\hsize=\linewidth#1\par
     \expandafter}%
     \expandafter\prevdepth\the\prevdepth
@@ -56,7 +57,7 @@
 
 %opening
 
-\title{\vspace*{-40pt}Problem Set \#}
+\title{\vspace*{-40pt}Problem Set \#51}
 \author{Jayden Li}
 \date{\today}
 % \allowdisplaybreaks
@@ -72,5 +73,79 @@
 \maketitle
 
 \problem{1}
+\begin{itemize}
+	\item[(a)]
+		$\begin{aligned}[t]
+			f(x)
+			&=\frac{1}{1+x}
+			=\frac{1}{1-(-x)}
+			=\sum_{n=0}^{\infty}(-x)^n
+			=\boxed{\sum_{n=0}^{\infty}(-1)^n x^n}
+		\end{aligned}$
+
+		Interval of convergence: $(-1,1)$.
+
+	\item[(c)]
+		$\begin{aligned}[t]
+		    f(x)
+			&=\frac{x}{9+x^2}
+			=\frac{x}{9}\frac{1}{1-\left(-\frac{x^2}{9}\right)}
+			=\frac{x}{9}\sum_{n=1}^{\infty}\left(-\frac{x^2}{9}\right)^n
+			=\frac{x}{9}\sum_{n=1}^{\infty}(-1)^n \frac{x^{2n}}{9^n}
+			=\boxed{\sum_{n=1}^{\infty}(-1)^n \frac{x^{2n+1}}{9^{n+1}}}
+		\end{aligned}$
+		
+		Converges when $\displaystyle \left|-\frac{x^2}{9}\right|<1 \iff x^2<9 \iff \left|x\right|<3$.
+
+		Interval of convergence: $(-3,3)$.
+
+\end{itemize}
+
+\problem{6}
+\begin{itemize}
+\item[(b)]
+	\phantom{}
+	\begin{mdframed}
+		First, we calculate the power series expansion of the arctangent function.
+
+		$\begin{aligned}[t]
+			\deriv[x]\arctan x
+			&=\frac{1}{1+x^2}
+			=\frac{1}{1-\left(-x^2\right)}
+			=\sum_{n=0}^{\infty}\left(-x^2\right)^n
+			=\sum_{n=0}^{\infty}(-1)^n x^{2n} \\
+			\arctan x
+			&=\int \deriv[x]\arctan x\,\mathrm{d}x
+			=\int \sum_{n=0}^{\infty}(-1)^n x^{2n}\,\mathrm{d}x
+			=\sum_{n=1}^{\infty}\frac{(-1)^n x^{2n+1}}{2n+1}+C \\
+			\arctan 0
+			&=0
+			=\sum_{n=1}^{\infty}\frac{(-1)^n x^{2n+1}}{2n+1}+C
+		\end{aligned}$
+	\end{mdframed}
+
+\end{itemize}
+
+\problem{7}
+\begin{itemize}
+	\item[(a)]
+
+
+	\item[(b)]
+
+
+\end{itemize}
+
+\problem{8}
+\begin{itemize}
+	\item[(a)]
+
+
+	\item[(b)]
+
+
+\end{itemize}
+
+\problem{9}
 
 \end{document}
