@@ -1,0 +1,289 @@
+% JUMP TO LINE 60, 75
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\usepackage[math]{cellspace}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+
+\title{\vspace*{-40pt}Problem Set \#54}
+\author{Jayden Li}
+\date{\today}
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{\abovedisplayskip/2}
+\setlength{\belowdisplayskip}{\belowdisplayskip/2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\setlength{\cellspacetoplimit}{8pt}
+\setlength{\cellspacebottomlimit}{8pt}
+
+\maketitle
+
+\problem{1}
+\begin{itemize}
+	\item[(a)]
+		$\begin{aligned}[t]
+		    f(x)
+			&=\sec x
+			=\frac{1}{\cos x}
+			=\frac{1}{\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n}}{(2n)!}} \\
+			P_2(x)
+			&=\frac{1}{\sum_{n=0}^{1}\frac{(-1)^n x^{2n}}{(2n)!}}
+			=\frac{1}{1-\frac{x^2}{2!}}
+			=\boxed{1+\frac{x^2}{2}}\cancel{+\ldots}
+		\end{aligned}$
+\end{itemize}
+
+\problem{2}
+\begin{itemize}
+	\item[(a)]
+		\begin{equation*}
+			f(x)=\frac 2x=2x^{-1}
+		\end{equation*}
+
+		\begin{center}
+			$\begin{array}{c|cl|c|c}
+				n & f^{(n)}(x) & f^{(n)}(1) & c_n \\
+				\hline
+				0 & 2x^{-1} & 2 & 2 \\
+				1 & -2x^{-2} & -2 & -2 \\
+				2 & 4x^{-3} & 4 & 4/2!=2 \\
+				3 & -12x^{-4} & -12 & -12/3!=-2
+			\end{array}$
+		\end{center}
+
+		\begin{equation*}
+			\boxed{P_3(x)
+			=2-2(x-1)+2(x-a)^2-2(x-1)^3}
+		\end{equation*}
+
+	\item[(b)]
+		\begin{equation*}
+			f(x)=\sqrt[3]{x}=x^{1/3}
+		\end{equation*}
+
+		\begin{center}
+			$\begin{array}{c|c|c|c}
+				n & f^{(n)}(x) & f^{(n)}(8) & c_n \\
+				\hline
+				0 & x^{1/3} & 2 & 2 \\
+				1 & (1/3)x^{-2/3} & 1/12 & 1/12 \\
+				2 & (-2/9)x^{-5/3} & -2/(9\cdot32) & -1/288 \\
+				3 & (10/27)x^{-8/3} & 10/(27 \cdot 256) & 5/20736
+			\end{array}$
+		\end{center}
+
+		\begin{equation*}
+			\boxed{P_3(x)
+			=2+\frac{1}{12}(x-8)-\frac{1}{288}(x-8)^2+\frac{5}{20736}(x-8)^3}
+		\end{equation*}
+\end{itemize}
+
+\problem{4}
+\begin{itemize}
+	\item[(b)]
+		Let $f(x)=\arcsin x$. We start by calculating the 5th degree Maclaurin polynomial of $f$.
+
+		\begin{center}
+			\everymath={\displaystyle}
+			% \def\arraystretch{7.0}
+			$\begin{array}{c|Sc|c|c}
+				n & $\arcsin^{(n)}(x)$ & \arcsin^{(n)}(0) & c_n \\
+				\hline
+				0 & $\arcsin x$ & 0 & 0 \\
+				\hline
+				1 & $\frac{1}{\sqrt{1-x^2}}$ & 1 & 1 \\
+				\hline
+				2 & $\frac{-\frac{-2x}{2 \sqrt{1-x^2}}}{1-x^2}=\frac{x}{\left(1-x^2\right)^{3/2}}$ & 0 & 0 \\
+				\hline
+				3 & $\begin{aligned}
+				    \frac{\left(1-x^2\right)^{3/2}-x\frac32 \sqrt{1-x^2} (-2x)}{\left(1-x^2\right)^3}
+					&=\frac{\left(1-x^2\right)^{3/2}+3x^2 \left(1-x^2\right)^{1/2}}{\left(1-x^2\right)^3} \\
+					&=\left(1-x^2\right)^{-3/2}+3x^2 \left(1-x^2\right)^{-5/2}
+				\end{aligned}$ & 1 & \frac{1}{3!} \\
+				\hline
+				4 & $\begin{aligned}
+					&{}-2x \frac{-3}{2}\left(1-x^2\right)^{-5/2}+6x \left(1-x^2\right)^{-5/2}+3x^2 \frac{-5}{2}(-2x)\left(1-x^2\right)^{-7/2} \\
+					={}& 3x \left(1-x^2\right)^{-5/2}+6x \left(1-x^2\right)^{-5/2}+15x^3 \left(1-x^2\right)^{-7/2} \\
+					={}& 9x \left(1-x^2\right)^{-5/2}+15x^3 \left(1-x^2\right)^{-7/2}
+				\end{aligned}$ & 0 & 0 \\
+				\hline
+				5 & 
+				$\begin{aligned}
+					{}&\left[\begin{aligned}
+						&9 \left(1-x^2\right)^{-5/2}+9x \frac{-5}{2}(-2x) \left(1-x^2\right)^{-7/2}+ \\ 
+						&45x^2 \left(1-x^2\right)^{-7/2}+15x^3 \frac{-7}{2}(-2x) \left(1-x^2\right)^{-9/2}
+					\end{aligned}\right] \\
+					={}&\left[\begin{aligned}
+						&9 \left(1-x^2\right)^{-5/2}+45x^2 \left(1-x^2\right)^{-7/2}+45x^2 \left(1-x^2\right)^{-7/2}+ \\ 
+						&105x^4 \left(1-x^2\right)^{-9/2}
+					\end{aligned}\right] \\
+					={}& 9 \left(1-x^2\right)^{-5/2}+90x^2 \left(1-x^2\right)^{-7/2}+105x^4 \left(1-x^2\right)^{-9/2}
+				\end{aligned}$
+				  & 9 & \frac{9}{5!}
+			\end{array}$
+		\end{center}
+
+		Let $R_3$ be the remainder of the 3rd degree Maclaurin polynomial of arcsine:
+		\begin{equation*}
+		    \arcsin(x)
+			\approx P_3(x)
+			=x-\frac{x^3}{6}
+		\end{equation*}
+
+		By Taylor's Theorem, we have the following upper bound on $R_3(0.4)$:
+		\begin{equation*}
+		    R_3(0.4)
+			\leq \frac{\left|0-0.4\right|^{3+1}}{(3+1)!} \max_{0\leq z\leq 0.4} \left|f^{(3+1)}(z)\right|
+			=\frac{(0.4)^4}{24} \max_{0\leq z\leq 0.4} \left|f^{(4)}(z)\right|
+		\end{equation*}
+		Notice that $\deriv f^{(4)}(x)=f^{(5)}(x)>0$ for all $0\leq x\leq0.4$, so $f^{(4)}$ is increasing. Thus, $f^{(4)}$ reaches its global maximum on the interval $[0,0.4]$ at $z=0.4$. Therefore, we have:
+		\begin{equation*}
+		    R_3(0.4)
+			\leq\frac{(0.4)^4}{24} f^{(4)}(0.4)
+			\approx\frac{0.0256}{24}\cdot7.33402
+			=\boxed{0.00782}
+		\end{equation*}
+
+		The actual error is:
+		\begin{equation*}
+			\left|\arcsin\left(0.4\right)-\left(0.4+\frac{(0.4)^3}{6}\right)\right|=0.000850 < 0.00782 = \text{Lagrange error bound}
+		\end{equation*}
+\end{itemize}
+
+\problem{5}
+\begin{itemize}
+\item[(b)]
+	Let $f(x)=e^x$. Then $f^{n}(x)=e^x$ for all $n\in\mathbb N$.
+	\begin{equation*}
+		f(0.6)
+		=e^{0.6}
+		\approx P_n(0.6)
+		=\sum_{k=0}^{n}\frac{(0.6)^k}{k!}
+	\end{equation*}
+	The Lagrange error bound of the above approximation, in terms of $n$, is:
+	\begin{equation*}
+		R_n(0.6)
+		\leq \frac{\left|0-0.6\right|^{n+1}}{(n+1)!}\max_{0\leq z\leq 0.6}\left|f^{(n+1)}(z)\right|
+		=\frac{(0.6)^{n+1}}{(n+1)!}e^{0.6}\leq 0.001
+	\end{equation*}
+	Because $f^{n+1}(z)=e^z$ is increasing, the global maximum occurs at the highest value $z=0.6$.
+
+	Using a calculator, we see that the above is true when \boxed{n\geq5}.
+\end{itemize}
+
+\problem{6}
+\begin{equation*}
+	f(x)=\sqrt[3]{x}=x^{1/3}
+\end{equation*}
+\begin{itemize}
+\item[(a)]
+	\phantom{}
+	\begin{center}
+		\everymath={\displaystyle}
+		$\begin{array}{c|Sc|c|c}
+			n & $f^{(n)}(x)$ & f^{(n)}(8) & c_n \\
+			\hline
+			0 & $x^{1/3}$ & 2 & 2 \\
+			\hline
+			1 & $\frac13 x^{-2/3}$ & \frac{1}{12} & \frac{1}{12} \\
+			\hline
+			2 & $\frac13 \left(-\frac23\right)x^{-5/3}=-\frac{2}{9}x^{-5/3}$ & -\frac{1}{144} & -\frac{1}{288} \\
+			\hline
+			3 & $-\frac29 \left(-\frac53\right)x^{-8/3}=\frac{10}{27}x^{-8/3}$ & \ldots & \ldots
+		\end{array}$
+	\end{center}
+	\begin{equation*}
+	    f(x)
+		\approx
+		\boxed{P_2(x)=2+\frac{x-8}{12}-\frac{(x-8)^2}{288}}
+	\end{equation*}
+
+\item[(b)]
+	Let $R_2$ be the remainder of the 2nd degree polynomial: $R_2(x)=\left|f(x)-P_2(x)\right|$. We calculate $R_2(x)$ where $7\leq x\leq 9$.
+
+	Let $I$ be an interval defined as follows:
+	\begin{equation*}
+		I 
+		=\begin{cases}
+			[x,8] & 7\leq x\leq 8 \\
+			[8,x] & 8<x\leq 9
+		\end{cases}
+	\end{equation*}
+	This is the interval which $z$ must be on.
+	\begin{align*}
+	    R_2(x)
+		&
+		\leq \frac{\left|0-x\right|^{2+1}}{(2+1)!} \max_{z\in I} \left|f^{(2+1)}(z)\right|
+		=\frac{x^3}{6}\max_{z\in I} \left|f^{(3)}(z)\right|
+		=\frac{x^3}{6}\max_{z\in I} \left|\frac{10}{27}z^{-8/3}\right|
+		\intertext{
+			Notice $z^{-8/3}=1/z^{8/3}$ must be decreasing on $(0,\infty)$ because $z^{8/2}$ is increasing on the same interval. Thus, the maximum value of $z^{-8/3}$ is reached for the lowest value of $z\in I$.
+		}
+		&\leq\frac{x^3}{6}\frac{10}{27}\begin{cases}
+			x & 7\leq x\leq8 \\
+			8 & 8\leq x<9
+		\end{cases}
+		=\boxed{\frac{5x^3}{81}\begin{cases}
+			x & 7\leq x\leq8 \\
+			8 & 8\leq x<9
+		\end{cases}}
+	\end{align*}
+\end{itemize}
+
+\end{document}
