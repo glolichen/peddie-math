@@ -1,0 +1,93 @@
+% JUMP TO LINE 17, 25
+% \documentclass[preview, margin=0.6in]{standalone}
+\documentclass{article}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{setspace}
+\usepackage{parskip}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+\title{\vspace*{-40pt}Homework 1.1 (3)}
+\author{Jayden Li}
+\date{\today}
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\maketitle
+
+\begin{enumerate}
+\item[3.]
+	Square matrix made up of four square block matrices, as follows:
+	\begin{equation*}
+		\begin{array}{c}
+			\vdots \\
+			\text{$m$ entries} \\
+			\vdots \\
+			\hline
+			\vdots \\
+			\text{$n$ entries} \\
+			\vdots \\
+		\end{array}
+		\left[\begin{array}{ccc|ccc}
+			0 & \ldots & 0 & 1 & \ldots & 1 \\
+			\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			0 & \ldots & 0 & 1 & \ldots & 1 \\
+			\hline
+			1 & \ldots & 1 & 0 & \ldots & 0 \\
+			\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			1 & \ldots & 1 & 0 & \ldots & 0 \\
+		\end{array}\right]
+	\end{equation*}
+
+\item[12.]
+	The Petersen graph is girth $5$ so there is a $5$-cycle, so it is not bipartite.
+
+	The largest independent set is size $4$. There cannot exist an independent set of size $5$. The vertex $12$ is connected to three vertices ($34$, $35$ and $45$) and not connected to six vertices: $S=\{13,14,15,23,24,25\}$. If an independent set of size $5$ exists, then we can add four of these vertices into an independent set with $12$. But for any subset of size $4$ in $S$, at least one of the vertices is adjacent to another vertex. We know this because we can find a cycle in $S$: $13,24,15,23,14,25$. We cannot choose $4$ vertices that are not adjacent to each other because the largest independent set in the cycle is $6/2=3$.
+
+\item[14.]
+	Done in class.
+
+\item[15.]
+	Done in class.
+
+\item[21.]
+	Done in class.	
+
+\item[22.]
+	$G_1,G_2,G_5$ are isomorphic: $G_1\cong G_2\cong G_5\cong C_7$.	
+
+	$G_3,G_4$ are isomorphic but are not isomorphic to $C_7$: $G_3\cong G_4$.
+
+\item[24.]
+	
+
+\item[25.]
+	
+
+\item[26.]
+	Done in class.
+
+\item[29.]
+	Let each person be a vertex. An ``acquaintance'' of a person is any vertex it is adjacent to. A ``stranger'' is any vertex it is not adjacent to. We are to prove any graph $G$ with six vertices contains either an independent set of size $3$ or a clique of size $3$. This occurs if and only if $\overline G$ has an independent set of size $3$ or a clique of size $3$.
+
+	Let $u\in V(G)$. There might be $3$ or more vertices adjacent to $u$ in $G$. If not, and there are less than $3$ vertices adjacent to $u$ in $G$, then there are less than $3$ vertices not adjacent to $u$ in $\overline G$, so the degree of $u$ in $\overline G$ is greater than or equal to $3$. In either case, $u$ will have degree greater than or equal to $3$ in either $G$ or $\overline G$.
+
+	Let us take the first case ($G$). The vertex $u$ is adjacent to at least three vertices $x,y,z$. If $(x,y)$, ($x,z$) or $(y,z)$ are adjacent, then those two vertices and $x$ form a clique. If not, then $x,y,z$ form an independent set.
+
+	This is also true in $\overline G$.
+
+	There is either an independent set or clique of size $3$ in $G$ or in $\overline G$. If either exists in $\overline G$, it must also exist in $G$.
+
+	\qed
+\end{enumerate}
+
+
+\end{document}
