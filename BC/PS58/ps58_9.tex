@@ -1,0 +1,158 @@
+% JUMP TO LINE 60, 75
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\qedsymbol}{\Smiley[1.3]}
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+
+\title{\vspace*{-40pt}Problem Set \#58, Problem 9}
+\author{Jayden Li}
+\date{\today}
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{\abovedisplayskip/2}
+\setlength{\belowdisplayskip}{\belowdisplayskip/2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\maketitle
+
+\problem{9}
+\begin{align*}
+	&\left\{\begin{aligned}
+		x(\theta)&=R\cos \theta+\theta R\sin \theta \\
+		y(\theta)&=R\sin \theta-\theta R\cos \theta
+	\end{aligned}\right.
+	\implies
+	x'(\theta)
+	=-R\sin \theta+R\sin \theta+\theta R\cos \theta
+	=\theta R\sin \theta
+\end{align*}
+
+The left half of the involute is a semicircle containing the point:
+\begin{equation*}
+	(x(\pi),y(\pi))
+	=\left(R\cos \pi+\pi R\sin \pi, R\sin \pi-\pi R\cos \pi\right)
+	=\left(-R, -R\pi\right)
+\end{equation*}
+
+The semicircle is centered at $(-R, 0)$. Thus the radius of the semicircle is $R\pi$ and its area $A_1=\pi \left(R\pi\right)^2/2=R^2\pi^3/2$.
+
+The other areas are $A_2=A_3$, where:
+
+$\begin{aligned}[t]
+    A_2
+	&=\int_{0}^{\pi}\left(R\sin \theta-\theta R\cos\theta\right)\theta R\cos \theta\,\mathrm{d}\theta
+	=\int_{0}^{\pi}\theta R^2\sin \theta\cos \theta\,\mathrm{d}\theta-\int_{0}^{\pi}\theta^2 R^2\cos^2\theta\,\mathrm{d}\theta \\
+	&=R^2\left(\int_{0}^{\pi}\theta \sin \theta\cos \theta\,\mathrm{d}\theta-\int_{0}^{\pi}\theta^2 \cos^2\theta\,\mathrm{d}\theta\right) \\
+	\alignedintertext{
+	\begin{mdframed}
+		$\begin{aligned}[t]
+			I
+			&=\int \theta\sin \theta\cos \theta\,\mathrm{d}\theta
+			=\left[\begin{aligned}
+					u&=\theta\sin\theta & \mathrm{d}v&=\cos \theta \,\mathrm{d}\theta \\
+				\mathrm{d}u&=\left(\sin\theta+\theta\cos \theta\right)\mathrm{d}\theta & v&=\sin \theta
+			\end{aligned}\right] \\
+			&=\theta \sin^2\theta-\int \sin(\theta)\left(\sin \theta+\theta\cos \theta\right)\,\mathrm{d}\theta
+			=\theta\sin^2\theta-\int \sin^2\theta\,\mathrm{d}\theta-\int \theta\sin\theta\cos\theta\,\mathrm{d}\theta \\
+			&=\theta\sin^2\theta-\int \frac{1-\cos2\theta}{2}\,\mathrm{d}\theta-I
+			=\theta\sin^2\theta-\frac12 \left(\theta-\frac{\sin2\theta}{2}\right)-I \\
+			&=\theta\sin^2\theta-\frac{\theta}{2}+\frac{\sin2\theta}{4}-I
+			\implies I=\frac{\theta\sin^2\theta}{2}-\frac{\theta}{4}+\frac{\sin2\theta}{8}
+		\end{aligned}$
+	\end{mdframed}
+	\begin{mdframed}
+		$\begin{aligned}[t]
+		    \int \theta^2\cos^2\theta\,\mathrm{d}\theta
+			&=\int \theta^2 \frac{1+\cos 2\theta}{2}\,\mathrm{d}\theta
+			=\frac12 \int \left(\theta^2+\theta^2\cos 2\theta\right)\mathrm{d}\theta
+			=\frac{1}{2} \left(\frac{\theta^3}{3}+\int \theta^2\cos 2\theta\,\mathrm{d}\theta\right) \\
+			&=\left[\begin{aligned}
+				u&=\theta^2 & \mathrm{d}v&=\cos 2\theta \,\mathrm{d}\theta \\
+				\mathrm{d}u&=2\theta \,\mathrm{d}\theta & v&=\frac12\sin 2\theta
+			\end{aligned}\right]\frac{\theta^3}{6}+\frac{1}{2}\left(\frac{1}{2}\theta^2\sin 2\theta-\int \theta\sin 2\theta\,\mathrm{d}\theta\right) \\
+			&=\left[\begin{aligned}
+				u&=\theta & \mathrm{d}v&=\sin 2\theta \,\mathrm{d}\theta \\
+				\mathrm{d}u&=\mathrm{d}\theta & v&=-\frac12 \cos 2\theta
+			\end{aligned}\right]\frac{\theta^3}{6}+\frac{1}{2}\left(\frac{1}{2}\theta^2\sin 2\theta-\left(-\frac12\theta\cos2\theta+\int\frac12 \cos 2\theta\mathrm{d}\theta\right)\right) \\
+			&=\frac{\theta^3}{6}+\frac{1}{2}\left(\frac{1}{2}\theta^2\sin 2\theta-\left(-\frac12\theta\cos2\theta+\frac14 \sin 2\theta\right)\right)+C \\
+			&=\frac{\theta^3}{6}+\frac12 \left(\frac12 \theta^2\sin 2\theta+\frac12 \theta\cos 2\theta-\frac14 \sin 2\theta\right)+C \\
+			&=\frac{\theta^3}{6}+\frac{\theta^2\sin 2\theta}{4}+\frac{\theta\cos 2\theta}{4}-\frac{\sin 2\theta}{8}+C
+		\end{aligned}$
+	\end{mdframed}
+	}
+	&=R^2 \left(\left[\frac{\theta\sin ^2\theta}{2}-\frac{\theta}{4}+\frac{\sin 2\theta}{8}\right]_{0}^{\pi}-\left[\frac{\theta^3}{6}+\frac{\theta^2\sin 2\theta}{4}+\frac{\theta\cos 2\theta}{4}-\frac{\sin 2\theta}{8}\right]_{0}^{\pi}\right) \\
+	&=R^2 \left(0-\frac{\pi}{4}\right)-R^2 \left(\frac{\pi^3}{6}+\frac{\pi}{4}\right)
+	=-\frac{\pi R^2}{4}-\frac{R^2\pi^3}{6}-\frac{\pi R^2}{4}
+	=-\frac{R^2\pi^3}{6}-\frac{\pi R^2}{2}
+\end{aligned}$
+
+Then we need to subtract the area of the fence, which is a circle of radius $R$. Its area is $A_4=\pi R^2$.
+
+The total area is:
+
+$\begin{aligned}[t]
+	A
+	&=\left|A_1\right|+\left|A_2\right|+\left|A_3\right|-\left|A_4\right|
+	=\frac{R^2\pi^3}{2}+2 \left|-\frac{R^2\pi^3}{6}-\frac{\pi R^2}{2}\right|-\pi R^2
+	=\frac{R^2\pi^3}{2}+\frac{R^2\pi^3}{3}+\pi R^2-\pi R^2 \\
+	&=\frac{3R^2\pi^3}{6}+\frac{2R^2\pi^3}{6}
+	=\boxed{\frac{5R^2\pi^3}{6}}
+\end{aligned}$
+
+\end{document}
