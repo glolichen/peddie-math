@@ -1,0 +1,202 @@
+% JUMP TO LINE 60, 75
+\documentclass[preview, margin=0.6in]{standalone}
+\usepackage[letterpaper,portrait,top=0.4in, left=0.6in, right=0.6in, bottom=1in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{interval}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{titling}
+\usepackage{vwcol}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{esdiff}
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{esdiff}
+\usepackage{tikzsymbols}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{varwidth}
+\usepackage{parskip}
+\usepackage{pgfplots}
+\usepackage{mlmodern}
+\pgfplotsset{compat=1.18}
+\intervalconfig {
+	soft open fences
+}
+
+\newcommand{\alignedintertext}[1]{%
+  \noalign{%
+    \vtop{\hsize=\linewidth#1\par
+    \expandafter}%
+    \expandafter\prevdepth\the\prevdepth
+  }%
+}
+
+\newtheorem{lemma}{Lemma}
+
+\newcommand*{\problem}[1]{\section*{Problem #1}}
+\newcommand*{\aps}{\section*{AP Corner}}
+\newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
+\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+\newcommand*{\lheqzero}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac00\right]}{=}}}}
+\newcommand*{\lheqinfty}{\ensuremath{\underset{\text{L'H}}{\overset{\left[\frac{\infty}{\infty}\right]}{=}}}}
+
+\DeclareMathOperator{\DNE}{DNE}
+\DeclareMathOperator{\sgn}{sgn}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+%opening
+
+\title{\vspace*{-40pt}Homework Set C.1}
+\author{Jayden Li}
+\date{\today}
+% \allowdisplaybreaks
+\postdisplaypenalty=100000
+
+\begin{document}
+\setstretch{1.25}
+\fontsize{12pt}{12pt}\selectfont
+\setlength{\abovedisplayskip}{\abovedisplayskip/2}
+\setlength{\belowdisplayskip}{\belowdisplayskip/2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\maketitle
+
+\problem{1}
+\begin{equation*}
+    \hat i\times \hat j
+	=\begin{vmatrix}
+		\hat i & \hat j & \hat k \\
+		\hat i_x & \hat i_x & \hat i_x \\
+		\hat j_x & \hat j_x & \hat j_x \\
+	\end{vmatrix}
+	=\begin{vmatrix}
+		\hat i & \hat j & \hat k \\
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+	\end{vmatrix}
+	=
+	\hat i \begin{vmatrix}
+		0 & 0 \\ 1 & 0
+	\end{vmatrix}
+	-\hat j \begin{vmatrix}
+		1 & 0 \\ 0 & 0
+	\end{vmatrix}
+	+\hat k \begin{vmatrix}
+		1 & 0 \\ 0 & 1
+	\end{vmatrix}
+	=(0)\hat i-(0)\hat j+(1)\hat k
+	=\boxed{\hat k=\left( 0,0,1 \right)}
+\end{equation*}
+
+\problem{2}
+\begin{alignat*}{3}
+	\hat i\times\hat i&=0 &\qquad
+	\hat i\times\hat j&=\hat k &\qquad
+	\hat i\times\hat k&=-\hat j \\
+	\hat j\times\hat i&=-\hat k &\qquad
+	\hat j\times\hat j&=0 &\qquad
+	\hat j\times\hat k&=\hat i \\
+	\hat k\times\hat i&=\hat j &\qquad
+	\hat k\times\hat j&=-\hat i &\qquad
+	\hat k\times\hat k&=0 \\
+\end{alignat*}
+
+\problem{3}
+Cross product is anti-commutative: $a\times b=-b\times a$. 
+
+\begin{proof}
+	First, notice that the determinant of a matrix formed by swapping the rows of a $2\times 2$ matrix is the negative determinant of the original matrix:
+	\begin{equation*}
+		\begin{vmatrix}
+			p & q \\
+			r & s
+		\end{vmatrix}
+		=ps-qr
+		=-(qr-ps)
+		=-(rq-sp)
+		=-\begin{vmatrix}
+			r & s \\
+			p & q
+		\end{vmatrix}
+	\end{equation*}
+	Let $a,b$ be vectors in $\mathbb R^3$ with the components $a=(a_x,a_y,a_z)$ and $b=(b_x,b_y,b_z)$.
+	\begin{align*}
+	    a\times b
+		&=\begin{vmatrix}
+			\hat i & \hat j & \hat k \\
+			a_x & a_y & a_z \\
+			b_x & b_y & b_z \\
+		\end{vmatrix}
+		=
+		\hat i \begin{vmatrix}
+			a_y & a_z \\
+			b_y & b_z
+		\end{vmatrix}
+		-\hat j \begin{vmatrix}
+			a_x & a_z \\
+			b_x & b_z
+		\end{vmatrix}
+		+\hat k \begin{vmatrix}
+			a_x & a_y \\
+			b_x & b_y
+		\end{vmatrix} \\
+	    -b\times a
+		&=-\begin{vmatrix}
+			\hat i & \hat j & \hat k \\
+			b_x & b_y & b_z \\
+			a_x & a_y & a_z \\
+		\end{vmatrix}
+		=-\left(
+		\hat i \begin{vmatrix}
+			b_y & b_z \\
+			a_y & a_z
+		\end{vmatrix}
+		-\hat j \begin{vmatrix}
+			b_x & b_z \\
+			a_x & a_z
+		\end{vmatrix}
+		+\hat k \begin{vmatrix}
+			b_x & b_y \\
+			a_x & a_y
+		\end{vmatrix}\right) \\
+		&=\hat i \left(-\begin{vmatrix}
+			b_y & b_z \\
+			a_y & a_z
+		\end{vmatrix}\right)
+		-\hat j \left(-\begin{vmatrix}
+			b_x & b_z \\
+			a_x & a_z
+		\end{vmatrix}\right)
+		+\hat k \left(-\begin{vmatrix}
+			b_x & b_y \\
+			a_x & a_y
+		\end{vmatrix}\right) \\
+		\intertext{Using the observation earlier, to find the negative determinant, we can swap the rows of the matrix:}
+		&=
+		\hat i \begin{vmatrix}
+			a_y & a_z \\
+			b_y & b_z
+		\end{vmatrix}
+		-\hat j \begin{vmatrix}
+			a_x & a_z \\
+			b_x & b_z
+		\end{vmatrix}
+		+\hat k \begin{vmatrix}
+			a_x & a_y \\
+			b_x & b_y
+		\end{vmatrix}
+		=a \times b
+	\end{align*}
+\end{proof}
+
+\end{document}
