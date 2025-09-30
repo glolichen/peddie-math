@@ -76,7 +76,7 @@ If we have two points $A$ and $B$, the vector $AB$ from $A$ to $B$ is given by $
 Two vectors are parallel if and only if they are scalar multiples of each other; that is, there exists a scalar $a\in\mathbb R$ such that $u=av$.
 
 \subsection{Polar Form}
-For a vector $u\in\mathbb R^2$, we can write $u$ in polar form. Any vector can be specified with an angle from the $x$ axis and a magnitude. Let the angle from the $x$ axis be $\theta$ and the magnitude, the distance to the origin, be $r$. To convert from cartesian to polar:
+For a vector $u\in\mathbb R^2$, we can write $u$ in polar form. Any vector can be specified with an angle from the $x$ axis and a magnitude. Let the angle from the $x$ axis be $\theta$ and the magnitude, the distance to the origin, be $r$. To convert from Cartesian to polar:
 \begin{equation*}
     u=\begin{bmatrix}
 		u_x \\ u_y
@@ -86,7 +86,7 @@ For a vector $u\in\mathbb R^2$, we can write $u$ in polar form. Any vector can b
 		r&=\lVert u \rVert =\sqrt{u_x^2+u_y^2}
 	\end{aligned}\right.
 \end{equation*}
-To convert from polar to cartesian:
+To convert from polar to Cartesian:
 \begin{equation*}
     u=\begin{bmatrix}
 		r\cos\theta \\ r\sin\theta
@@ -126,6 +126,14 @@ The standard basis vectors are as follows:
 	\hat k &= (0,0,1)
 \end{align*}
 These vectors span the $\mathbb R^3$ space.
+
+\subsection{Angle Between Vectors}
+
+We can calculate the angle between vectors $u,v\in\mathbb R^n$ using the cross product:
+\begin{equation*}
+    u\cdot v=\lVert u \rVert \lVert v \rVert \cos\theta
+	\implies \cos\theta=\frac{u\cdot v}{\lVert u \rVert \lVert v \rVert }
+\end{equation*}
 
 \subsection{Cross Product}
 The cross product only exists between vectors in three dimensions. Let $u=(u_x,u_y,u_z)\in\mathbb R^3$ and $v=(v_x,v_y,v_z)\in\mathbb R^3$. The cross product $u\times v$ has the following properties:
@@ -173,7 +181,7 @@ The scalar triple product is the determinant of the square matrix with those vec
 		w_x & w_y & w_z \\
 	\end{vmatrix}
 \end{equation*}
-From the determinant, it follows that the scalar triple product of $u,v,w$ is the volume of the parallelopiped with $u,v,w$ as its edges.
+From the determinant, it follows that the scalar triple product of $u,v,w$ is the volume of the parallelepiped with $u,v,w$ as its edges.
 
 \subsection{Projection}
 
@@ -235,7 +243,7 @@ Recall the parametric system for a line. We solve for the parameter $t$ in terms
 		t&=\frac{z-z_0}{c} \\
 	\end{aligned}\right.
 \end{equation*}
-For each equation in the above system, the parameter $t$ must be equal, yieldinf the symmetric equation of a line:
+For each equation in the above system, the parameter $t$ must be equal, yielding the symmetric equation of a line:
 \begin{equation*}
     \frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}
 \end{equation*}
@@ -286,6 +294,14 @@ Alternative, expanding the first equation, there exists a scalar value $d$ such 
 \end{equation*}
 Subtracting by $x_0,y_0,z_0$ shifts the plane. The plane parallel to the original plane, but which passes through the origin, is given by $(x,y,z)\cdot(a,b,c)=0$. Which means that for all points on the plane, $(a,b,c)$ is orthogonal to it. Hence $n=(a,b,c)$ is orthogonal to the plane.
 
+\subsection{Dihedral Angle}
+
+The dihedral angle is the angle formed between two planes. It equals the angle formed between the normal vectors of each plane, which can be found using the dot product.
+
+\subsection{Angle between Vector and Plane}
+
+Let $v$ be the vector. Find the normal vector to the plane $n$, and find the angle $\theta$ between the vector and $n$. The angle between the plane and $v$ is $90^\circ-\theta=\pi/2-\theta$.
+
 \subsection{Finding Intersection}
 
 Two planes intersect if and only if the vectors normal to the plane point in different direction and are not parallel.
@@ -295,11 +311,19 @@ Two planes intersect if and only if the vectors normal to the plane point in dif
 \end{align*}
 A point on the intersection of these two planes satisfy both equations. From here, set any variables ($x,y,z$) to a parameter $t$ and substitute. Then use elimination to solve for the two remaining variables in terms of $t$ (DO NOT ELIMINATE $t$). Now we have a parametric system describing the line of intersection.
 
-\section{Quadric Surfaces}
+\section{Cylinders and Quadric Surfaces}
 
 \begin{center}
 	\includegraphics[width=\linewidth]{quadric.png}
 \end{center}
+
+\subsection{Trace}
+
+The intersection of a quadric surface with a plane normal to a standard basis vector is a trace. We can use the trace produced by a equation in each direction to determine which quadric surface the equation is.
+
+\subsection{Cylinders}
+
+A cylinder is a surface that consists of all lines that are parallel to a given line, and which passes through a plane curve. For example, the surface given by $y=x^2$ is a cylinder because the $z$ component of each point can be anything, hence every line is parallel to $\hat k$.
 
 
 \end{document}
