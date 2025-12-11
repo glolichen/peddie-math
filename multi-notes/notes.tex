@@ -5,14 +5,14 @@
 \usepackage{amsmath, amsfonts, amsthm, amssymb}
 \usepackage{graphicx, float}
 \usepackage{suffix}
-\usepackage{esdiff}
+\usepackage{diffcoeff}
 \usepackage{pdfpages}
 \usepackage{multicol}
 \usepackage{cancel}
 \usepackage{mdframed}
 \usepackage{mathtools}
 \usepackage{tcolorbox}
-\usepackage{hyperref}
+\usepackage[colorlinks, linkcolor=blue]{hyperref}
 \usepackage[per-mode=symbol]{siunitx}
 \usepackage{setspace}
 \usepackage{parskip}
@@ -38,7 +38,7 @@
 \WithSuffix\newcommand\remark*[1]{\begin{tcolorbox}[colback=black!5!white,colframe=black!75!black,parbox=false] #1 \end{tcolorbox}}
 
 \newcommand*{\deriv}[1][x]{\ensuremath{\dfrac{\mathrm{d}}{\mathrm{d}#1}}}
-\newcommand*{\floor}[1]{\ensuremath{\lfloor #1\rfloor}}
+
 
 \title{\vspace*{-40pt}Notes on Multivariable Calculus}
 \author{Jayden Li}
@@ -131,7 +131,7 @@ These vectors span the $\mathbb R^3$ space.
 
 \subsection{Angle Between Vectors}
 
-We can calculate the angle between vectors $u,v\in\mathbb R^n$ using the cross product:
+We can calculate the angle between vectors $u,v\in\mathbb R^n$ using the dot product:
 \begin{equation*}
     u\cdot v=\lVert u \rVert \lVert v \rVert \cos\theta
 	\implies \cos\theta=\frac{u\cdot v}{\lVert u \rVert \lVert v \rVert }
@@ -281,6 +281,12 @@ These two lines intersect exactly where $(x_1,y_1,z_1)=(x_2,y_2,z_2)$.
 \end{equation*}
 We know the value of $a,b,c,x_0,y_0,z_0$ for both equations. There are two variables to solve: $t_1$ and $t_2$. But this is an overdetermined system, with three linear equations for two variables, so there is only a solution (and intersection) if these equations are not independent. If there is, then we can use $t_1$ and $t_2$ to find the point (or infinity points) of intersection.
 
+\subsection{Distance between Lines}
+
+First find two parallel planes which contains each line, and find the distance between the parallel planes. This is the distance betwene lines.
+
+The normal vector to the parallel planes is the cross product of the direction vectors of the two lines. Then translate the planes so that they contain the lines.
+
 \section{Planes}
 
 The equation of a plane in 3D passing through $(x_0,y_0,z_0)$ is:
@@ -318,6 +324,10 @@ Two planes intersect if and only if the vectors normal to the plane point in dif
     a_2x+b_2y+c_2z+d_2&=0
 \end{align*}
 A point on the intersection of these two planes satisfy both equations. From here, set any variables ($x,y,z$) to a parameter $t$ and substitute. Then use elimination to solve for the two remaining variables in terms of $t$ (DO NOT ELIMINATE $t$). Now we have a parametric system describing the line of intersection.
+
+\subsection{Distance between Parallel Planes}
+
+The two lines will have the same unit normal vector $n$. They have the form $(x,y,z)\cdot n=a$ and $(x,y,z)\cdot n=b$. Choose any point on one plane $P$. We need to calculate a scalar $c$ such that $P+cn$ is on the other plane. The distance between the planes is $\lVert cn \rVert =c$ since $n$ is a unit vector.
 
 \section{Cylinders and Quadric Surfaces}
 
@@ -567,6 +577,85 @@ Dividing these:
 \begin{equation*}
 	\frac{\left( \frac{\mathrm{d}s}{\mathrm{d}s} \right)^3 \kappa}{\left( \frac{\mathrm{d}s}{\mathrm{d}t} \right)^3}
 	=\boxed{\kappa=\frac{\lVert r'(t)\times r''(t) \rVert }{\lVert r'(t) \rVert ^3}}
+\end{equation*}
+Note that the magnitude of the cross product can be interpreted as the area of the parallelogram formed by the two vectors. When working with two dimensional functions, the actual cross product cannot be calculated, but its magnitude's interpretation as the area can be found through the determinant:
+\begin{equation*}
+    \kappa=\frac{1}{\lVert r'(t) \rVert ^3}\begin{vmatrix}
+		r'(t) \\ r''(t)
+    \end{vmatrix}
+\end{equation*}
+
+\section{Partial Derivatives}
+
+A multivariable function takes in multiple variables. The domain is a $n$-tuple of numbers, denoted $\mathbb R^n$. The codomain is the set the function maps to, often $\mathbb R$.
+
+\subsection{Cylindrical Coordinates}
+
+Cylindrical coordinates are $(r,\theta,z)$, where $r$ and $\theta$ map onto $x$ and $y$ in the same way as polar coordinates in 2 dimensions:
+\begin{align*}
+	x&=r\cos\theta \\
+	y&=r\sin\theta
+\end{align*}
+and $z$ is just the $z$ coordinate. As with polar coordinates:
+\begin{align*}
+	r^2&=x^2+y^2 \\
+	\tan\theta&=\frac{y}{x}
+\end{align*}
+
+\subsection{Limits}
+
+A multivariable limit is denoted:
+\begin{equation*}
+    \lim_{(x,y)\to(a,b)}f(x,y)=L
+\end{equation*}
+where $x$ and $y$ approach $a$ and $b$ at the same time. For the limit to exist, approaching $(a,b)$ from all (infinitely many) paths must evaluate to the same value. In 2 dimensions, there are only 2 paths; approaching from the left and the right.
+
+To show a limit does not exist at a given point, show that approacing the point from two different paths produces different values. This can be done by setting $y$ to a function of $x$, or vice versa.
+
+For limits to the origin, we can evaluate the limit by changing $f(x,y)$ to cylindrical/polar coordinates $g(r,\theta)$:
+\begin{equation*}
+    \lim_{(x,y)\to(a,b)}f(x,y)
+	=\lim_{r\to0}g(r,\theta)
+\end{equation*}
+The limit exists if and only if it produces the same value for all values of $\theta$. If it does not, then approaching from different directions (different paths) produce different values, and hence the limit does not exist.
+
+\subsection{Continuity}
+
+A function $f$ is continuous at the point $(a,b)$ if and only if:
+\begin{equation*}
+    \lim_{(x,y)\to(a,b)}f(x,y)=f(a,b)
+\end{equation*}
+All polynomials in $x$ and $y$ are continuous. Limits of known continuous functions can be evaluated by direct substitution, like in single variable calculus.
+
+\subsection{Differentiability}
+
+A function $f:\mathbb R^n\to\mathbb R$ is continuous at a point $a$ if there exists a linear function $L$ such that (where $x,a\in\mathbb R^n$):
+\begin{equation*}
+    \lim_{x\to a}\frac{\left|f(x)-L(x)\right|}{\lVert x-a \rVert }=0
+\end{equation*}
+which means the denominator $\lVert x-a \rVert $ grows slower than the numerator $\left|f(x)-L(x)\right|$, which is that the linear function $L$ approaches $f$ faster than $x$ approaches $a$.
+
+Like in single variable calculus, a function is not differentiable at a point if there is a sharp turn, vertical asymptotes, etc.
+
+\subsection{Partial Derivatives}
+
+Let $f:\mathbb R^n\to\mathbb R$ be a function with variables $x_1,x_2,\ldots,x_n$. The partial derivative with respect to any variable is the derivative if we hold all other variables constant, and denoted as:
+\begin{equation*}
+	\diffp{f}{x_i}=f_{x_i}(\ldots)
+\end{equation*}
+$f$ must be differentiable at a point if its partial derivatives are continuous at that point. But this is not a necessary condition (i.e. there are differentiable functions without continuous partial derivatives).
+
+\subsection{Tangent Plane}
+The tangent plane to the curve of $f(x,y,z)$ at (a,b) is:
+\begin{equation*}
+    z=f_x(a,b)(x-a)+f_y(a,b)(y-b)+f(a,b)
+\end{equation*}
+The $x$ coefficient is the partial derivative with respect to $x$ and the $y$ coefficient is the partial derivative with respect to $y$. $x,y$ are shifted by $a,b$, respectively, and we add $f(a,b)$ so that it will pass through the point on the curve $(a,b)$.
+
+Using this formula, the tangent line to the curve $f(x)$ at $a$ is (looks familiar):
+\begin{equation*}
+    y=f_x(a)(x-a)+f(a)
+	=f'(a)(x-a)+f(a)
 \end{equation*}
 
 \end{document}
